@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Free Whisper - HoneyBunniLexi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #e8e8e8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .player-container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .player-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .player-subtitle {
+      color: #b8c6db;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    .audio-player audio {
+      width: 100%;
+      outline: none;
+    }
+
+    .cta-section {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cta-text {
+      color: #b8c6db;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .back-link {
+      margin-top: 1rem;
+      display: block;
+      color: #9bb5d6;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: #667eea;
+    }
+
+    @media (max-width: 600px) {
+      .player-container {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .player-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <h1 class="player-title">Your Free Whisper</h1>
+    <p class="player-subtitle">60 seconds of what you've been needing to hear</p>
+    
+    <div class="audio-player">
+      <audio controls preload="auto" id="whisperAudio">
+        <source src="/audio/free-whisper-sample.mp3" type="audio/mpeg">
+        <source src="/audio/free-whisper-sample.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    
+    <div class="cta-section">
+      <p class="cta-text">
+        If that helped you relax, imagine what 5 minutes could do.<br>
+        More where this came from.
+      </p>
+      <button class="cta-btn" onclick="trackUpsell(); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=free_player&utm_medium=upsell&utm_campaign=post_listen', '_blank')">
+        Get Weekly Audio Drops - $29/month
+      </button>
+      <a href="javascript:history.back()" class="back-link">← Back to options</a>
+    </div>
+  </div>
+
+  <script>
+    // Track audio engagement
+    const audio = document.getElementById('whisperAudio');
+    let hasStarted = false;
+    let hasCompleted = false;
+
+    audio.addEventListener('play', function() {
+      if (!hasStarted) {
+        hasStarted = true;
+        trackEvent('audio_start', 'free_whisper');
+      }
+    });
+
+    audio.addEventListener('ended', function() {
+      if (!hasCompleted) {
+        hasCompleted = true;
+        trackEvent('audio_complete', 'free_whisper');
+        
+        // Show special offer after completion
+        setTimeout(showCompletionOffer, 2000);
+      }
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      
+      // Track listening milestones
+      if (percent >= 25 && !audio.dataset.tracked25) {
+        audio.dataset.tracked25 = 'true';
+        trackEvent('audio_25_percent', 'free_whisper');
+      }
+      
+      if (percent >= 50 && !audio.dataset.tracked50) {
+        audio.dataset.tracked50 = 'true';
+        trackEvent('audio_50_percent', 'free_whisper');
+      }
+      
+      if (percent >= 75 && !audio.dataset.tracked75) {
+        audio.dataset.tracked75 = 'true';
+        trackEvent('audio_75_percent', 'free_whisper');
+      }
+    });
+
+    function trackEvent(action, label) {
+      // Google Analytics 4
+      if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+          'event_category': 'Audio_Engagement',
+          'event_label': label
+        });
+      }
+      
+      console.log(`Event tracked: ${action} - ${label}`);
+    }
+
+    function trackUpsell() {
+      trackEvent('upsell_click', 'audio_vault');
+    }
+
+    function showCompletionOffer() {
+      const ctaText = document.querySelector('.cta-text');
+      ctaText.innerHTML = `
+        <strong style="color: #667eea;">You just listened to the full sample!</strong><br>
+        Ready for the complete collection?<br>
+        <em style="color: #9bb5d6; font-size: 0.9rem;">Join 200+ men who sleep better every week</em>
+      `;
+      
+      // Pulse effect on CTA button
+      const ctaBtn = document.querySelector('.cta-btn');
+      ctaBtn.style.animation = 'pulse 2s ease-in-out infinite';
+    }
+
+    // Auto-play with user interaction (mobile-friendly)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track page load
+      trackEvent('free_player_load', 'page_view');
+      
+      // Attempt autoplay after user interaction
+      document.addEventListener('click', function() {
+        if (!hasStarted) {
+          audio.play().catch(e => console.log('Autoplay prevented'));
+        }
+      }, { once: true });
+    });
+
+    // Add pulse animation for CTA
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
