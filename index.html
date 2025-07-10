@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoneyBunniLexi – Sugar Sanctuary</title>
+  <title>HoneyBunniLexi ~ Sugar Sanctuary</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Great+Vibes&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
@@ -226,17 +226,46 @@
       position: relative;
     }
 
-    .subscription-highlight::after {
-      content: "RECURRING VALUE";
-      position: absolute;
-      top: -10px;
-      right: 20px;
-      background: #ff69b4;
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.6rem;
-      font-weight: 600;
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffb6c1;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 182, 193, 0.3);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 182, 193, 0.1);
+      border-color: #ffb6c1;
+      transform: translateY(-2px);
+    }
+
+    .social-icon {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -260,8 +289,8 @@
     <h1>Welcome to My Sugar Sanctuary 🍯</h1>
     <h2>Not a girlfriend. Not for everyone. Just your secret sugar~soft escape.</h2>
     <p>This isn't content. It's cotton candy for your soul. 🍓<br>
-    Whispers that stay with you, letters no one else will read, and attention that feels like it's just for you ~ because it is.<br>
-    Think of me like honey on your lips: sweet, slow, unforgettable.</p>
+    Whispers that stay with you, letters no one else will read, and attention that feels like it's just for you~because it is.<br>
+    Think of me like honey on your lips~sweet, slow, unforgettable.</p>
     <div class="buttons">
       <a href="#" class="cta-primary">Start with Free Whisper 🎁</a>
       <a href="#tiers" class="cta-secondary">See All Offerings 💌</a>
@@ -340,7 +369,7 @@
       <div class="tier-card">
         <div class="tier-title">Velvet Ritual 🪽</div>
         <div class="tier-price">$222 • 15+ minute experience</div>
-        <div class="tier-desc">Your deepest fantasy whispered into reality. A completely custom ritual made just for you—never reused, never shared.</div>
+        <div class="tier-desc">Your deepest fantasy whispered into reality. A completely custom ritual made just for you~never reused, never shared.</div>
         <ul class="tier-features">
           <li>Completely custom 15+ min audio</li>
           <li>Your fantasy, your scenario</li>
@@ -373,7 +402,7 @@
   <section id="teaser">
     <h3 class="section-title">🧁 Start Sweet, Stay Soft</h3>
     <p style="text-align: center; max-width: 600px; margin: auto; margin-bottom: 2rem;">
-      Not sure where to begin? Start with a free taste. I'll whisper something just for you ~ no strings, no commitment, just sugar in your inbox. 💫
+      Not sure where to begin? Start with a free taste. I'll whisper something just for you~no strings, no commitment, just sugar in your inbox. 💫
     </p>
     <div style="text-align: center;">
       <button class="tier-btn" style="display: inline-block; width: auto; padding: 1rem 2rem;">Get Your Free Whisper 🎁</button>
@@ -381,8 +410,28 @@
   </section>
 
   <div class="footer">
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-family: 'Great Vibes', cursive; color: #ffb6c1; margin-bottom: 1rem;">Find Me in Other Sweet Spaces 💕</h4>
+      <div class="social-links">
+        <a href="https://www.instagram.com/honeybunnilexi/" target="_blank" rel="noopener" class="social-link">
+          <span class="social-icon">📸</span> Instagram
+        </a>
+        <a href="https://x.com/HoneyBunniLexi" target="_blank" rel="noopener" class="social-link">
+          <span class="social-icon">🐦</span> Twitter/X
+        </a>
+        <a href="https://www.tiktok.com/@honeybunnilexi" target="_blank" rel="noopener" class="social-link">
+          <span class="social-icon">🎵</span> TikTok
+        </a>
+        <a href="https://ko-fi.com/honeybunnilexi" target="_blank" rel="noopener" class="social-link">
+          <span class="social-icon">☕</span> Ko-fi
+        </a>
+      </div>
+      <p style="font-size: 0.8rem; color: #d8a0b9; margin-top: 1rem; font-style: italic;">
+        Follow for soft moments, behind-the-scenes sweetness, and first access to new whispers 🍯
+      </p>
+    </div>
     Soft thoughts, sweet whispers, and a place just for you.<br>
-    &copy; 2025 HoneyBunniLexi — All sweetness reserved.
+    &copy; 2025 HoneyBunniLexi ~ All sweetness reserved.
   </div>
 
   <!-- Landbot Chatbot -->
