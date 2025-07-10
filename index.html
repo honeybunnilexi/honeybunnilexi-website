@@ -96,7 +96,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
     }
 
@@ -107,11 +107,31 @@
       padding: 2rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .tier-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .tier-card.featured {
+      border: 2px solid #ff69b4;
+      background: rgba(255, 182, 193, 0.1);
+    }
+
+    .tier-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+      color: #1a0b14;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
     }
 
     .tier-title {
@@ -124,12 +144,54 @@
     .tier-price {
       font-size: 1.2rem;
       margin-bottom: 1rem;
+      color: #ffb6c1;
     }
 
     .tier-desc {
       font-size: 0.95rem;
       color: #fdd3e5;
       line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .tier-features {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .tier-features li {
+      padding: 0.3rem 0;
+      font-size: 0.85rem;
+      color: #f8c8dc;
+    }
+
+    .tier-features li::before {
+      content: "💎 ";
+      margin-right: 0.5rem;
+    }
+
+    .tier-btn {
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+      color: #1a0b14;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      width: 100%;
+    }
+
+    .tier-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .tier-btn.secondary {
+      background: transparent;
+      color: #ffb6c1;
+      border: 1px solid #ffb6c1;
     }
 
     .footer {
@@ -144,6 +206,38 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .heart-icon {
+      font-size: 4rem;
+      color: #ff69b4;
+      animation: heartbeat 2s ease-in-out infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .subscription-highlight {
+      background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1));
+      border: 2px solid #ff69b4;
+      position: relative;
+    }
+
+    .subscription-highlight::after {
+      content: "RECURRING VALUE";
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #ff69b4;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.6rem;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -152,15 +246,25 @@
   </header>
 
   <section class="hero">
-    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_PpzVFDvCWy.json" background="transparent" speed="1" style="width: 120px; height: 120px; margin: auto;" loop autoplay></lottie-player>
+    <lottie-player 
+      src="https://lottie.host/f4b7e8d6-6b13-4b8e-80c1-4e6e2d8f4b9c/wfGJuCvxcg.json" 
+      background="transparent" 
+      speed="1" 
+      style="width: 120px; height: 120px; margin: auto; margin-bottom: 1rem;" 
+      loop 
+      autoplay>
+    </lottie-player>
+    
+    <div class="heart-icon" style="display: none;">💖</div>
+    
     <h1>Welcome to My Sugar Sanctuary 🍯</h1>
     <h2>Not a girlfriend. Not for everyone. Just your secret sugar-soft escape.</h2>
-    <p>This isn’t content. It’s cotton candy for your soul. 🍓<br>
-    Whispers that stay with you, letters no one else will read, and attention that feels like it’s just for you—because it is.<br>
+    <p>This isn't content. It's cotton candy for your soul. 🍓<br>
+    Whispers that stay with you, letters no one else will read, and attention that feels like it's just for you—because it is.<br>
     Think of me like honey on your lips—sweet, slow, unforgettable.</p>
     <div class="buttons">
-      <a href="#tiers" class="cta-primary">Get Soft With Me 💌</a>
-      <a href="#" class="cta-secondary" onclick="openChatbot(); return false;">Preview a Tease 🍯</a>
+      <a href="#" class="cta-primary">Start with Free Whisper 🎁</a>
+      <a href="#tiers" class="cta-secondary">See All Offerings 💌</a>
     </div>
   </section>
 
@@ -176,34 +280,104 @@
   <section id="tiers">
     <h3 class="section-title">🍯 Choose Your Sweetness</h3>
     <div class="tiers">
+      
+      <!-- Free Lead Magnet -->
       <div class="tier-card">
-        <div class="tier-title">Blush Note 💌 – $11.11</div>
-        <div class="tier-price">5 minutes | Soft Voice Memo</div>
-        <div class="tier-desc">A dreamy whisper to start your collection. Perfect for bedtime, heartbreak, or when you just need to feel adored.</div>
+        <div class="tier-title">Free Taste 🎁</div>
+        <div class="tier-price">3-minute whisper sample</div>
+        <div class="tier-desc">A soft bedtime whisper to see if my voice is what you've been craving. No strings attached.</div>
+        <ul class="tier-features">
+          <li>Personal nighttime whisper</li>
+          <li>Instant email delivery</li>
+          <li>No commitment required</li>
+        </ul>
+        <button class="tier-btn">Get Your Free Whisper</button>
       </div>
+
+      <!-- Entry Point -->
       <div class="tier-card">
-        <div class="tier-title">Sugar Letter 💋 – $44</div>
-        <div class="tier-price">8–10 minutes | Poetic Fantasy</div>
-        <div class="tier-desc">A handwritten-style PDF letter and sensual voice drop that explores your favorite "what if" scenarios with emotional intimacy.</div>
+        <div class="tier-title">Blush Note 💌</div>
+        <div class="tier-price">$11.11 • 5-minute voice memo</div>
+        <div class="tier-desc">A dreamy whisper from my collection. Perfect for bedtime, heartbreak, or when you just need to feel adored.</div>
+        <ul class="tier-features">
+          <li>Curated voice selection</li>
+          <li>Soft, intimate audio quality</li>
+          <li>Instant download</li>
+        </ul>
+        <button class="tier-btn">Choose Your Whisper</button>
       </div>
+
+      <!-- Subscription Model - Featured -->
+      <div class="tier-card featured subscription-highlight">
+        <div class="tier-title">Bunni Club 🐰</div>
+        <div class="tier-price">$29/month • Weekly whispers</div>
+        <div class="tier-desc">Your weekly dose of sweetness. New voice drops, exclusive access, and first priority on everything I create.</div>
+        <ul class="tier-features">
+          <li>4 new whispers per month</li>
+          <li>Exclusive member-only content</li>
+          <li>Priority access to limited offers</li>
+          <li>Private community access</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <button class="tier-btn">Join the Club</button>
+      </div>
+
+      <!-- Mid-tier Custom -->
       <div class="tier-card">
-        <div class="tier-title">Velvet Ritual 🪽 – $222</div>
-        <div class="tier-price">12+ minutes | Personalized Audio</div>
-        <div class="tier-desc">Your name, your secret, your fantasy. A custom whisper ritual made just for you—never reused, never shared.</div>
+        <div class="tier-title">Sugar Letter 💋</div>
+        <div class="tier-price">$77 • 8-10 minute custom</div>
+        <div class="tier-desc">A personalized whisper just for you. I'll use your name and create something that feels like it was made for your soul.</div>
+        <ul class="tier-features">
+          <li>Personalized with your name</li>
+          <li>Custom scenario of your choice</li>
+          <li>Beautiful PDF companion letter</li>
+          <li>2-3 day delivery</li>
+        </ul>
+        <button class="tier-btn">Create My Letter</button>
       </div>
+
+      <!-- Premium Custom -->
       <div class="tier-card">
-        <div class="tier-title">Collector’s Whisper 💎 – $1,111</div>
-        <div class="tier-price">Custom + Archive Access</div>
-        <div class="tier-desc">Lifetime access to all voice drops + a bespoke ritual experience. Only one per month. You own the moment, forever.</div>
+        <div class="tier-title">Velvet Ritual 🪽</div>
+        <div class="tier-price">$222 • 15+ minute experience</div>
+        <div class="tier-desc">Your deepest fantasy whispered into reality. A completely custom ritual made just for you—never reused, never shared.</div>
+        <ul class="tier-features">
+          <li>Completely custom 15+ min audio</li>
+          <li>Your fantasy, your scenario</li>
+          <li>Handwritten note option</li>
+          <li>5-7 day artisan creation</li>
+          <li>Lifetime personal archive</li>
+        </ul>
+        <button class="tier-btn">Commission My Ritual</button>
       </div>
+
+      <!-- Luxury Tier -->
+      <div class="tier-card">
+        <div class="tier-title">Collector's Whisper 💎</div>
+        <div class="tier-price">$1,111 • Lifetime access + custom</div>
+        <div class="tier-desc">Everything I've ever created, plus a monthly custom ritual. Only available to 12 collectors worldwide.</div>
+        <ul class="tier-features">
+          <li>Lifetime access to complete archive</li>
+          <li>Monthly custom 20+ min ritual</li>
+          <li>Physical handwritten letters</li>
+          <li>Direct messaging privileges</li>
+          <li>Exclusive collector events</li>
+          <li>Limited to 12 members globally</li>
+        </ul>
+        <button class="tier-btn secondary">Apply for Collector Status</button>
+      </div>
+
     </div>
   </section>
 
   <section id="teaser">
-    <h3 class="section-title">🧁 Want a Taste First?</h3>
-    <p style="text-align: center; max-width: 600px; margin: auto;">
-      I’ll whisper something just for you. No strings, no commitment—just sugar in your inbox.💫
+    <h3 class="section-title">🧁 Start Sweet, Stay Soft</h3>
+    <p style="text-align: center; max-width: 600px; margin: auto; margin-bottom: 2rem;">
+      Not sure where to begin? Start with a free taste. I'll whisper something just for you—no strings, no commitment, just sugar in your inbox. 💫
     </p>
+    <div style="text-align: center;">
+      <button class="tier-btn" style="display: inline-block; width: auto; padding: 1rem 2rem;">Get Your Free Whisper 🎁</button>
+    </div>
   </section>
 
   <div class="footer">
@@ -211,37 +385,21 @@
     &copy; 2025 HoneyBunniLexi — All sweetness reserved.
   </div>
 
-  <!-- Landbot Chatbot -->
   <script>
-    window.addEventListener('mouseover', initLandbot, { once: true });
-    window.addEventListener('touchstart', initLandbot, { once: true });
-    var myLandbot;
-    function initLandbot() {
-      if (!myLandbot) {
-        var s = document.createElement('script');
-        s.type = "module"
-        s.async = true;
-        s.addEventListener('load', function() {
-          myLandbot = new Landbot.Livechat({
-            configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-3034041-PTEINXZTI24E82S6/index.json',
-          });
-        });
-        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-      }
-    }
-
-    function openChatbot() {
-      if (myLandbot && typeof myLandbot.open === 'function') {
-        myLandbot.open();
-      } else {
-        initLandbot();
-        setTimeout(() => {
-          if (myLandbot && typeof myLandbot.open === 'function') myLandbot.open();
-        }, 1500);
-      }
-    }
+    // Fallback for Lottie animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const lottiePlayer = document.querySelector('lottie-player');
+      const heartIcon = document.querySelector('.heart-icon');
+      
+      setTimeout(() => {
+        if (lottiePlayer && lottiePlayer.style.display !== 'none') {
+          if (!lottiePlayer.currentFrame || lottiePlayer.currentFrame === 0) {
+            lottiePlayer.style.display = 'none';
+            heartIcon.style.display = 'block';
+          }
+        }
+      }, 3000);
+    });
   </script>
 </body>
 </html>
