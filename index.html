@@ -385,7 +385,40 @@
     &copy; 2025 HoneyBunniLexi — All sweetness reserved.
   </div>
 
+  <!-- Landbot Chatbot -->
   <script>
+    window.addEventListener('mouseover', initLandbot, { once: true });
+    window.addEventListener('touchstart', initLandbot, { once: true });
+    var myLandbot;
+    
+    function initLandbot() {
+      if (!myLandbot) {
+        var s = document.createElement('script');
+        s.type = "module"
+        s.async = true;
+        s.addEventListener('load', function() {
+          // Fixed: Remove 'var' to assign to global myLandbot variable
+          myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-3034041-PTEINXZTI24E82S6/index.json',
+          });
+        });
+        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+
+    function openChatbot() {
+      if (myLandbot && typeof myLandbot.open === 'function') {
+        myLandbot.open();
+      } else {
+        initLandbot();
+        setTimeout(() => {
+          if (myLandbot && typeof myLandbot.open === 'function') myLandbot.open();
+        }, 1500);
+      }
+    }
+
     // Fallback for Lottie animation
     document.addEventListener('DOMContentLoaded', function() {
       const lottiePlayer = document.querySelector('lottie-player');
@@ -399,6 +432,14 @@
           }
         }
       }, 3000);
+
+      // Add chatbot trigger to free whisper buttons
+      const freeWhisperButtons = document.querySelectorAll('button');
+      freeWhisperButtons.forEach(btn => {
+        if (btn.textContent.includes('Get Your Free Whisper')) {
+          btn.addEventListener('click', openChatbot);
+        }
+      });
     });
   </script>
 </body>
