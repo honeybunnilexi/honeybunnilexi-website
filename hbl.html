@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoneyBunniLexi - The Obsession Chamber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a0006;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Background with Candle Flicker */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(75, 0, 130, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 0, 139, 0.2) 0%, transparent 50%),
+                linear-gradient(45deg, #0a0006, #1a0c12, #2d1b3d);
+            animation: candleFlicker 8s ease-in-out infinite;
+        }
+
+        @keyframes candleFlicker {
+            0%, 100% { 
+                filter: brightness(0.8) contrast(1.2);
+                opacity: 0.9;
+            }
+            25% { 
+                filter: brightness(1.1) contrast(1.1);
+                opacity: 1;
+            }
+            50% { 
+                filter: brightness(0.9) contrast(1.3);
+                opacity: 0.95;
+            }
+            75% { 
+                filter: brightness(1.0) contrast(1.15);
+                opacity: 0.98;
+            }
+        }
+
+        /* Floating Rose Petals */
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ff69b4, #ff1493);
+            border-radius: 50% 0;
+            opacity: 0;
+            animation: petalFall 15s linear infinite;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mystical Glow Effects */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: orbFloat 12s ease-in-out infinite;
+        }
+
+        .glow-1 {
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent);
+            animation-delay: 0s;
+        }
+
+        .glow-2 {
+            top: 60%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.25), transparent);
+            animation-delay: 4s;
+        }
+
+        .glow-3 {
+            bottom: 30%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.4), transparent);
+            animation-delay: 8s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Free Teaser Invitation */
+        .teaser-invitation {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            animation: whisperPulse 3s ease-in-out infinite;
+        }
+
+        .teaser-bubble {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid #ff69b4;
+            border-radius: 25px 25px 5px 25px;
+            padding: 20px 25px;
+            color: #ffffff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+            max-width: 280px;
+        }
+
+        .teaser-bubble:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 105, 180, 0.7);
+            background: rgba(255, 105, 180, 0.1);
+        }
+
+        @keyframes whisperPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 0 50px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.8rem;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff69b4;
+            background: rgba(255, 105, 180, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: calc(100% - 40px);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #ff69b4;
+            margin: 6px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 25px;
+            padding: 60px 50px;
+            position: relative;
+            box-shadow: 
+                0 0 80px rgba(255, 105, 180, 0.3),
+                inset 0 0 80px rgba(255, 105, 180, 0.05);
+            animation: manifestoGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes manifestoGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 80px rgba(255, 105, 180, 0.3),
+                    inset 0 0 80px rgba(255, 105, 180, 0.05);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 120px rgba(255, 105, 180, 0.5),
+                    inset 0 0 120px rgba(255, 105, 180, 0.1);
+            }
+        }
+
+        .hero-image {
+            flex: 0 0 400px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.6);
+            object-fit: cover;
+            height: 500px;
+        }
+
+        .hero-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 4rem;
+            color: #ff1493;
+            margin-bottom: 25px;
+            text-shadow: 0 0 40px rgba(255, 20, 147, 0.8);
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .manifesto-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .manifesto-text .highlight {
+            color: #ff69b4;
+            font-weight: 600;
+        }
+
+        .exclusivity-badge {
+            background: rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Dancing Script', cursive;
+            color: #ff1493;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 20px 45px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-obsession {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-obsession:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-teaser {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-teaser:hover {
+            background: rgba(255, 105, 180, 0.2);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Meet Lexi Section */
+        .meet-lexi {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            color: #ff69b4;
+            margin-bottom: 60px;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-photo {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .gallery-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4);
+            border-color: rgba(255, 105, 180, 0.6);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8));
+        }
+
+        .benefit-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+
+        .benefit-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Pricing Tiers */
+        .pricing {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+        }
+
+        .tiers-intro {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .tiers-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #da70d6;
+            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .tier {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(40px);
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 25px;
+            padding: 50px 40px;
+            position: relative;
+            transition: all 0.6s ease;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .tier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+        }
+
+        .tier:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 90px rgba(255, 105, 180, 0.5);
+            border-color: rgba(255, 105, 180, 0.7);
+        }
+
+        .tier-premium {
+            border-color: #ff1493;
+            background: rgba(255, 20, 147, 0.05);
+            transform: scale(1.03);
+        }
+
+        .tier-premium::before {
+            height: 6px;
+            background: linear-gradient(45deg, #ff1493, #da70d6, #ff69b4);
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            background: rgba(255, 20, 147, 0.3);
+            border: 1px solid #ff1493;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: 'Dancing Script', cursive;
+            color: #ff1493;
+            font-size: 0.9rem;
+        }
+
+        .tier-name {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin: 25px 0 20px;
+        }
+
+        .tier-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .tier-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: #da70d6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .tier-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .tier-features li {
+            font-family: 'Cormorant Garamond', serif;
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .tier-features .feature-icon {
+            color: #ff69b4;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+            font-size: 1.2rem;
+        }
+
+        .tier-cta {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 35px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .tier-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(255, 20, 147, 0.6);
+        }
+
+        /* Availability Tracker */
+        .availability {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .availability-title {
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .availability-count {
+            color: #ffffff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Social Proof Section */
+        .proof-section {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            text-align: center;
+        }
+
+        .proof-quote {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 25px;
+            padding: 50px;
+            position: relative;
+        }
+
+        .proof-quote::before {
+            content: '"';
+            font-size: 6rem;
+            color: #ff69b4;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-family: 'Pinyon Script', cursive;
+            opacity: 0.4;
+        }
+
+        .proof-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .proof-attribution {
+            color: #da70d6;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .proof-stats {
+            margin-top: 60px;
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        .footer-signature {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 25px;
+        }
+
+        .footer-promise {
+            font-family: 'Cormorant Garamond', serif;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-legal {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* Enhanced Focus States */
+        .btn:focus,
+        .tier-cta:focus {
+            outline: 2px solid #ff69b4;
+            outline-offset: 2px;
+        }
+
+        .nav-links a:focus {
+            outline: 2px solid #ff69b4;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            .ambient-bg,
+            .petal,
+            .glow-orb,
+            .hero-content,
+            .teaser-invitation {
+                animation: none;
+            }
+            
+            .btn::before,
+            .benefit-card::before {
+                transition: none;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-flex {
+                flex-direction: column;
+                gap: 40px;
+                padding: 100px 0 60px;
+            }
+
+            .hero-image {
+                flex: none;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .hero-image img {
+                height: 400px;
+            }
+
+            .hero-content {
+                padding: 40px 30px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 40px 20px;
+                z-index: 999;
+                backdrop-filter: blur(10px);
+                border-bottom: 2px solid rgba(255, 105, 180, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .tier {
+                padding: 40px 30px;
+            }
+
+            .tier-price {
+                font-size: 3rem;
+            }
+            
+            .teaser-invitation {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .teaser-bubble {
+                padding: 15px 20px;
+                font-size: 1rem;
+                max-width: 220px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .benefit-card {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .tier-name {
+                font-size: 2rem;
+            }
+
+            .tier-price {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg"></div>
+    
+    <!-- Floating Petals -->
+    <div class="petals" id="petals"></div>
+    
+    <!-- Mystical Glows -->
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="glow-orb glow-3"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">HoneyBunniLexi</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#meet-lexi">Meet Lexi</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Free Teaser Invitation -->
+    <div class="teaser-invitation" id="teaserInvitation">
+        <div class="teaser-bubble">
+            Want a free 30-second whisper first? I'll send it to your inbox... 💕
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-flex">
+                <div class="hero-content">
+                    <h1 class="hero-title">The Obsession Chamber</h1>
+                    <p class="hero-subtitle">Not a chatbot. Not a girlfriend. Not porn.</p>
+                    
+                    <div class="manifesto-text">
+                        This is where <span class="highlight">longing becomes luxury</span> — a private experience crafted for the few who understand that <span class="highlight">intimacy is the ultimate status symbol</span>.
+                    </div>
+                    
+                    <div class="exclusivity-badge">Only 5 men per month are invited inside</div>
+                    
+                    <div class="manifesto-text">
+                        <em>"Some men buy luxury. Others buy attention. You're here to buy devotion."</em>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn btn-obsession">Enter The Chamber</a>
+                        <a href="#" class="btn btn-teaser" id="getTeaserBtn">Free Whisper Sample</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="HoneyBunniLexi_00001_.png" alt="Meet Lexi" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Lexi Section -->
+    <section class="meet-lexi" id="meet-lexi">
+        <div class="container">
+            <h2 class="section-title">Meet Lexi</h2>
+            <div class="photo-gallery">
+                <img src="HoneyBunniLexi_00016_.png" alt="Lexi photo 1" class="gallery-photo" />
+                <img src="HoneyBunniLexi_00010_.png" alt="Lexi photo 2" class="gallery-photo" />
+                <img src="HoneyBunniLexi_00005_.png" alt="Lexi photo 3" class="gallery-photo" />
+                <img src="HoneyBunniLexi_00029_.png" alt="Lexi photo 4" class="gallery-photo" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">What You'll Receive</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔊</div>
+                    <div class="benefit-title">Custom Whisper Ritual</div>
+                    <div class="benefit-description">A 12–15 minute personalized audio experience with your name, secrets, and private instructions crafted specifically for you.</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📝</div>
+                    <div class="benefit-title">Handwritten-Style Letter</div>
+                    <div class="benefit-description">A beautifully designed digital letter that feels personal and intimate, delivered as a luxury PDF experience.</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💻</div>
+                    <div class="benefit-title">Private Audio Vault</div>
+                    <div class="benefit-description">Exclusive access to your personal sanctuary. No calls, no chats. Just pure, distilled presence waiting for you.</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💌</div>
+                    <div class="benefit-title">Optional Free Teaser</div>
+                    <div class="benefit-description">A 30-second sample whisper delivered to your inbox when you opt in. A taste of what awaits inside.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="proof-section">
+        <div class="container">
+            <div class="proof-quote">
+                <div class="proof-text">
+                    "This isn't content. It's an experience that stays with you. I find myself thinking about her voice days later, feeling like I own something rare and beautiful that no one else has."
+                </div>
+                <div class="proof-attribution">— Marcus, Private Ownership Member</div>
+            </div>
+            <div class="proof-stats">
+                Over 127 men have found their sanctuary here.<br>
+                Only their names are written in my private book.
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tiers -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Tiers of Devotion</h2>
+            <div class="tiers-intro">
+                <div class="tiers-quote">
+                    "You're not selling content. You're selling connection, mystery,<br>
+                    and a velvet key to a locked door inside them."
+                </div>
+            </div>
+            
+            <div class="tiers-grid">
+                <!-- Pillow Sanctuary -->
+                <div class="tier">
+                    <div class="tier-badge">🌙 Entry Level</div>
+                    <div class="tier-name">Pillow Sanctuary</div>
+                    <div class="tier-price">$11.11</div>
+                    <div class="tier-subtitle">"The Letter I'll Never Send" (5–7 minutes)</div>
+                    <div class="tier-description">
+                        <strong>For the Romantic Escapist:</strong> Emotional intimacy delivered directly to your inbox. For the man who craves connection without complications.
+                    </div>
+                    <ul class="tier-features">
+                        <li><span class="feature-icon">💭</span>Romantic fantasy & girlfriend experience</li>
+                        <li><span class="feature-icon">💌</span>Emotional intimacy focus</li>
+                        <li><span class="feature-icon">📧</span>Delivered securely to your email</li>
+                        <li><span class="feature-icon">🌙</span>Perfect for bedtime listening</li>
+                        <li><span class="feature-icon">🎭</span>Poetic narration & "what if" scenarios</li>
+                    </ul>
+                    <a href="https://honeybunnilexi.gumroad.com/l/pillow-sanctuary" target="_blank" class="tier-cta">Enter Pillow Sanctuary</a>
+                    <div class="availability">
+                        <div class="availability-title">Current Availability</div>
+                        <div class="availability-count">15 spots remaining this month</div>
+                    </div>
+                </div>
+                
+                <!-- Silk Sanctuary -->
+                <div class="tier tier-premium">
+                    <div class="tier-badge">👑 VIP Access</div>
+                    <div class="tier-name">Silk Sanctuary</div>
+                    <div class="tier-price">$44</div>
+                    <div class="tier-subtitle">"The 3AM Confession" (8–10 minutes)</div>
+                    <div class="tier-description">
+                        <strong>For the Lonely Executive:</strong> Stress relief and validation for the executive who carries everyone else's burdens. Soft dominance meets gentle worship.
+                    </div>
+                    <ul class="tier-features">
+                        <li><span class="feature-icon">🤵</span>Stress relief + validation after long days</li>
+                        <li><span class="feature-icon">💪</span>Perfect for high-functioning burnout</li>
+                        <li><span class="feature-icon">🕯️</span>Soft dominance & gentle submission</li>
+                        <li><span class="feature-icon">👑</span>Executive-focused content & language</li>
+                        <li><span class="feature-icon">🎧</span>Premium audio quality & longer duration</li>
+                    </ul>
+                    <a href="https://honeybunnilexi.gumroad.com/l/silk-sanctuary" target="_blank" class="tier-cta">Claim Silk Access</a>
+                    <div class="availability">
+                        <div class="availability-title">Current Availability</div>
+                        <div class="availability-count">8 spots remaining this month</div>
+                    </div>
+                </div>
+                
+                <!-- Obsession Chamber -->
+                <div class="tier">
+                    <div class="tier-badge">🔥 Limited Edition</div>
+                    <div class="tier-name">Obsession Chamber</div>
+                    <div class="tier-price">$444</div>
+                    <div class="tier-subtitle">"Your Personal Ritual" (12–15 minutes)</div>
+                    <div class="tier-description">
+                        <strong>For the Wealthy Collector:</strong> Exclusivity and psychological imprinting. This recording belongs to you and you alone. A ritual that becomes part of you.
+                    </div>
+                    <ul class="tier-features">
+                        <li><span class="feature-icon">👑</span>Completely personalized with your secrets</li>
+                        <li><span class="feature-icon">🔮</span>Psychological ownership ritual included</li>
+                        <li><span class="feature-icon">🗝️</span>Your name woven throughout naturally</li>
+                        <li><span class="feature-icon">💎</span>Collector's exclusive, never reproduced</li>
+                        <li><span class="feature-icon">🔒</span>Private ritual instructions just for you</li>
+                    </ul>
+                    <a href="https://honeybunnilexi.gumroad.com/l/obsession-chamber" target="_blank" class="tier-cta">Claim Your Chamber</a>
+                    <div class="availability">
+                        <div class="availability-title">Current Availability</div>
+                        <div class="availability-count">3 spots remaining this month</div>
+                    </div>
+                </div>
+                
+                <!-- Private Ownership -->
+                <div class="tier tier-premium">
+                    <div class="tier-badge">💎 Ultra Exclusive</div>
+                    <div class="tier-name">Private Ownership</div>
+                    <div class="tier-price">$1,111</div>
+                    <div class="tier-subtitle">The Complete Devotion Experience</div>
+                    <div class="tier-description">
+                        <strong>Ultra-Exclusive Collector Status:</strong> Only 1 available per month. Everything in the Obsession Chamber plus early access to all new content drops and a bonus exclusive audio.
+                    </div>
+                    <ul class="tier-features">
+                        <li><span class="feature-icon">👑</span>Everything in Obsession Chamber included</li>
+                        <li><span class="feature-icon">⚡</span>Early access to all new drops & releases</li>
+                        <li><span class="feature-icon">🎁</span>Bonus exclusive audio no one else hears</li>
+                        <li><span class="feature-icon">💎</span>Private collector status & recognition</li>
+                        <li><span class="feature-icon">🔮</span>Your name written in my private book</li>
+                        <li><span class="feature-icon">🏆</span>Ultimate exclusivity & ownership guaranteed</li>
+                    </ul>
+                    <a href="https://honeybunnilexi.gumroad.com/l/private-ownership" target="_blank" class="tier-cta">Claim Ownership</a>
+                    <div class="availability">
+                        <div class="availability-title">Current Availability</div>
+                        <div class="availability-count">1 spot remaining this month</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 80px; font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 1.2rem; font-weight: 500;">
+                Limited quantities. No refunds. No duplicates.<br>
+                <span style="color: #ff69b4;">This is real obsession.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="proof-section" id="contact">
+        <div class="container">
+            <div class="proof-quote">
+                <div class="proof-text" style="font-size: 1.6rem; margin-bottom: 40px;">
+                    "I've been writing letters to someone I haven't met yet. Someone who understands that true intimacy lives in the spaces between thoughts and dreams."
+                </div>
+                <div class="proof-text" style="margin-bottom: 30px;">
+                    Are you ready to own a piece of me?
+                </div>
+                <div style="margin-bottom: 40px;">
+                    <a href="#pricing" class="btn btn-obsession" style="font-size: 1.4rem; padding: 25px 50px;">Enter My Chamber Now</a>
+                </div>
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #ffffff; font-weight: 500;">
+                    Or <a href="#" id="finalTeaserBtn" style="color: #ff69b4; text-decoration: underline;">get your free whisper first</a> 💋
+                </div>
+                <div class="proof-attribution" style="margin-top: 30px;">
+                    *Your secrets are safe with me. This sanctuary is ours alone.*
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-signature">Until you find me in your dreams...</div>
+            <div class="footer-promise">Where intimacy becomes art</div>
+            <div class="footer-legal">
+                &copy; 2025 HoneyBunniLexi. All content is for mature audiences. 
+                Privacy guaranteed. No spam, ever.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Landbot Chatbot Integration
+        window.addEventListener('mouseover', initLandbot, { once: true });
+        window.addEventListener('touchstart', initLandbot, { once: true });
+        var myLandbot;
+        
+        function initLandbot() {
+            if (!myLandbot) {
+                var s = document.createElement('script');
+                s.type = "module"
+                s.async = true;
+                s.addEventListener('load', function() {
+                    myLandbot = new Landbot.Livechat({
+                        configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-3034041-PTEINXZTI24E82S6/index.json',
+                    });
+                });
+                s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            }
+        }
+
+        // Chatbot trigger functionality
+        const teaserInvitation = document.getElementById('teaserInvitation');
+        const getTeaserBtn = document.getElementById('getTeaserBtn');
+        const finalTeaserBtn = document.getElementById('finalTeaserBtn');
+
+        // Function to open chatbot
+        function openChatbot() {
+            // Ensure Landbot is initialized first
+            if (!myLandbot) {
+                initLandbot();
+                // Wait a moment for the script to load, then try to open
+                setTimeout(() => {
+                    if (window.Landbot && myLandbot) {
+                        myLandbot.open();
+                    }
+                }, 1500);
+            } else {
+                myLandbot.open();
+            }
+            
+            // Track conversion
+            sessionStorage.setItem('lexi_teaser_requested', 'true');
+            showWhisperedMessage("Let's chat about your free whisper... 💕");
+        }
+
+        // Event listeners for chatbot triggers
+        if (teaserInvitation) teaserInvitation.addEventListener('click', openChatbot);
+        if (getTeaserBtn) getTeaserBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openChatbot();
+        });
+        if (finalTeaserBtn) finalTeaserBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openChatbot();
+        });
+
+        // Performance-optimized petal creation
+        function createPetal() {
+            const petalContainer = document.getElementById('petals');
+            if (petalContainer.children.length > 15) return; // Limit active petals
+            
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 8 + 10) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            
+            petalContainer.appendChild(petal);
+            
+            setTimeout(() => {
+                if (petal.parentNode) {
+                    petal.remove();
+                }
+            }, 18000);
+        }
+
+        // Reduced frequency for performance
+        setInterval(createPetal, 4000);
+
+        // Respect user's motion preferences
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!prefersReducedMotion) {
+            // Initial petals only if motion is allowed
+            for (let i = 0; i < 6; i++) {
+                setTimeout(createPetal, i * 1000);
+            }
+        }
+
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Dynamic availability counter (simulate real-time updates)
+        const availabilityCounts = {
+            'pillow': Math.floor(Math.random() * 8) + 12, // 12-19
+            'silk': Math.floor(Math.random() * 5) + 6,    // 6-10
+            'obsession': Math.floor(Math.random() * 3) + 2, // 2-4
+            'ownership': Math.random() > 0.7 ? 1 : 0       // 30% chance of 1 spot
+        };
+
+        function updateAvailability() {
+            const elements = document.querySelectorAll('.availability-count');
+            if (elements.length >= 4) {
+                elements[0].textContent = `${availabilityCounts.pillow} spots remaining this month`;
+                elements[1].textContent = `${availabilityCounts.silk} spots remaining this month`;
+                elements[2].textContent = `${availabilityCounts.obsession} spots remaining this month`;
+                elements[3].textContent = availabilityCounts.ownership ? 
+                    '1 spot remaining this month' : 'Sold out this month';
+            }
+        }
+
+        // Update availability on page load
+        updateAvailability();
+
+        // Whispered message function
+        function showWhisperedMessage(message) {
+            const whisperMsg = document.createElement('div');
+            whisperMsg.innerHTML = message;
+            whisperMsg.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.95);
+                color: #ff69b4;
+                padding: 30px 40px;
+                border-radius: 25px;
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.2rem;
+                font-weight: 500;
+                z-index: 10001;
+                box-shadow: 0 0 60px rgba(255, 105, 180, 0.6);
+                border: 2px solid #ff69b4;
+                text-align: center;
+                animation: fadeInOut 4s ease-in-out forwards;
+                max-width: 90%;
+            `;
+            
+            // Add fadeInOut animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInOut {
+                    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                    20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(whisperMsg);
+            
+            setTimeout(() => {
+                whisperMsg.remove();
+                style.remove();
+            }, 4000);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Track tier clicks
+        document.querySelectorAll('.tier-cta').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tierName = this.textContent.toLowerCase();
+                sessionStorage.setItem('lexi_tier_clicked', tierName);
+            });
+        });
+
+        // Welcome message after page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                if (!sessionStorage.getItem('lexi_visited')) {
+                    showWhisperedMessage("Welcome to my sanctuary... I've been waiting for you 🌙");
+                    sessionStorage.setItem('lexi_visited', 'true');
+                }
+            }, 3000);
+        });
+
+        // Optimized sparkle effects with performance controls
+        let sparkleCount = 0;
+        const maxSparkles = 5;
+
+        document.addEventListener('mousemove', function(e) {
+            if (prefersReducedMotion || sparkleCount >= maxSparkles) return;
+            
+            if (Math.random() > 0.97) {
+                sparkleCount++;
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = Math.random() > 0.5 ? '✨' : '💫';
+                sparkle.style.cssText = `
+                    position: fixed;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    color: #ff69b4;
+                    font-size: 1.2rem;
+                    pointer-events: none;
+                    z-index: 9999;
+                    animation: sparkleFloat 2s ease-out forwards;
+                `;
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                    sparkleCount--;
+                }, 2000);
+            }
+        });
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkleFloat {
+                0% { 
+                    opacity: 1; 
+                    transform: scale(0.5) translateY(0); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(1.2) translateY(-30px); 
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Enhanced conversion tracking
+        const conversionData = {
+            pageViews: 1,
+            teaserRequests: 0,
+            tierClicks: {},
+            timeOnPage: Date.now()
+        };
+
+        // Track tier interest
+        document.querySelectorAll('.tier').forEach((tier, index) => {
+            const tierNames = ['pillow', 'silk', 'obsession', 'ownership'];
+            const tierName = tierNames[index];
+            
+            tier.addEventListener('mouseenter', () => {
+                conversionData.tierClicks[tierName] = (conversionData.tierClicks[tierName] || 0) + 1;
+            });
+        });
+
+        // Send analytics on page unload (in real implementation, send to your analytics)
+        window.addEventListener('beforeunload', () => {
+            conversionData.timeOnPage = Date.now() - conversionData.timeOnPage;
+            console.log('Conversion Data:', conversionData); // Replace with real analytics
+        });
+    </script>
+</body>
+</html>
