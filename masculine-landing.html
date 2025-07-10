@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Voice That Helps You Breathe Again</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #e8e8e8;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: #b8c6db;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: #9bb5d6;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #ffffff;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(102, 126, 234, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card.featured {
+      border: 2px solid #667eea;
+      position: relative;
+    }
+
+    .product-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .product-description {
+      color: #b8c6db;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .product-features li {
+      padding: 0.3rem 0;
+      color: #9bb5d6;
+      font-size: 0.9rem;
+    }
+
+    .product-features li::before {
+      content: "✓ ";
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .product-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .product-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .product-btn.secondary {
+      background: transparent;
+      border: 2px solid #667eea;
+      color: #667eea;
+    }
+
+    .testimonials {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: #e8e8e8;
+    }
+
+    .testimonial-author {
+      color: #b8c6db;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2rem 0;
+      text-align: center;
+      color: #b8c6db;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .products {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h2 style="margin: 0; font-weight: 300; color: #e8e8e8;">The Voice That Helps You Breathe Again</h2>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container fade-in">
+      <h1>Not a podcast. Not therapy.</h1>
+      <p class="subtitle">Just one voice, made for men who never stop showing up—for everyone but themselves.</p>
+      <p class="description">
+        Whether you're clocking out from a long shift or closing million-dollar deals, these audio drops are for the moments when no one else gets it.<br><br>
+        I whisper what you <em>need to hear</em>—to sleep deeper, feel stronger, and finally exhale.
+      </p>
+      <button class="cta-primary" onclick="trackConversion('hero_cta', 0); scrollToProducts()">Start Listening Now</button>
+    </div>
+  </section>
+
+  <section class="section" style="background: rgba(0,0,0,0.1);">
+    <div class="container">
+      <h2 class="section-title">What This Is</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+        <div>
+          <h3 style="color: #667eea; margin-bottom: 1rem;">Voice drops designed for men</h3>
+          <p style="color: #b8c6db;">who don't have time for therapy, but still need peace</p>
+        </div>
+        <div>
+          <h3 style="color: #667eea; margin-bottom: 1rem;">Sleep audios</h3>
+          <p style="color: #b8c6db;">that help you knock out in minutes</p>
+        </div>
+        <div>
+          <h3 style="color: #667eea; margin-bottom: 1rem;">Stress relievers</h3>
+          <p style="color: #b8c6db;">that work in your truck, at your desk, or in bed</p>
+        </div>
+        <div>
+          <h3 style="color: #667eea; margin-bottom: 1rem;">Confidence whispers</h3>
+          <p style="color: #b8c6db;">before that meeting, that date, or just because</p>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 2rem; color: #e8e8e8; font-weight: 500;">No crystals. No clichés. Just <em>real relief</em> in your ears.</p>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="section-title">Start Listening</h2>
+      <div class="products">
+        
+        <!-- Free Sample -->
+        <div class="product-card">
+          <div class="product-title">Free Sample Whisper</div>
+          <div class="product-price">60-90 seconds • FREE</div>
+          <div class="product-description">Try one. No commitment. No email wall. Just hit play.</div>
+          <ul class="product-features">
+            <li>Helps you relax</li>
+            <li>Built for men's stress patterns</li>
+            <li>Proven to calm your nervous system</li>
+          </ul>
+          <button class="product-btn" onclick="trackConversion('free_whisper', 0); window.open('/free-whisper-player.html', '_blank')">Get Your Free Whisper →</button>
+        </div>
+
+        <!-- Wind-Down Drop -->
+        <div class="product-card">
+          <div class="product-title">The Wind-Down Drop</div>
+          <div class="product-price">$11.11 • 5 minutes</div>
+          <div class="product-description">A stress relief whisper for the end of your longest days. Great before bed, after tough conversations, or when your mind won't shut off.</div>
+          <ul class="product-features">
+            <li>Better sleep within 10 minutes</li>
+            <li>Subtle, slow voice pacing</li>
+            <li>Works with headphones or speakers</li>
+          </ul>
+          <button class="product-btn" onclick="trackConversion('wind_down', 11.11); window.open('https://gumroad.com/l/hbl-wind-down?utm_source=masculine_site&utm_medium=cta&utm_campaign=wind_down', '_blank')">Buy Now →</button>
+        </div>
+
+        <!-- Audio Vault (Featured) -->
+        <div class="product-card featured">
+          <div class="product-title">The Audio Vault</div>
+          <div class="product-price">$29/month • Weekly New Audios</div>
+          <div class="product-description">Ongoing access to weekly new voice drops: confidence boosts, executive calm-downs, midweek mind resets, Sunday anxiety quieters.</div>
+          <ul class="product-features">
+            <li>4 new audios every month</li>
+            <li>Members-only content</li>
+            <li>Cancel anytime</li>
+            <li>Private community access</li>
+          </ul>
+          <button class="product-btn" onclick="trackConversion('audio_vault', 29); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=masculine_site&utm_medium=cta&utm_campaign=audio_vault', '_blank')">Join the Vault →</button>
+        </div>
+
+        <!-- Custom Whisper -->
+        <div class="product-card">
+          <div class="product-title">Custom Whisper (With Your Name)</div>
+          <div class="product-price">$77 • 8-10 minutes</div>
+          <div class="product-description">A personalized whisper that feels like it was made just for you—because it is. Recorded with your name and story in mind.</div>
+          <ul class="product-features">
+            <li>Boosts confidence</li>
+            <li>Helps you feel seen</li>
+            <li>Great for stress, self-doubt, or sleep</li>
+            <li>2-3 day delivery</li>
+          </ul>
+          <button class="product-btn" onclick="trackConversion('custom_whisper', 77); window.open('https://gumroad.com/l/hbl-custom-whisper?utm_source=masculine_site&utm_medium=cta&utm_campaign=custom_whisper', '_blank')">Request Yours →</button>
+        </div>
+
+        <!-- Deep Sleep Session -->
+        <div class="product-card">
+          <div class="product-title">Deep Sleep Session</div>
+          <div class="product-price">$222 • 15+ min custom experience</div>
+          <div class="product-description">A completely custom voice session designed to knock out anxiety and put your body into full rest mode. Recorded from scratch. Never reused.</div>
+          <ul class="product-features">
+            <li>Built around your needs</li>
+            <li>Deep sleep audio therapy</li>
+            <li>Guaranteed relaxation or refund</li>
+            <li>5-7 day artisan creation</li>
+          </ul>
+          <button class="product-btn" onclick="trackConversion('deep_sleep', 222); window.open('https://gumroad.com/l/hbl-deep-sleep?utm_source=masculine_site&utm_medium=cta&utm_campaign=deep_sleep', '_blank')">Commission Now →</button>
+        </div>
+
+        <!-- Lifetime Collector -->
+        <div class="product-card">
+          <div class="product-title">Lifetime Collector Tier</div>
+          <div class="product-price">$777 • Limited to 12 (Early Access)</div>
+          <div class="product-description">Everything I've ever recorded—plus monthly custom drops, VIP message access, and private collector content. <em>Starting at $777, increasing to $1,111 after 30+ content pieces.</em></div>
+          <ul class="product-features">
+            <li>Lifetime access to complete vault</li>
+            <li>Monthly 20+ min custom audios</li>
+            <li>Physical welcome letter</li>
+            <li>Exclusive collector perks</li>
+            <li>Direct messaging privileges</li>
+          </ul>
+          <button class="product-btn secondary" onclick="trackConversion('collector', 777); window.open('https://gumroad.com/l/hbl-collector?utm_source=masculine_site&utm_medium=cta&utm_campaign=collector', '_blank')">Apply Now →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Men Are Saying</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <div class="testimonial-text">"I've never slept that fast in years."</div>
+          <div class="testimonial-author">— Marcus, Construction Foreman</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"She says exactly what I didn't know I needed to hear."</div>
+          <div class="testimonial-author">— David, Executive</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"The only thing that shuts off the overthinking."</div>
+          <div class="testimonial-author">— Jake, Software Developer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: rgba(102, 126, 234, 0.1); text-align: center;">
+    <div class="container">
+      <h2 style="color: #ffffff; margin-bottom: 1rem;">Start With This</h2>
+      <p style="color: #b8c6db; font-size: 1.1rem; margin-bottom: 2rem;">
+        You've tried noise machines. You've tried to tough it out.<br>
+        Now try something that actually helps.
+      </p>
+      <button class="cta-primary" onclick="trackConversion('bottom_cta', 0); window.open('/free-whisper-player.html', '_blank')">Listen to Your Free Whisper Now →</button>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      Real relief. Real voice. Real results.<br>
+      © 2025 — All content reserved.
+    </div>
+  </div>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // Google Analytics 4 Conversion Tracking
+    function trackConversion(productName, value) {
+      // Google Analytics 4 event tracking
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'purchase_intent', {
+          'event_category': 'CTA',
+          'event_label': productName,
+          'value': value,
+          'currency': 'USD'
+        });
+      }
+      
+      // Facebook Pixel tracking (if implemented)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'AddToCart', {
+          content_name: productName,
+          value: value,
+          currency: 'USD'
+        });
+      }
+      
+      // Console log for debugging
+      console.log(`Conversion tracked: ${productName} - ${value}`);
+    }
+
+    function scrollToProducts() {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // A/B Testing Logic (if needed)
+    function getTrafficSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const referrer = document.referrer;
+      
+      // Determine traffic source for routing
+      if (utmSource) return utmSource;
+      if (referrer.includes('reddit.com')) return 'reddit';
+      if (referrer.includes('linkedin.com')) return 'linkedin';
+      if (referrer.includes('instagram.com')) return 'instagram';
+      if (referrer.includes('tiktok.com')) return 'tiktok';
+      return 'direct';
+    }
+
+    // Performance tracking
+    function trackPagePerformance() {
+      // Track time on page
+      let startTime = Date.now();
+      
+      window.addEventListener('beforeunload', function() {
+        let timeOnPage = (Date.now() - startTime) / 1000;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'page_engagement', {
+            'event_category': 'Engagement',
+            'event_label': 'time_on_page',
+            'value': Math.round(timeOnPage)
+          });
+        }
+      });
+    }
+
+    // Add fade-in animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          
+          // Track section views
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'section_view', {
+              'event_category': 'Engagement',
+              'event_label': entry.target.id || 'section'
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize tracking
+      trackPagePerformance();
+      
+      // Track traffic source
+      const source = getTrafficSource();
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+          'event_category': 'Traffic',
+          'event_label': source
+        });
+      }
+      
+      // Set up intersection observer
+      const sections = document.querySelectorAll('.section, .product-card');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Track scroll depth
+      let maxScroll = 0;
+      window.addEventListener('scroll', function() {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll) {
+          maxScroll = scrollPercent;
+          
+          // Track scroll milestones
+          if (maxScroll >= 25 && maxScroll < 30) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll_25', {
+                'event_category': 'Engagement',
+                'event_label': 'scroll_depth'
+              });
+            }
+          } else if (maxScroll >= 50 && maxScroll < 55) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll_50', {
+                'event_category': 'Engagement',
+                'event_label': 'scroll_depth'
+              });
+            }
+          } else if (maxScroll >= 75 && maxScroll < 80) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll_75', {
+                'event_category': 'Engagement',
+                'event_label': 'scroll_depth'
+              });
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
