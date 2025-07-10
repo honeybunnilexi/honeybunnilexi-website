@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HoneyBunniLexi – Sugar Sanctuary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Great+Vibes&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #1a0b14;
+      color: #fce4ec;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(255, 240, 245, 0.05);
+      padding: 1.5rem;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #ffb6c1;
+      text-shadow: 0 0 8px #ff69b4;
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ff69b4;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .hero h2 {
+      font-weight: 300;
+      color: #ffe4f3;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 1.5rem auto;
+      font-size: 1rem;
+      color: #f8c8dc;
+      animation: fadeIn 4s ease-in;
+    }
+
+    .hero .buttons a {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+      color: #1a0b14;
+    }
+
+    .cta-secondary {
+      border: 1px solid #ffb6c1;
+      color: #ffb6c1;
+      background-color: transparent;
+    }
+
+    .cta-primary:hover, .cta-secondary:hover {
+      opacity: 0.85;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    h3.section-title {
+      font-family: 'Great Vibes', cursive;
+      color: #ffb6c1;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .tier-card {
+      background: rgba(255, 182, 193, 0.05);
+      border: 1px solid #ffb6c1;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .tier-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #ff69b4;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-price {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .tier-desc {
+      font-size: 0.95rem;
+      color: #fdd3e5;
+      line-height: 1.5;
+    }
+
+    .footer {
+      background-color: #0d040b;
+      padding: 2rem;
+      text-align: center;
+      color: #d8a0b9;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    HoneyBunniLexi
+  </header>
+
+  <section class="hero">
+    <lottie-player src="https://lottie.host/7c96c508-d7e6-49a7-bf02-52b91166e458/sugar.json" background="transparent" speed="1" style="width: 100px; height: 100px; margin: auto;" loop autoplay></lottie-player>
+    <h1>Welcome to My Sugar Sanctuary 🍯</h1>
+    <h2>Not a girlfriend. Not for everyone. Just your secret sugar-soft escape.</h2>
+    <p>This isn’t content. It’s cotton candy for your soul. 🍓<br>
+    Whispers that stay with you, letters no one else will read, and attention that feels like it’s just for you—because it is.<br>
+    Think of me like honey on your lips—sweet, slow, unforgettable.</p>
+    <div class="buttons">
+      <a href="#tiers" class="cta-primary">Get Soft With Me 💌</a>
+      <a href="#" class="cta-secondary" onclick="openChatbot(); return false;">Preview a Tease 🍯</a>
+    </div>
+  </section>
+
+  <section id="meet-lexi">
+    <h3 class="section-title">🌸 Meet Lexi</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 900px; margin: auto;">
+      <img src="HoneyBunniLexi_00029_.png" alt="Lexi 1" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.3s; animation-fill-mode: forwards;" />
+      <img src="HoneyBunniLexi_00016_.png" alt="Lexi 2" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.6s; animation-fill-mode: forwards;" />
+      <img src="HoneyBunniLexi_00010_.png" alt="Lexi 3" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.9s; animation-fill-mode: forwards;" />
+    </div>
+  </section>
+
+  <section id="tiers">
+    <h3 class="section-title">🍯 Choose Your Sweetness</h3>
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tier-title">Blush Note 💌 – $11.11</div>
+        <div class="tier-price">5 minutes | Soft Voice Memo</div>
+        <div class="tier-desc">A dreamy whisper to start your collection. Perfect for bedtime, heartbreak, or when you just need to feel adored.</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-title">Sugar Letter 💋 – $44</div>
+        <div class="tier-price">8–10 minutes | Poetic Fantasy</div>
+        <div class="tier-desc">A handwritten-style PDF letter and sensual voice drop that explores your favorite "what if" scenarios with emotional intimacy.</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-title">Velvet Ritual 🪽 – $222</div>
+        <div class="tier-price">12+ minutes | Personalized Audio</div>
+        <div class="tier-desc">Your name, your secret, your fantasy. A custom whisper ritual made just for you—never reused, never shared.</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-title">Collector’s Whisper 💎 – $1,111</div>
+        <div class="tier-price">Custom + Archive Access</div>
+        <div class="tier-desc">Lifetime access to all voice drops + a bespoke ritual experience. Only one per month. You own the moment, forever.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaser">
+    <h3 class="section-title">🧁 Want a Taste First?</h3>
+    <p style="text-align: center; max-width: 600px; margin: auto;">
+      I’ll whisper something just for you. No strings, no commitment—just sugar in your inbox.💫
+    </p>
+  </section>
+
+  <div class="footer">
+    Soft thoughts, sweet whispers, and a place just for you.<br>
+    &copy; 2025 HoneyBunniLexi — All sweetness reserved.
+  </div>
+
+  <!-- Landbot Chatbot -->
+  <script>
+    window.addEventListener('mouseover', initLandbot, { once: true });
+    window.addEventListener('touchstart', initLandbot, { once: true });
+    var myLandbot;
+    function initLandbot() {
+      if (!myLandbot) {
+        var s = document.createElement('script');
+        s.type = "module"
+        s.async = true;
+        s.addEventListener('load', function() {
+          myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-3034041-PTEINXZTI24E82S6/index.json',
+          });
+        });
+        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+
+    function openChatbot() {
+      if (myLandbot && typeof myLandbot.open === 'function') {
+        myLandbot.open();
+      } else {
+        initLandbot();
+        setTimeout(() => {
+          if (myLandbot && typeof myLandbot.open === 'function') myLandbot.open();
+        }, 1500);
+      }
+    }
+  </script>
+</body>
+</html>
