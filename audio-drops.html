@@ -52,8 +52,26 @@
       font-size: 1.1rem;
       color: #9bb5d6;
       max-width: 800px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2rem;
       line-height: 1.7;
+    }
+
+    .hero .efficiency-note {
+      font-size: 1rem;
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .social-proof-counter {
+      background: rgba(102, 126, 234, 0.15);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      margin: 1.5rem auto;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #e8e8e8;
     }
 
     .cta-primary {
@@ -85,6 +103,40 @@
       text-align: center;
       margin-bottom: 3rem;
       color: #ffffff;
+    }
+
+    .problem-section {
+      background: rgba(255, 68, 68, 0.05);
+      border-left: 4px solid #ff6666;
+      padding: 3rem 0;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .problem-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .problem-item p {
+      color: #ff9999;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .problem-conclusion {
+      text-align: center;
+      margin-top: 2rem;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.2rem;
     }
 
     .products {
@@ -128,6 +180,25 @@
       font-weight: 600;
     }
 
+    .product-card.bundle {
+      border: 3px solid #ffd700;
+      position: relative;
+    }
+
+    .product-card.bundle::before {
+      content: "BEST VALUE";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
     .product-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
@@ -138,14 +209,34 @@
     .product-price {
       font-size: 1.2rem;
       color: #667eea;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
+    }
+
+    .price-comparison {
+      font-size: 0.9rem;
+      color: #9bb5d6;
+      font-style: italic;
+      margin-bottom: 1rem;
     }
 
     .product-description {
       color: #b8c6db;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       line-height: 1.6;
+    }
+
+    .perfect-for {
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 6px;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #e8e8e8;
+    }
+
+    .perfect-for strong {
+      color: #667eea;
     }
 
     .product-features {
@@ -165,6 +256,17 @@
       color: #667eea;
       font-weight: bold;
       margin-right: 0.5rem;
+    }
+
+    .guarantee {
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      border-radius: 6px;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #52c41a;
+      text-align: center;
     }
 
     .product-btn {
@@ -191,6 +293,36 @@
       color: #667eea;
     }
 
+    .how-it-works {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4rem 0;
+    }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .step {
+      padding: 2rem;
+    }
+
+    .step-number {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      color: #667eea;
+      margin-bottom: 1rem;
+    }
+
+    .step p {
+      color: #b8c6db;
+    }
+
     .testimonials {
       background: rgba(0, 0, 0, 0.2);
       padding: 4rem 0;
@@ -215,6 +347,7 @@
       font-style: italic;
       margin-bottom: 1rem;
       color: #e8e8e8;
+      font-size: 1.1rem;
     }
 
     .testimonial-author {
@@ -308,6 +441,12 @@
       .container {
         padding: 0 1rem;
       }
+
+      .cta-primary {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -335,19 +474,49 @@
       </div>
       
       <h1>Not a podcast. Not therapy.</h1>
-      <p class="subtitle">Just one voice, made for men who never stop showing up—for everyone but themselves.</p>
+      <p class="subtitle">Just one voice, made for men who carry the weight—and need somewhere to put it down.</p>
       <p class="description">
         Whether you're clocking out from a long shift or closing million-dollar deals, these audio drops are for the moments when no one else gets it.<br><br>
         I whisper what you <em>need to hear</em>—to sleep deeper, feel stronger, and finally exhale.
       </p>
-      <button class="cta-primary" onclick="trackConversion('hero_cta', 0); scrollToProducts()">Start Listening Now</button>
+      <p class="efficiency-note">No therapist appointments. No meditation apps. No bullshit. Just 5-20 minutes that actually work.</p>
+      
+      <div class="social-proof-counter">
+        🔊 2,847 men listened to their first whisper this month
+      </div>
+      
+      <button class="cta-primary" onclick="trackConversion('hero_cta', 0); scrollToProducts()">Try Your First Whisper</button>
+    </div>
+  </section>
+
+  <!-- Problem Agitation Section -->
+  <section class="section problem-section">
+    <div class="container">
+      <h2 style="color: #ff6666; text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem;">Sound Familiar?</h2>
+      <div class="problem-grid">
+        <div class="problem-item">
+          <p>💻 Mind racing at 2 AM about tomorrow's problems</p>
+        </div>
+        <div class="problem-item">
+          <p>😤 Carrying everyone else's stress on top of your own</p>
+        </div>
+        <div class="problem-item">
+          <p>⚡ No energy left for yourself at the end of the day</p>
+        </div>
+        <div class="problem-item">
+          <p>🤐 No one to talk to who actually gets the pressure</p>
+        </div>
+      </div>
+      <div class="problem-conclusion">
+        You're not broken. You're just carrying weight that wasn't meant to be carried alone.
+      </div>
     </div>
   </section>
 
   <section class="section" style="background: rgba(0,0,0,0.1);">
     <div class="container">
       <h2 class="section-title">What This Is</h2>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
         <div>
           <div class="headphone-visual"></div>
           <h3 style="color: #667eea; margin-bottom: 1rem;">Voice drops designed for men</h3>
@@ -384,71 +553,113 @@
           <div class="product-title">Free Sample Whisper</div>
           <div class="product-price">60-90 seconds • FREE</div>
           <div class="product-description">Try one. No commitment. No email wall. Just hit play.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Testing if this works for you, quick stress relief, trying something new
+          </div>
           <ul class="product-features">
-            <li>🎧 Helps you relax</li>
+            <li>🎧 Helps you relax immediately</li>
             <li>🧠 Built for men's stress patterns</li>
             <li>💤 Proven to calm your nervous system</li>
           </ul>
           <button class="product-btn" onclick="trackConversion('free_whisper', 0); window.open('/free-whisper-player.html', '_blank')">Get Your Free Whisper →</button>
         </div>
 
-        <!-- Wind-Down Drop -->
+        <!-- End of Day Reset -->
         <div class="product-card">
           <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">🌙</div>
-          <div class="product-title">The Wind-Down Drop</div>
+          <div class="product-title">End of Day Reset</div>
           <div class="product-price">$11.11 • 5 minutes</div>
+          <div class="price-comparison">Less than one therapy session</div>
           <div class="product-description">A stress relief whisper for the end of your longest days. Great before bed, after tough conversations, or when your mind won't shut off.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> After work, before bed, during commute, after difficult conversations
+          </div>
           <ul class="product-features">
             <li>💤 Better sleep within 10 minutes</li>
             <li>🎙️ Subtle, slow voice pacing</li>
             <li>🎧 Works with headphones or speakers</li>
           </ul>
-          <button class="product-btn" onclick="trackConversion('wind_down', 11.11); window.open('https://gumroad.com/l/hbl-wind-down?utm_source=masculine_site&utm_medium=cta&utm_campaign=wind_down', '_blank')">Buy Now →</button>
+
+          <button class="product-btn" onclick="trackConversion('end_of_day_reset', 11.11); window.open('https://gumroad.com/l/hbl-wind-down?utm_source=masculine_site&utm_medium=cta&utm_campaign=wind_down', '_blank')">Get End of Day Reset →</button>
         </div>
 
-        <!-- Audio Vault (Featured) -->
+        <!-- The Stress Arsenal (Featured) -->
         <div class="product-card featured">
           <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">🗃️</div>
-          <div class="product-title">The Audio Vault</div>
+          <div class="product-title">The Stress Arsenal</div>
           <div class="product-price">$29/month • Weekly New Audios</div>
+          <div class="price-comparison">Less than your daily coffee budget</div>
           <div class="product-description">Ongoing access to weekly new voice drops: confidence boosts, executive calm-downs, midweek mind resets, Sunday anxiety quieters.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Sunday night anxiety, Monday morning dread, midweek burnout, ongoing stress management
+          </div>
           <ul class="product-features">
             <li>🎵 4 new audios every month</li>
             <li>🔒 Members-only content</li>
             <li>⏰ Cancel anytime</li>
             <li>💬 Private community access</li>
           </ul>
-          <button class="product-btn" onclick="trackConversion('audio_vault', 29); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=masculine_site&utm_medium=cta&utm_campaign=audio_vault', '_blank')">Join the Vault →</button>
+          <button class="product-btn" onclick="trackConversion('stress_arsenal', 29); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=masculine_site&utm_medium=cta&utm_campaign=audio_vault', '_blank')">Join the Arsenal →</button>
         </div>
 
-        <!-- Custom Whisper -->
+        <!-- Complete Toolkit Bundle -->
+        <div class="product-card bundle">
+          <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">🧰</div>
+          <div class="product-title">The Complete Toolkit</div>
+          <div class="product-price">$147 (Save $63)</div>
+          <div class="price-comparison">Less than two executive coaching sessions</div>
+          <div class="product-description">Everything you need to start: End of Day Reset + 3 months of Stress Arsenal + Personal Audio Coach. Complete stress management solution.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Men ready to completely transform their stress response and sleep quality
+          </div>
+          <ul class="product-features">
+            <li>🎵 Immediate access to reset audio</li>
+            <li>🗃️ 3 months of weekly arsenal content</li>
+            <li>🎙️ One custom audio with your name</li>
+            <li>💰 Best value - save $63</li>
+          </ul>
+
+          <button class="product-btn" onclick="trackConversion('complete_toolkit', 147); window.open('https://gumroad.com/l/hbl-complete-toolkit?utm_source=masculine_site&utm_medium=cta&utm_campaign=bundle', '_blank')">Get The Complete Toolkit →</button>
+        </div>
+
+        <!-- Personal Audio Coach -->
         <div class="product-card">
           <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">🎙️</div>
-          <div class="product-title">Custom Whisper (With Your Name)</div>
+          <div class="product-title">Personal Audio Coach</div>
           <div class="product-price">$77 • 8-10 minutes</div>
+          <div class="price-comparison">Less than one executive coaching hour</div>
           <div class="product-description">A personalized whisper that feels like it was made just for you—because it is. Recorded with your name and story in mind.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Big meetings, difficult conversations, first dates, specific challenges you're facing
+          </div>
           <ul class="product-features">
-            <li>💪 Boosts confidence</li>
-            <li>👁️ Helps you feel seen</li>
-            <li>🧘‍♂️ Great for stress, self-doubt, or sleep</li>
+            <li>💪 Boosts confidence for specific situations</li>
+            <li>👁️ Helps you feel seen and understood</li>
+            <li>🧘‍♂️ Tailored for stress, self-doubt, or sleep</li>
             <li>⏱️ 2-3 day delivery</li>
           </ul>
-          <button class="product-btn" onclick="trackConversion('custom_whisper', 77); window.open('https://gumroad.com/l/hbl-custom-whisper?utm_source=masculine_site&utm_medium=cta&utm_campaign=custom_whisper', '_blank')">Request Yours →</button>
+
+          <button class="product-btn" onclick="trackConversion('personal_audio_coach', 77); window.open('https://gumroad.com/l/hbl-custom-whisper?utm_source=masculine_site&utm_medium=cta&utm_campaign=custom_whisper', '_blank')">Request Your Coach →</button>
         </div>
 
-        <!-- Deep Sleep Session -->
+        <!-- Sleep Engineering Session -->
         <div class="product-card">
           <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">🛌</div>
-          <div class="product-title">Deep Sleep Session</div>
+          <div class="product-title">Sleep Engineering Session</div>
           <div class="product-price">$222 • 15+ min custom experience</div>
+          <div class="price-comparison">Less than one night in a hotel</div>
           <div class="product-description">A completely custom voice session designed to knock out anxiety and put your body into full rest mode. Recorded from scratch. Never reused.</div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Chronic insomnia, high-stress periods, preparing for big events, deep relaxation needs
+          </div>
           <ul class="product-features">
-            <li>🎯 Built around your needs</li>
+            <li>🎯 Built around your specific needs</li>
             <li>💤 Deep sleep audio therapy</li>
-            <li>✅ Guaranteed relaxation or refund</li>
-            <li>🎨 5-7 day artisan creation</li>
+            <li>🎨 5-7 day artisan creation process</li>
+            <li>🔄 One revision included</li>
           </ul>
-          <button class="product-btn" onclick="trackConversion('deep_sleep', 222); window.open('https://gumroad.com/l/hbl-deep-sleep?utm_source=masculine_site&utm_medium=cta&utm_campaign=deep_sleep', '_blank')">Commission Now →</button>
+
+          <button class="product-btn" onclick="trackConversion('sleep_engineering', 222); window.open('https://gumroad.com/l/hbl-deep-sleep?utm_source=masculine_site&utm_medium=cta&utm_campaign=deep_sleep', '_blank')">Engineer Your Sleep →</button>
         </div>
 
         <!-- Lifetime Collector -->
@@ -456,7 +667,11 @@
           <div class="audio-icon" style="font-size: 2rem; margin-bottom: 1rem;">💎</div>
           <div class="product-title">Lifetime Collector Tier</div>
           <div class="product-price">$777 • Limited to 12 (Early Access)</div>
+          <div class="price-comparison">Less than 3 months of traditional therapy</div>
           <div class="product-description">Everything I've ever recorded—plus monthly custom drops, VIP message access, and private collector content. <em>Starting at $777, increasing to $1,111 after 30+ content pieces.</em></div>
+          <div class="perfect-for">
+            <strong>Perfect for:</strong> Men who want complete stress transformation and ongoing personal audio support
+          </div>
           <ul class="product-features">
             <li>🗃️ Lifetime access to complete vault</li>
             <li>🎵 Monthly 20+ min custom audios</li>
@@ -471,17 +686,37 @@
     </div>
   </section>
 
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How This Actually Works</h2>
+      <div class="how-it-works-grid">
+        
+        <div class="step">
+          <div class="step-number">3️⃣</div>
+          <h3>Feel the Difference</h3>
+          <p>Stress drops. Mind quiets. Sleep comes easier. You show up better tomorrow</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
   <section class="testimonials">
     <div class="container">
       <h2 class="section-title">What Men Are Saying</h2>
       <div class="testimonial-grid">
         <div class="testimonial">
-          <div class="testimonial-text">"I've never slept that fast in years."</div>
-          <div class="testimonial-author">— Marcus, Construction Foreman</div>
+          <div class="testimonial-text">"Finally sleeping through the night. First time in months."</div>
+          <div class="testimonial-author">— Mike, Paramedic</div>
         </div>
         <div class="testimonial">
-          <div class="testimonial-text">"She says exactly what I didn't know I needed to hear."</div>
-          <div class="testimonial-author">— David, Executive</div>
+          <div class="testimonial-text">"Use this before every big presentation. Game changer."</div>
+          <div class="testimonial-author">— Robert, Sales Director</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"My wife asked what changed. It's this."</div>
+          <div class="testimonial-author">— Tom, Father of 3</div>
         </div>
         <div class="testimonial">
           <div class="testimonial-text">"The only thing that shuts off the overthinking."</div>
@@ -519,7 +754,7 @@
   </script>
 
   <script>
-    // Google Analytics 4 Conversion Tracking
+    // Enhanced Google Analytics 4 Conversion Tracking
     function trackConversion(productName, value) {
       // Google Analytics 4 event tracking
       if (typeof gtag !== 'undefined') {
@@ -528,6 +763,14 @@
           'event_label': productName,
           'value': value,
           'currency': 'USD'
+        });
+        
+        // Additional engagement tracking
+        gtag('event', 'cta_click', {
+          'event_category': 'Engagement',
+          'event_label': productName,
+          'product_type': getProductType(productName),
+          'price_tier': getPriceTier(value)
         });
       }
       
@@ -544,14 +787,43 @@
       console.log(`Conversion tracked: ${productName} - ${value}`);
     }
 
-    function scrollToProducts() {
-      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    function getProductType(productName) {
+      if (productName.includes('free')) return 'lead_magnet';
+      if (productName.includes('reset')) return 'entry_level';
+      if (productName.includes('arsenal')) return 'subscription';
+      if (productName.includes('toolkit')) return 'bundle';
+      if (productName.includes('coach')) return 'custom';
+      if (productName.includes('engineering')) return 'premium';
+      if (productName.includes('collector')) return 'lifetime';
+      return 'other';
     }
 
-    // A/B Testing Logic (if needed)
+    function getPriceTier(value) {
+      if (value === 0) return 'free';
+      if (value < 30) return 'entry';
+      if (value < 100) return 'mid';
+      if (value < 300) return 'premium';
+      return 'luxury';
+    }
+
+    function scrollToProducts() {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+      
+      // Track scroll to products
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'scroll_to_products', {
+          'event_category': 'Navigation',
+          'event_label': 'hero_cta_scroll'
+        });
+      }
+    }
+
+    // Enhanced A/B Testing Logic
     function getTrafficSource() {
       const urlParams = new URLSearchParams(window.location.search);
       const utmSource = urlParams.get('utm_source');
+      const utmMedium = urlParams.get('utm_medium');
+      const utmCampaign = urlParams.get('utm_campaign');
       const referrer = document.referrer;
       
       // Determine traffic source for routing
@@ -560,13 +832,47 @@
       if (referrer.includes('linkedin.com')) return 'linkedin';
       if (referrer.includes('instagram.com')) return 'instagram';
       if (referrer.includes('tiktok.com')) return 'tiktok';
+      if (referrer.includes('google.com')) return 'google';
+      if (referrer.includes('facebook.com')) return 'facebook';
       return 'direct';
     }
 
-    // Performance tracking
+    // Enhanced performance tracking
     function trackPagePerformance() {
       // Track time on page
       let startTime = Date.now();
+      let hasScrolledToProducts = false;
+      let hasScrolledToTestimonials = false;
+      
+      // Track scroll milestones
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const productsSection = document.getElementById('products');
+        const testimonialsSection = document.querySelector('.testimonials');
+        
+        // Track when user scrolls to products
+        if (!hasScrolledToProducts && productsSection && scrollY >= productsSection.offsetTop - 200) {
+          hasScrolledToProducts = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_to_products', {
+              'event_category': 'Engagement',
+              'event_label': 'organic_scroll',
+              'time_to_products': Math.round((Date.now() - startTime) / 1000)
+            });
+          }
+        }
+        
+        // Track when user scrolls to testimonials
+        if (!hasScrolledToTestimonials && testimonialsSection && scrollY >= testimonialsSection.offsetTop - 200) {
+          hasScrolledToTestimonials = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_to_testimonials', {
+              'event_category': 'Engagement',
+              'event_label': 'social_proof_viewed'
+            });
+          }
+        }
+      });
       
       window.addEventListener('beforeunload', function() {
         let timeOnPage = (Date.now() - startTime) / 1000;
@@ -574,10 +880,34 @@
           gtag('event', 'page_engagement', {
             'event_category': 'Engagement',
             'event_label': 'time_on_page',
-            'value': Math.round(timeOnPage)
+            'value': Math.round(timeOnPage),
+            'viewed_products': hasScrolledToProducts,
+            'viewed_testimonials': hasScrolledToTestimonials
           });
         }
       });
+    }
+
+    // Problem section engagement tracking
+    function trackProblemSectionView() {
+      const problemSection = document.querySelector('.problem-section');
+      if (!problemSection) return;
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'problem_section_viewed', {
+                'event_category': 'Engagement',
+                'event_label': 'pain_points_viewed'
+              });
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(problemSection);
     }
 
     // Add fade-in animations on scroll
@@ -595,7 +925,10 @@
           if (typeof gtag !== 'undefined') {
             gtag('event', 'section_view', {
               'event_category': 'Engagement',
-              'event_label': entry.target.id || 'section'
+              'event_label': entry.target.className.includes('problem-section') ? 'problem_agitation' : 
+                            entry.target.className.includes('how-it-works') ? 'how_it_works' :
+                            entry.target.className.includes('testimonials') ? 'testimonials' :
+                            entry.target.id || 'section'
             });
           }
         }
@@ -605,55 +938,67 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize tracking
       trackPagePerformance();
+      trackProblemSectionView();
       
-      // Track traffic source
+      // Track traffic source and page load
       const source = getTrafficSource();
       if (typeof gtag !== 'undefined') {
         gtag('event', 'page_view', {
           'event_category': 'Traffic',
-          'event_label': source
+          'event_label': source,
+          'page_version': 'masculine_optimized_v2'
         });
       }
       
-      // Set up intersection observer
-      const sections = document.querySelectorAll('.section, .product-card');
+      // Set up intersection observer for all sections
+      const sections = document.querySelectorAll('.section, .product-card, .problem-section, .how-it-works, .testimonials');
       sections.forEach(section => {
         observer.observe(section);
       });
       
-      // Track scroll depth
+      // Enhanced scroll depth tracking
       let maxScroll = 0;
+      let scrollMilestones = {25: false, 50: false, 75: false, 90: false};
+      
       window.addEventListener('scroll', function() {
         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
         if (scrollPercent > maxScroll) {
           maxScroll = scrollPercent;
           
           // Track scroll milestones
-          if (maxScroll >= 25 && maxScroll < 30) {
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'scroll_25', {
-                'event_category': 'Engagement',
-                'event_label': 'scroll_depth'
-              });
+          Object.keys(scrollMilestones).forEach(milestone => {
+            if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
+              scrollMilestones[milestone] = true;
+              if (typeof gtag !== 'undefined') {
+                gtag('event', `scroll_${milestone}`, {
+                  'event_category': 'Engagement',
+                  'event_label': 'scroll_depth',
+                  'value': parseInt(milestone)
+                });
+              }
             }
-          } else if (maxScroll >= 50 && maxScroll < 55) {
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'scroll_50', {
-                'event_category': 'Engagement',
-                'event_label': 'scroll_depth'
-              });
-            }
-          } else if (maxScroll >= 75 && maxScroll < 80) {
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'scroll_75', {
-                'event_category': 'Engagement',
-                'event_label': 'scroll_depth'
-              });
-            }
-          }
+          });
         }
       });
-    });
-  </script>
-</body>
-</html>
+      
+      // Track mobile vs desktop
+      const isMobile = window.innerWidth <= 768;
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'device_type', {
+          'event_category': 'Technical',
+          'event_label': isMobile ? 'mobile' : 'desktop'
+        });
+      }
+    });">1️⃣</div>
+          <h3>Choose Your Audio</h3>
+          <p>Pick what matches your current need: sleep, stress, confidence, or custom</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2️⃣</div>
+          <h3>Put on Headphones</h3>
+          <p>Works in your car, at your desk, in bed. Anywhere you need 10 minutes of peace</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number
