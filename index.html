@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading Your Free Audio Reset...</title>
+  <title>HoneyBunniLexi – The Voice That Helps You Breathe Again</title>
+  <meta name="description" content="Audio content for better sleep, stress relief, and confidence. Not a podcast. Not therapy. Just what works.">
   <style>
     body {
       margin: 0;
@@ -19,18 +20,25 @@
 
     .loading-container {
       text-align: center;
-      max-width: 400px;
+      max-width: 500px;
     }
 
     .loading-title {
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: #ffffff;
+      font-weight: 300;
+    }
+
+    .loading-subtitle {
+      color: #b8c6db;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
     .loading-spinner {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border: 3px solid rgba(102, 126, 234, 0.3);
       border-top: 3px solid #667eea;
       border-radius: 50%;
@@ -44,16 +52,53 @@
     }
 
     .loading-text {
-      color: #b8c6db;
+      color: #9bb5d6;
       font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .fallback-links {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .fallback-link {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .fallback-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .fallback-link.secondary {
+      background: transparent;
+      border: 2px solid #667eea;
+      color: #667eea;
     }
   </style>
 </head>
 <body>
   <div class="loading-container">
-    <h1 class="loading-title">Preparing Your Free Audio Reset</h1>
+    <h1 class="loading-title">HoneyBunniLexi</h1>
+    <p class="loading-subtitle">Finding your perfect experience...</p>
     <div class="loading-spinner"></div>
-    <p class="loading-text">Optimizing experience for better results...</p>
+    <p class="loading-text">Optimizing for better sleep, stress relief, and confidence</p>
+    
+    <!-- Fallback links (shown if redirect fails) -->
+    <div class="fallback-links" id="fallbackLinks">
+      <h3 style="color: #ff6666; margin-bottom: 1rem;">Choose Your Experience:</h3>
+      <a href="/audio-drops.html" class="fallback-link">Audio for Better Sleep & Stress Relief</a>
+      <a href="/bunni-lair.html" class="fallback-link secondary">Sweet Sanctuary Experience</a>
+    </div>
   </div>
 
   <!-- Google tag (gtag.js) -->
@@ -66,111 +111,117 @@
   </script>
 
   <script>
-    // A/B Test Router Logic
-    function determineTestVersion() {
-      // Check if user already has a version assigned (stored in sessionStorage)
-      let assignedVersion = sessionStorage.getItem('ab_test_version');
+    // Main Traffic Router Logic
+    function determineTargetPage() {
+      const referrer = document.referrer.toLowerCase();
+      const userAgent = navigator.userAgent.toLowerCase();
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
       
-      if (!assignedVersion) {
-        // Get traffic source for weighting
-        const referrer = document.referrer.toLowerCase();
-        const urlParams = new URLSearchParams(window.location.search);
-        const utmSource = urlParams.get('utm_source');
-        
-        // Determine traffic type
-        let trafficType = 'unknown';
-        if (referrer.includes('bunni-lair') || utmSource === 'feminine_site' || 
-            referrer.includes('instagram') || referrer.includes('tiktok') || 
-            referrer.includes('pinterest')) {
-          trafficType = 'feminine';
-        } else if (referrer.includes('audio-drops') || utmSource === 'masculine_site' || 
-                   referrer.includes('reddit') || referrer.includes('linkedin')) {
-          trafficType = 'masculine';
-        }
-        
-        // A/B Test Logic with Traffic-Based Weighting
-        const randomNum = Math.random();
-        
-        if (trafficType === 'feminine') {
-          // For feminine traffic, use the dynamic version (existing optimized player)
-          assignedVersion = 'dynamic';
-        } else {
-          // For masculine/unknown traffic, run A/B test
-          if (randomNum < 0.5) {
-            assignedVersion = 'version_a'; // Direct Revenue Focus
-          } else {
-            assignedVersion = 'version_b'; // Social Proof Focus
-          }
-        }
-        
-        // Store version in session
-        sessionStorage.setItem('ab_test_version', assignedVersion);
-        
-        // Track assignment
-        gtag('event', 'ab_test_assignment', {
-          'event_category': 'AB_Test',
-          'event_label': assignedVersion,
-          'traffic_type': trafficType,
-          'referrer': referrer || 'direct'
-        });
-      }
-      
-      return assignedVersion;
-    }
-
-    function redirectToVersion(version) {
-      const baseUrl = window.location.origin + window.location.pathname.replace('/free-whisper-player.html', '');
-      const queryString = window.location.search;
-      
-      let targetUrl;
-      switch(version) {
-        case 'version_a':
-          targetUrl = baseUrl + '/free-whisper-player-a.html' + queryString;
-          break;
-        case 'version_b':
-          targetUrl = baseUrl + '/free-whisper-player-b.html' + queryString;
-          break;
-        case 'dynamic':
-        default:
-          targetUrl = baseUrl + '/free-whisper-player-dynamic.html' + queryString;
-          break;
-      }
-      
-      // Add version parameter to URL for tracking
-      const separator = queryString ? '&' : '?';
-      targetUrl += separator + 'ab_version=' + version;
-      
-      // Redirect after brief loading
-      setTimeout(() => {
-        window.location.replace(targetUrl);
-      }, 800);
-    }
-
-    // Initialize A/B test on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track router page load
-      gtag('event', 'ab_router_load', {
-        'event_category': 'AB_Test',
-        'event_label': 'router_page',
-        'referrer': document.referrer || 'direct'
+      // Track the router page load
+      gtag('event', 'main_router_load', {
+        'event_category': 'Traffic_Router',
+        'event_label': 'index_page',
+        'referrer': referrer || 'direct'
       });
       
-      // Determine and redirect to appropriate version
-      const version = determineTestVersion();
-      redirectToVersion(version);
+      // Determine traffic source and target page
+      let targetPage = '/audio-drops.html'; // Default to masculine (revenue focus)
+      let trafficType = 'masculine_default';
+      
+      // Feminine traffic sources
+      if (referrer.includes('instagram') || 
+          referrer.includes('tiktok') || 
+          referrer.includes('pinterest') ||
+          referrer.includes('facebook') ||
+          utmSource === 'feminine_site' ||
+          utmSource === 'instagram' ||
+          utmSource === 'tiktok') {
+        targetPage = '/bunni-lair.html';
+        trafficType = 'feminine';
+      }
+      // Masculine traffic sources (explicit)
+      else if (referrer.includes('reddit') || 
+               referrer.includes('linkedin') ||
+               referrer.includes('hackernews') ||
+               utmSource === 'masculine_site' ||
+               utmSource === 'reddit' ||
+               utmSource === 'linkedin') {
+        targetPage = '/audio-drops.html';
+        trafficType = 'masculine_explicit';
+      }
+      // Google search - analyze search terms if available
+      else if (referrer.includes('google')) {
+        // Default to masculine for Google traffic (revenue focus)
+        targetPage = '/audio-drops.html';
+        trafficType = 'google_search';
+      }
+      // Direct traffic or unknown - default to masculine (revenue focus)
+      else {
+        targetPage = '/audio-drops.html';
+        trafficType = 'direct_unknown';
+      }
+      
+      // Track routing decision
+      gtag('event', 'traffic_routing', {
+        'event_category': 'Traffic_Router',
+        'event_label': trafficType,
+        'target_page': targetPage,
+        'referrer': referrer || 'direct'
+      });
+      
+      return { targetPage, trafficType };
+    }
+
+    function redirectToTargetPage() {
+      const { targetPage, trafficType } = determineTargetPage();
+      
+      // Preserve any URL parameters
+      const queryString = window.location.search;
+      const separator = queryString ? '&' : '?';
+      const finalUrl = targetPage + queryString + separator + 'routed_from=index&traffic_type=' + trafficType;
+      
+      // Small delay for loading effect, then redirect
+      setTimeout(() => {
+        window.location.replace(finalUrl);
+      }, 1000);
+    }
+
+    // Initialize routing on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      redirectToTargetPage();
+      
+      // Show fallback links if redirect doesn't work after 4 seconds
+      setTimeout(() => {
+        const fallbackLinks = document.getElementById('fallbackLinks');
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        const loadingText = document.querySelector('.loading-text');
+        
+        // Check if still on this page (redirect failed)
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+          loadingSpinner.style.display = 'none';
+          loadingText.textContent = 'Having trouble? Choose your experience below:';
+          fallbackLinks.style.display = 'block';
+          
+          // Track fallback shown
+          gtag('event', 'router_fallback_shown', {
+            'event_category': 'Traffic_Router',
+            'event_label': 'redirect_failed'
+          });
+        }
+      }, 4000);
     });
 
-    // Fallback: If redirect doesn't work, show manual links after 3 seconds
-    setTimeout(() => {
-      const container = document.querySelector('.loading-container');
-      container.innerHTML = `
-        <h1 style="color: #ff6666;">Having trouble loading?</h1>
-        <p style="color: #b8c6db;">Click here to access your free audio reset:</p>
-        <a href="/free-whisper-player-dynamic.html" style="color: #667eea; text-decoration: underline;">
-          Access Free Audio Reset →
-        </a>
-      `;
-    }, 3000);
+    // Track fallback link clicks
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('fallback-link')) {
+        const targetPage = e.target.getAttribute('href');
+        gtag('event', 'fallback_link_click', {
+          'event_category': 'Traffic_Router',
+          'event_label': targetPage
+        });
+      }
+    });
   </script>
 </body>
 </html>

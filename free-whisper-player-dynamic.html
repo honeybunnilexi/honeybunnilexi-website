@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Free Audio Reset - HoneyBunniLexi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #e8e8e8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .player-container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .player-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .player-subtitle {
+      color: #b8c6db;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .instruction {
+      color: #667eea;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .audio-player {
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    .audio-player audio {
+      width: 100%;
+      outline: none;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+
+    .listening-stats {
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+      color: #9bb5d6;
+    }
+
+    .cta-section {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cta-text {
+      color: #e8e8e8;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .cta-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      border: 2px solid #667eea;
+      color: #667eea;
+      padding: 0.8rem 1.8rem;
+    }
+
+    .cta-btn.secondary:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .price-note {
+      color: #9bb5d6;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .back-link {
+      margin-top: 1.5rem;
+      display: block;
+      color: #9bb5d6;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: #667eea;
+    }
+
+    .completion-offer {
+      background: rgba(102, 126, 234, 0.15);
+      border: 2px solid rgba(102, 126, 234, 0.4);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      display: none;
+    }
+
+    .completion-offer.show {
+      display: block;
+      animation: slideInUp 0.5s ease-out;
+    }
+
+    .completion-offer h3 {
+      color: #667eea;
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .completion-offer p {
+      color: #e8e8e8;
+      margin: 0 0 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .social-proof {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #b8c6db;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px) {
+      .player-container {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .player-title {
+        font-size: 1.5rem;
+      }
+
+      .cta-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <h1 class="player-title">Your Free Audio Reset</h1>
+    <p class="player-subtitle">90 seconds of what you've been needing to hear</p>
+    <p class="instruction">🎧 Put on headphones if you can. Close your eyes if you want.</p>
+    
+    <div class="audio-player">
+      <audio controls preload="auto" id="whisperAudio">
+        <source src="/audio/free-whisper-sample.mp3" type="audio/mpeg">
+        <source src="/audio/free-whisper-sample.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="listening-stats">
+      📊 <span id="listenerCount">2,847</span> men have used this for better sleep this month
+    </div>
+    
+    <!-- Initial CTA -->
+    <div class="cta-section" id="initialCTA">
+      <p class="cta-text">
+        This is just a taste of what actually works.<br>
+        <strong>If 90 seconds helped you breathe easier, imagine what weekly drops could do.</strong>
+      </p>
+      
+      <div class="cta-options">
+        <button class="cta-btn" onclick="trackUpsell('stress_arsenal'); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=free_player&utm_medium=upsell&utm_campaign=stress_arsenal', '_blank')">
+          Get The Stress Arsenal - $29/month
+          <div class="price-note">Weekly audio drops that actually work</div>
+        </button>
+        
+        <button class="cta-btn secondary" onclick="trackUpsell('end_of_day'); window.open('https://gumroad.com/l/hbl-wind-down?utm_source=free_player&utm_medium=upsell&utm_campaign=end_of_day', '_blank')">
+          Try End of Day Reset - $11.11
+          <div class="price-note">5 minutes for better sleep tonight</div>
+        </button>
+      </div>
+
+      <div class="social-proof">
+        💬 "Finally sleeping through the night. First time in months." — Mike, Paramedic
+      </div>
+    </div>
+
+    <!-- Completion Offer (shown after listening) -->
+    <div class="completion-offer" id="completionOffer">
+      <h3>🎯 You Just Experienced the Difference</h3>
+      <p>
+        <strong>Your nervous system just shifted.</strong> That's 90 seconds.<br>
+        Now imagine having that relief available whenever you need it.
+      </p>
+      
+      <div class="cta-options">
+        <button class="cta-btn pulse" onclick="trackUpsell('post_listen_arsenal'); window.open('https://gumroad.com/l/hbl-audio-vault?utm_source=free_player&utm_medium=post_listen&utm_campaign=stress_arsenal', '_blank')">
+          Join The Stress Arsenal - $29/month
+          <div class="price-note">4 new whispers every month + private community</div>
+        </button>
+        
+        <button class="cta-btn secondary" onclick="trackUpsell('post_listen_reset'); window.open('https://gumroad.com/l/hbl-wind-down?utm_source=free_player&utm_medium=post_listen&utm_campaign=end_of_day', '_blank')">
+          Start with End of Day Reset - $11.11
+          <div class="price-note">Perfect for tonight's sleep</div>
+        </button>
+      </div>
+
+      <div style="background: rgba(255, 204, 102, 0.1); border-radius: 6px; padding: 0.8rem; margin-top: 1rem; font-size: 0.85rem; color: #ffcc66;">
+        ⏰ <strong>Limited time:</strong> Join in the next 10 minutes and get a bonus confidence whisper
+      </div>
+    </div>
+
+    <a href="javascript:history.back()" class="back-link">← Back to all options</a>
+  </div>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // Enhanced audio engagement tracking
+    const audio = document.getElementById('whisperAudio');
+    let hasStarted = false;
+    let hasCompleted = false;
+    let startTime = Date.now();
+    let maxListenPercent = 0;
+
+    // Track initial page load
+    gtag('event', 'free_player_load', {
+      'event_category': 'Audio_Engagement',
+      'event_label': 'page_view'
+    });
+
+    audio.addEventListener('play', function() {
+      if (!hasStarted) {
+        hasStarted = true;
+        trackEvent('audio_start', 'free_whisper');
+        
+        // Hide initial CTA when user starts listening
+        document.getElementById('initialCTA').style.opacity = '0.7';
+      }
+    });
+
+    audio.addEventListener('ended', function() {
+      if (!hasCompleted) {
+        hasCompleted = true;
+        const listenTime = (Date.now() - startTime) / 1000;
+        
+        trackEvent('audio_complete', 'free_whisper', {
+          'listen_duration': Math.round(listenTime),
+          'completion_rate': 100
+        });
+        
+        // Show completion offer
+        setTimeout(showCompletionOffer, 1500);
+      }
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      const percent = Math.round((audio.currentTime / audio.duration) * 100);
+      
+      if (percent > maxListenPercent) {
+        maxListenPercent = percent;
+      }
+      
+      // Track listening milestones
+      if (percent >= 25 && !audio.dataset.tracked25) {
+        audio.dataset.tracked25 = 'true';
+        trackEvent('audio_25_percent', 'free_whisper');
+      }
+      
+      if (percent >= 50 && !audio.dataset.tracked50) {
+        audio.dataset.tracked50 = 'true';
+        trackEvent('audio_50_percent', 'free_whisper');
+      }
+      
+      if (percent >= 75 && !audio.dataset.tracked75) {
+        audio.dataset.tracked75 = 'true';
+        trackEvent('audio_75_percent', 'free_whisper');
+      }
+    });
+
+    // Track when user leaves without completing
+    window.addEventListener('beforeunload', function() {
+      if (hasStarted && !hasCompleted) {
+        trackEvent('audio_incomplete', 'free_whisper', {
+          'max_percent': maxListenPercent,
+          'time_listened': Math.round((Date.now() - startTime) / 1000)
+        });
+      }
+    });
+
+    function trackEvent(action, label, customParams = {}) {
+      // Google Analytics 4
+      gtag('event', action, {
+        'event_category': 'Audio_Engagement',
+        'event_label': label,
+        ...customParams
+      });
+      
+      console.log(`Event tracked: ${action} - ${label}`, customParams);
+    }
+
+    function trackUpsell(campaign) {
+      trackEvent('upsell_click', campaign, {
+        'has_completed_audio': hasCompleted,
+        'listen_percent': maxListenPercent
+      });
+    }
+
+    function showCompletionOffer() {
+      // Hide initial CTA
+      document.getElementById('initialCTA').style.display = 'none';
+      
+      // Show completion offer
+      const completionOffer = document.getElementById('completionOffer');
+      completionOffer.classList.add('show');
+      
+      // Update listener count
+      const currentCount = parseInt(document.getElementById('listenerCount').textContent);
+      document.getElementById('listenerCount').textContent = currentCount + 1;
+      
+      // Track completion offer shown
+      trackEvent('completion_offer_shown', 'post_listen_upsell');
+      
+      // Start limited time countdown
+      startLimitedTimeOffer();
+    }
+
+    function startLimitedTimeOffer() {
+      let timeLeft = 600; // 10 minutes in seconds
+      
+      const countdown = setInterval(() => {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        
+        const timerElement = document.querySelector('.completion-offer div:last-child');
+        if (timerElement && timeLeft > 0) {
+          timerElement.innerHTML = `⏰ <strong>Limited time:</strong> Join in the next ${minutes}:${seconds.toString().padStart(2, '0')} and get a bonus confidence whisper`;
+        } else if (timeLeft <= 0) {
+          clearInterval(countdown);
+          if (timerElement) {
+            timerElement.style.display = 'none';
+          }
+        }
+      }, 1000);
+    }
+
+    // Auto-play attempt with user interaction (mobile-friendly)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Attempt autoplay after first user interaction
+      let hasInteracted = false;
+      
+      const enableAutoplay = () => {
+        if (!hasInteracted && !hasStarted) {
+          hasInteracted = true;
+          audio.play().catch(e => {
+            console.log('Autoplay prevented:', e);
+            // Show play instruction
+            const instruction = document.querySelector('.instruction');
+            instruction.innerHTML = '🎧 Click play below to start your 90-second reset';
+            instruction.style.color = '#667eea';
+            instruction.style.fontWeight = '600';
+          });
+        }
+      };
+      
+      // Try autoplay on various user interactions
+      ['click', 'touchstart', 'keydown'].forEach(event => {
+        document.addEventListener(event, enableAutoplay, { once: true });
+      });
+      
+      // Fallback: encourage play button click
+      setTimeout(() => {
+        if (!hasStarted && !hasInteracted) {
+          const instruction = document.querySelector('.instruction');
+          instruction.innerHTML = '🎧 Press play when you\'re ready for 90 seconds of relief';
+          instruction.style.animation = 'pulse 2s ease-in-out infinite';
+        }
+      }, 3000);
+    });
+
+    // Track scroll behavior (if user scrolls without listening)
+    let hasScrolled = false;
+    window.addEventListener('scroll', function() {
+      if (!hasScrolled && !hasStarted) {
+        hasScrolled = true;
+        trackEvent('scroll_without_play', 'user_behavior');
+      }
+    });
+
+    // Track time on page without engagement
+    setTimeout(() => {
+      if (!hasStarted) {
+        trackEvent('no_engagement_30s', 'user_behavior');
+      }
+    }, 30000);
+  </script>
+</body>
+</html>
