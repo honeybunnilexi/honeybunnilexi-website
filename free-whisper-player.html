@@ -47,6 +47,17 @@
       color: #b8c6db;
       font-size: 0.9rem;
     }
+
+    .fallback-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -54,6 +65,7 @@
     <h1 class="loading-title">Preparing Your Free Audio Reset</h1>
     <div class="loading-spinner"></div>
     <p class="loading-text">Optimizing experience for better results...</p>
+    <a href="/audio-drops.html" class="fallback-link" style="display: none;" id="fallbackLink">Continue to Audio Experience →</a>
   </div>
 
   <!-- Google tag (gtag.js) -->
@@ -66,60 +78,56 @@
   </script>
 
   <script>
-    // A/B Test Router Logic
+    // A/B Test Router Logic (Fixed)
     function determineTestVersion() {
-      // Check if user already has a version assigned (stored in sessionStorage)
+      // Get traffic source for proper routing
+      const referrer = document.referrer.toLowerCase();
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      
+      // Determine traffic type
+      let trafficType = 'unknown';
+      if (referrer.includes('bunni-lair') || utmSource === 'feminine_site' || 
+          referrer.includes('instagram') || referrer.includes('tiktok') || 
+          referrer.includes('pinterest')) {
+        trafficType = 'feminine';
+      } else if (referrer.includes('audio-drops') || utmSource === 'masculine_site' || 
+                 referrer.includes('reddit') || referrer.includes('linkedin')) {
+        trafficType = 'masculine';
+      }
+      
+      // Check if user already has a version assigned
       let assignedVersion = sessionStorage.getItem('ab_test_version');
       
       if (!assignedVersion) {
-        // Get traffic source for weighting
-        const referrer = document.referrer.toLowerCase();
-        const urlParams = new URLSearchParams(window.location.search);
-        const utmSource = urlParams.get('utm_source');
-        
-        // Determine traffic type
-        let trafficType = 'unknown';
-        if (referrer.includes('bunni-lair') || utmSource === 'feminine_site' || 
-            referrer.includes('instagram') || referrer.includes('tiktok') || 
-            referrer.includes('pinterest')) {
-          trafficType = 'feminine';
-        } else if (referrer.includes('audio-drops') || utmSource === 'masculine_site' || 
-                   referrer.includes('reddit') || referrer.includes('linkedin')) {
-          trafficType = 'masculine';
-        }
-        
-        // A/B Test Logic with Traffic-Based Weighting
-        const randomNum = Math.random();
-        
         if (trafficType === 'feminine') {
-          // For feminine traffic, use the dynamic version (existing optimized player)
+          // For feminine traffic, use the dynamic version
           assignedVersion = 'dynamic';
         } else {
           // For masculine/unknown traffic, run A/B test
-          if (randomNum < 0.5) {
-            assignedVersion = 'version_a'; // Direct Revenue Focus
-          } else {
-            assignedVersion = 'version_b'; // Social Proof Focus
-          }
+          const randomNum = Math.random();
+          assignedVersion = randomNum < 0.5 ? 'version_a' : 'version_b';
         }
         
         // Store version in session
         sessionStorage.setItem('ab_test_version', assignedVersion);
         
         // Track assignment
-        gtag('event', 'ab_test_assignment', {
-          'event_category': 'AB_Test',
-          'event_label': assignedVersion,
-          'traffic_type': trafficType,
-          'referrer': referrer || 'direct'
-        });
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'ab_test_assignment', {
+            'event_category': 'AB_Test',
+            'event_label': assignedVersion,
+            'traffic_type': trafficType,
+            'referrer': referrer || 'direct'
+          });
+        }
       }
       
       return assignedVersion;
     }
 
     function redirectToVersion(version) {
-      const baseUrl = window.location.origin + window.location.pathname.replace('/free-whisper-player.html', '');
+      const baseUrl = window.location.origin;
       const queryString = window.location.search;
       
       let targetUrl;
@@ -149,28 +157,23 @@
     // Initialize A/B test on page load
     document.addEventListener('DOMContentLoaded', function() {
       // Track router page load
-      gtag('event', 'ab_router_load', {
-        'event_category': 'AB_Test',
-        'event_label': 'router_page',
-        'referrer': document.referrer || 'direct'
-      });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'ab_router_load', {
+          'event_category': 'AB_Test',
+          'event_label': 'router_page',
+          'referrer': document.referrer || 'direct'
+        });
+      }
       
       // Determine and redirect to appropriate version
       const version = determineTestVersion();
       redirectToVersion(version);
+      
+      // Show fallback if redirect doesn't work
+      setTimeout(() => {
+        document.getElementById('fallbackLink').style.display = 'inline-block';
+      }, 3000);
     });
-
-    // Fallback: If redirect doesn't work, show manual links after 3 seconds
-    setTimeout(() => {
-      const container = document.querySelector('.loading-container');
-      container.innerHTML = `
-        <h1 style="color: #ff6666;">Having trouble loading?</h1>
-        <p style="color: #b8c6db;">Click here to access your free audio reset:</p>
-        <a href="/free-whisper-player-dynamic.html" style="color: #667eea; text-decoration: underline;">
-          Access Free Audio Reset →
-        </a>
-      `;
-    }, 3000);
   </script>
 </body>
 </html>
