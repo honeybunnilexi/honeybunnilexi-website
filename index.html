@@ -4,43 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HoneyBunniLexi – Immersive VR Audio Intimacy</title>
-  <meta name="description" content="Immersive VR audio intimacy experiences. Spatial audio technology for deep emotional connection. Not therapy. Not ASMR. True intimacy.">
+  <meta name="description" content="Immersive VR audio intimacy experiences. Spatial audio technology for deep emotional connection. Choose your journey into intimate audio spaces.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --primary-purple: #8a2be2;
+      --secondary-purple: #9370db;
+      --accent-pink: #ff69b4;
+      --light-pink: #ffb6c1;
+      --dark-bg: #0a0a0a;
+      --mid-bg: #1a1a2e;
+      --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+      background: var(--gradient-bg);
       color: #e8e8e8;
       min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* VR Detection and Optimization */
+    .vr-indicator {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(138,43,226,0.9);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .vr-detected {
+      background: linear-gradient(135deg, #00ff00, #32cd32);
+      animation: vrPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes vrPulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,255,0,0.5); }
+      50% { box-shadow: 0 0 20px rgba(0,255,0,0.9); }
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-bg);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loading-content {
+      text-align: center;
+      max-width: 500px;
       padding: 2rem;
     }
 
-    .loading-container {
-      text-align: center;
-      max-width: 500px;
-    }
-
     .loading-title {
-      font-size: 2rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--accent-pink);
       margin-bottom: 1rem;
-      color: #ffffff;
-      font-weight: 300;
+      text-shadow: 0 0 20px rgba(255,105,180,0.5);
     }
 
     .loading-subtitle {
-      color: #b8c6db;
+      color: #c9b3ff;
       margin-bottom: 2rem;
       font-size: 1.1rem;
     }
 
     .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid rgba(138, 43, 226, 0.3);
-      border-top: 3px solid #8a2be2;
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(138,43,226,0.3);
+      border-top: 3px solid var(--primary-purple);
       border-radius: 50%;
       margin: 2rem auto;
       animation: spin 1s linear infinite;
@@ -49,3 +111,712 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    /* Main Router Interface */
+    .router-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 2rem 0;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--accent-pink);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(255,105,180,0.5);
+    }
+
+    .tagline {
+      color: #c9b3ff;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Experience Selection */
+    .experience-selector {
+      flex: 1;
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .selector-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(138,43,226,0.3);
+    }
+
+    .selector-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #c9b3ff;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* Experience Cards Grid */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .experience-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      backdrop-filter: blur(15px);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-purple);
+      box-shadow: 0 20px 50px rgba(138,43,226,0.3);
+    }
+
+    .experience-card.feminine {
+      border-color: rgba(255,105,180,0.3);
+    }
+
+    .experience-card.feminine:hover {
+      border-color: var(--accent-pink);
+      box-shadow: 0 20px 50px rgba(255,105,180,0.3);
+    }
+
+    .experience-card.technical {
+      border-color: rgba(138,43,226,0.3);
+    }
+
+    .experience-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .experience-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .experience-description {
+      color: #c9b3ff;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .experience-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .experience-features li {
+      padding: 0.5rem 0;
+      color: #b8b8ff;
+      font-size: 0.95rem;
+    }
+
+    .experience-features li::before {
+      content: "✨ ";
+      margin-right: 0.5rem;
+    }
+
+    .experience-features.feminine li::before {
+      content: "💖 ";
+    }
+
+    .enter-btn {
+      background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(138,43,226,0.3);
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(138,43,226,0.5);
+    }
+
+    .enter-btn.feminine {
+      background: linear-gradient(135deg, var(--accent-pink), var(--light-pink));
+      color: #1a0b14;
+    }
+
+    .enter-btn.feminine:hover {
+      box-shadow: 0 12px 35px rgba(255,105,180,0.5);
+    }
+
+    /* Quick Access Demo */
+    .demo-section {
+      background: rgba(138,43,226,0.1);
+      border: 1px solid rgba(138,43,226,0.3);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+    }
+
+    .demo-title {
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .demo-subtitle {
+      color: #c9b3ff;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .audio-preview-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .preview-orb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-purple), var(--accent-pink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 40px rgba(138,43,226,0.6);
+      animation: previewPulse 3s ease-in-out infinite;
+    }
+
+    .preview-orb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 60px rgba(138,43,226,0.9);
+    }
+
+    .preview-orb.playing {
+      animation: playingPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes previewPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(138,43,226,0.6); }
+      50% { box-shadow: 0 0 60px rgba(138,43,226,0.9); }
+    }
+
+    @keyframes playingPulse {
+      0%, 100% { box-shadow: 0 0 60px rgba(138,43,226,0.9); }
+      50% { box-shadow: 0 0 80px rgba(255,105,180,1); }
+    }
+
+    .preview-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .preview-info h4 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .preview-info p {
+      color: #c9b3ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .headphones-notice {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #b8b8ff;
+    }
+
+    .headphones-notice strong {
+      color: var(--accent-pink);
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0,0,0,0.5);
+      padding: 2rem;
+      text-align: center;
+      color: #b8b8ff;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* VR Specific Optimizations */
+    @media screen and (min-width: 1920px) {
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+      
+      .experience-card {
+        padding: 4rem;
+      }
+      
+      .selector-title {
+        font-size: 4rem;
+      }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .experience-card {
+        padding: 2rem;
+      }
+      
+      .selector-title {
+        font-size: 2.4rem;
+      }
+      
+      .audio-preview-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .preview-info {
+        text-align: center;
+      }
+      
+      .demo-section {
+        padding: 2rem;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .loading-spinner,
+      .preview-orb,
+      .experience-card {
+        animation: none;
+      }
+    }
+
+    /* High contrast mode */
+    @media (prefers-contrast: high) {
+      .experience-card {
+        border-color: #ffffff;
+        background: rgba(255,255,255,0.1);
+      }
+      
+      .enter-btn {
+        background: #ffffff;
+        color: #000000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- VR Detection Indicator -->
+  <div class="vr-indicator" id="vrIndicator">
+    🥽 Checking VR...
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-title">HoneyBunniLexi</div>
+      <div class="loading-subtitle">Preparing your immersive experience...</div>
+      <div class="loading-spinner"></div>
+      <p style="color: #b8b8ff; font-size: 0.9rem;">Detecting VR capabilities and optimizing audio</p>
+    </div>
+  </div>
+
+  <!-- Main Router Interface -->
+  <div class="router-container" id="routerContainer" style="opacity: 0;">
+    
+    <header>
+      <div class="brand">HoneyBunniLexi</div>
+      <div class="tagline" id="adaptiveTagline">Choose Your Immersive Journey</div>
+    </header>
+
+    <div class="experience-selector">
+      <h1 class="selector-title">Where Does Your Heart Want to Go?</h1>
+      <p class="selector-subtitle">Each path offers a different approach to intimate audio connection</p>
+
+      <!-- Quick Audio Preview -->
+      <div class="demo-section">
+        <h3 class="demo-title">Experience Spatial Audio Magic</h3>
+        <p class="demo-subtitle">A 30-second preview of the 3D audio technology that powers all experiences</p>
+        
+        <div class="audio-preview-container">
+          <div class="preview-orb" onclick="toggleUniversalPreview()">
+            🎧
+          </div>
+          <div class="preview-info">
+            <h4>Universal Spatial Audio Demo</h4>
+            <p>Whispers that move around your head in 3D space</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Works with any headphones, optimized for VR</p>
+          </div>
+        </div>
+
+        <audio id="universalPreview" preload="metadata">
+          <source src="/spatial-universal-demo.mp3" type="audio/mpeg">
+          <source src="/spatial-universal-demo.wav" type="audio/wav">
+          <!-- Fallback for demo purposes -->
+          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        </audio>
+
+        <div class="headphones-notice">
+          <strong>🎧 Headphones Required</strong><br>
+          This technology only works with headphones or VR audio. The spatial effect is designed to create intimate presence around you.
+        </div>
+      </div>
+
+      <!-- Experience Selection Grid -->
+      <div class="experience-grid">
+        
+        <!-- Intimate Sanctuary Path -->
+        <div class="experience-card feminine" onclick="enterExperience('intimate-sanctuary')">
+          <span class="experience-icon">💕</span>
+          <h2 class="experience-title">The Intimate Sanctuary</h2>
+          <p class="experience-description">
+            A tender, nurturing space designed to make you feel cherished and emotionally held. Perfect for when you need to feel genuinely loved and desired in a sacred, safe environment.
+          </p>
+          <ul class="experience-features feminine">
+            <li>Gentle, feminine energy and tender approach</li>
+            <li>Emotional safety and comfort prioritized</li>
+            <li>20-60 minute intimate experiences</li>
+            <li>VR sanctuary environments included</li>
+            <li>Subscription and single experiences available</li>
+          </ul>
+          <button class="enter-btn feminine">Enter Your Sanctuary 💖</button>
+        </div>
+
+        <!-- Technical Audio Path -->
+        <div class="experience-card technical" onclick="enterExperience('audio-technology')">
+          <span class="experience-icon">🎚️</span>
+          <h2 class="experience-title">Advanced Audio Intimacy</h2>
+          <p class="experience-description">
+            Precision-engineered spatial audio experiences focused on technical innovation and immersive connection. Designed for those who appreciate the craft behind intimate audio technology.
+          </p>
+          <ul class="experience-features">
+            <li>Advanced binaural and spatial audio engineering</li>
+            <li>VR-optimized with technical specifications</li>
+            <li>15-45 minute immersive audio loops</li>
+            <li>Emotional anchoring through technology</li>
+            <li>Individual purchases and archive access</li>
+          </ul>
+          <button class="enter-btn">Explore Audio Innovation ⚡</button>
+        </div>
+
+      </div>
+
+      <!-- Universal Preview Path -->
+      <div style="text-align: center; margin-top: 3rem;">
+        <p style="color: #c9b3ff; margin-bottom: 1rem;">Not sure which path to choose?</p>
+        <button class="enter-btn" style="max-width: 400px; margin: 0 auto; display: block;" onclick="enterExperience('universal-preview')">
+          Start with Universal Preview 🎁
+        </button>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Immersive intimacy. Ethical design. Emotional connection.<br>
+      © 2025 HoneyBunniLexi — Your journey is sacred.
+    </div>
+
+  </div>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // ===== VR DETECTION AND OPTIMIZATION =====
+    
+    let isVRCapable = false;
+    let isVRActive = false;
+    let vrDisplay = null;
+    
+    async function detectVRCapabilities() {
+      const vrIndicator = document.getElementById('vrIndicator');
+      
+      try {
+        // Check for WebXR support (modern VR)
+        if ('xr' in navigator) {
+          const isSupported = await navigator.xr.isSessionSupported('immersive-vr');
+          if (isSupported) {
+            isVRCapable = true;
+            vrIndicator.textContent = '🥽 VR Ready';
+            vrIndicator.classList.add('vr-detected');
+            optimizeForVR();
+            return;
+          }
+        }
+        
+        // Check for WebVR support (legacy)
+        if ('getVRDisplays' in navigator) {
+          const displays = await navigator.getVRDisplays();
+          if (displays.length > 0) {
+            vrDisplay = displays[0];
+            isVRCapable = true;
+            vrIndicator.textContent = '🥽 VR Detected';
+            vrIndicator.classList.add('vr-detected');
+            optimizeForVR();
+            return;
+          }
+        }
+        
+        // Check for likely VR user agent strings
+        const userAgent = navigator.userAgent.toLowerCase();
+        const vrKeywords = ['oculus', 'quest', 'vive', 'pico', 'valve index', 'wmr'];
+        const hasVRKeyword = vrKeywords.some(keyword => userAgent.includes(keyword));
+        
+        if (hasVRKeyword) {
+          isVRCapable = true;
+          vrIndicator.textContent = '🥽 VR Likely';
+          vrIndicator.classList.add('vr-detected');
+          optimizeForVR();
+          return;
+        }
+        
+        // Default: No VR detected
+        vrIndicator.textContent = '🎧 Audio Mode';
+        
+      } catch (error) {
+        console.log('VR detection error:', error);
+        vrIndicator.textContent = '🎧 Audio Mode';
+      }
+    }
+    
+    function optimizeForVR() {
+      // Increase font sizes for VR readability
+      document.documentElement.style.setProperty('--base-font-size', '1.2rem');
+      
+      // Adjust spacing for VR comfort
+      const cards = document.querySelectorAll('.experience-card');
+      cards.forEach(card => {
+        card.style.padding = '4rem';
+        card.style.fontSize = '1.1rem';
+      });
+      
+      // Update tagline for VR users
+      const tagline = document.getElementById('adaptiveTagline');
+      tagline.textContent = 'VR-Optimized Immersive Experiences Ready';
+      
+      // Track VR capability
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'vr_capability_detected', {
+          'event_category': 'VR_Detection',
+          'vr_type': isVRActive ? 'active' : 'capable',
+          'user_agent': navigator.userAgent
+        });
+      }
+    }
+
+    // ===== ROUTING SYSTEM =====
+    
+    function enterExperience(experienceType) {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.classList.remove('hidden');
+      
+      // Track experience selection
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'experience_selection', {
+          'event_category': 'Navigation',
+          'event_label': experienceType,
+          'vr_capable': isVRCapable,
+          'device_type': getDeviceType()
+        });
+      }
+      
+      // Route to appropriate experience
+      setTimeout(() => {
+        switch(experienceType) {
+          case 'intimate-sanctuary':
+            window.location.href = '/bunni-lair.html?utm_source=router&utm_medium=experience_selection&utm_campaign=intimate_sanctuary';
+            break;
+          case 'audio-technology':
+            window.location.href = '/audio-drops.html?utm_source=router&utm_medium=experience_selection&utm_campaign=audio_technology';
+            break;
+          case 'universal-preview':
+            window.location.href = '/intimate-preview.html?utm_source=router&utm_medium=experience_selection&utm_campaign=universal_preview';
+            break;
+          default:
+            window.location.href = '/intimate-preview.html?utm_source=router&utm_medium=fallback&utm_campaign=default';
+        }
+      }, 1500);
+    }
+
+    // ===== UNIVERSAL AUDIO PREVIEW =====
+    
+    let isPreviewPlaying = false;
+    let previewAudio = null;
+    
+    function toggleUniversalPreview() {
+      const previewOrb = document.querySelector('.preview-orb');
+      previewAudio = document.getElementById('universalPreview');
+      
+      if (!isPreviewPlaying) {
+        previewAudio.play().then(() => {
+          isPreviewPlaying = true;
+          previewOrb.innerHTML = '⏸️';
+          previewOrb.classList.add('playing');
+          
+          // Track preview engagement
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'universal_preview_play', {
+              'event_category': 'Audio_Engagement',
+              'event_label': 'router_universal_preview',
+              'vr_capable': isVRCapable
+            });
+          }
+          
+        }).catch(error => {
+          console.log('Audio play failed:', error);
+          // Fallback: Show modal or redirect to preview page
+          showAudioFallback();
+        });
+        
+        previewAudio.addEventListener('ended', function() {
+          stopPreview();
+          
+          // Track completion
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'universal_preview_complete', {
+              'event_category': 'Audio_Engagement',
+              'event_label': 'router_preview_complete',
+              'vr_capable': isVRCapable
+            });
+          }
+        });
+        
+      } else {
+        stopPreview();
+      }
+    }
+    
+    function stopPreview() {
+      if (previewAudio) previewAudio.pause();
+      isPreviewPlaying = false;
+      document.querySelector('.preview-orb').innerHTML = '🎧';
+      document.querySelector('.preview-orb').classList.remove('playing');
+    }
+    
+    function showAudioFallback() {
+      alert('Audio preview requires headphones. Redirecting to full preview page...');
+      enterExperience('universal-preview');
+    }
+
+    // ===== UTILITY FUNCTIONS =====
+    
+    function getDeviceType() {
+      const width = window.innerWidth;
+      if (width < 768) return 'mobile';
+      if (width < 1024) return 'tablet';
+      if (isVRCapable) return 'vr';
+      return 'desktop';
+    }
+    
+    function analyzeTrafficSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const referrer = document.referrer.toLowerCase();
+      
+      return {
+        source: utmSource || (referrer ? new URL(referrer).hostname : 'direct'),
+        medium: urlParams.get('utm_medium') || 'unknown',
+        campaign: urlParams.get('utm_campaign') || 'unknown'
+      };
+    }
+
+    // ===== INITIALIZATION =====
+    
+    document.addEventListener('DOMContentLoaded', async function() {
+      const traffic = analyzeTrafficSource();
+      
+      // Initialize VR detection
+      await detectVRCapabilities();
+      
+      // Show main interface after detection
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('routerContainer').style.opacity = '1';
+        document.getElementById('routerContainer').style.transition = 'opacity 0.5s ease';
+      }, 2000);
+      
+      // Track router page load
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'router_page_load', {
+          'event_category': 'Navigation',
+          'traffic_source': traffic.source,
+          'traffic_medium': traffic.medium,
+          'vr_capable': isVRCapable,
+          'device_type': getDeviceType(),
+          'page_load_time': Date.now()
+        });
+      }
+      
+      console.log(`VR Router Initialized - VR Capable: ${isVRCapable}, Device: ${getDeviceType()}`);
+    });
+
+    // ===== ERROR HANDLING =====
+    
+    window.addEventListener('error', function(e) {
+      console.error('Router error:', e.error);
+      
+      // Fallback to preview page on critical errors
+      if (e.error && e.error.message.includes('routing')) {
+        enterExperience('universal-preview');
+      }
+    });
+
+    // Prevent back button issues
+    window.addEventListener('popstate', function(e) {
+      // If user hits back, reload router
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
