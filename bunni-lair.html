@@ -3,81 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoneyBunniLexi – Sugar Sanctuary</title>
+  <title>HoneyBunniLexi – Intimate VR Sanctuary</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Great+Vibes&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #1a0b14;
+      background: linear-gradient(135deg, #1a0b14 0%, #2d1b3d 50%, #4a1a4a 100%);
       color: #fce4ec;
       overflow-x: hidden;
     }
 
     header {
-      background: rgba(255, 240, 245, 0.05);
+      background: rgba(255, 182, 193, 0.1);
       padding: 1.5rem;
       text-align: center;
       font-family: 'Great Vibes', cursive;
       font-size: 2.8rem;
       color: #ffb6c1;
-      text-shadow: 0 0 8px #ff69b4;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+      border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+    }
+
+    .vr-badge {
+      background: linear-gradient(135deg, #ff69b4, #8a2be2);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
     }
 
     .hero {
       padding: 4rem 2rem;
       text-align: center;
       position: relative;
+      background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
     }
 
     .hero h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       color: #ff69b4;
       animation: fadeIn 2s ease-in;
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+      line-height: 1.1;
     }
 
     .hero h2 {
       font-weight: 300;
       color: #ffe4f3;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-top: 1rem;
       animation: fadeIn 3s ease-in;
     }
 
     .hero p {
-      max-width: 700px;
+      max-width: 750px;
       margin: 1.5rem auto;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #f8c8dc;
       animation: fadeIn 4s ease-in;
+      line-height: 1.7;
+    }
+
+    .intimate-preview {
+      background: rgba(255, 105, 180, 0.1);
+      border: 1px solid rgba(255, 105, 180, 0.3);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2rem auto;
+      max-width: 650px;
+      backdrop-filter: blur(15px);
+    }
+
+    .preview-title {
+      color: #ff69b4;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .intimate-demo {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .heart-orb {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+      animation: heartbeat 3s ease-in-out infinite;
+    }
+
+    .heart-orb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.9);
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 105, 180, 0.6); }
+      50% { box-shadow: 0 0 50px rgba(255, 105, 180, 1); }
+    }
+
+    .demo-info {
+      text-align: left;
+    }
+
+    .demo-info h4 {
+      color: #ffffff;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+
+    .demo-info p {
+      margin: 0;
+      color: #f8c8dc;
+      font-size: 0.95rem;
     }
 
     .hero .buttons a {
       display: inline-block;
       margin: 1rem;
-      padding: 1rem 2rem;
-      border-radius: 40px;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.1rem;
       transition: 0.3s ease;
     }
 
     .cta-primary {
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: #1a0b14;
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
     }
 
     .cta-secondary {
-      border: 1px solid #ffb6c1;
+      border: 2px solid #ffb6c1;
       color: #ffb6c1;
       background-color: transparent;
     }
 
-    .cta-primary:hover, .cta-secondary:hover {
-      opacity: 0.85;
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 105, 180, 0.5);
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255, 182, 193, 0.1);
     }
 
     section {
@@ -87,82 +177,158 @@
     h3.section-title {
       font-family: 'Great Vibes', cursive;
       color: #ffb6c1;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    .experience-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .experience-card {
+      background: rgba(255, 182, 193, 0.08);
+      border: 1px solid rgba(255, 182, 193, 0.2);
+      border-radius: 25px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 105, 180, 0.5);
+      box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+    }
+
+    .experience-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .experience-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .experience-card p {
+      color: #fdd3e5;
+      line-height: 1.7;
     }
 
     .tiers {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
       margin: auto;
     }
 
     .tier-card {
-      background: rgba(255, 182, 193, 0.05);
-      border: 1px solid #ffb6c1;
-      border-radius: 20px;
-      padding: 2rem;
+      background: rgba(255, 182, 193, 0.08);
+      border: 1px solid rgba(255, 182, 193, 0.3);
+      border-radius: 25px;
+      padding: 2.5rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
+      backdrop-filter: blur(15px);
     }
 
     .tier-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(255, 182, 193, 0.3);
     }
 
     .tier-card.featured {
       border: 2px solid #ff69b4;
-      background: rgba(255, 182, 193, 0.1);
+      background: rgba(255, 182, 193, 0.15);
     }
 
     .tier-card.featured::before {
-      content: "MOST POPULAR";
+      content: "MOST INTIMATE";
       position: absolute;
-      top: -10px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: #1a0b14;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .tier-card.vr-premium {
+      border: 2px solid #8a2be2;
+      background: rgba(138, 43, 226, 0.1);
+    }
+
+    .tier-card.vr-premium::before {
+      content: "VR EXCLUSIVE";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #8a2be2, #9370db);
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.8rem;
       font-weight: 600;
     }
 
     .tier-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #ff69b4;
       margin-bottom: 0.5rem;
     }
 
     .tier-price {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 1rem;
       color: #ffb6c1;
+      font-weight: 600;
     }
 
     .tier-desc {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #fdd3e5;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-bottom: 1.5rem;
+    }
+
+    .intimacy-journey {
+      background: rgba(255, 105, 180, 0.1);
+      border-radius: 15px;
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #e8e8e8;
+    }
+
+    .intimacy-journey strong {
+      color: #ff69b4;
     }
 
     .tier-features {
       list-style: none;
       padding: 0;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
 
     .tier-features li {
-      padding: 0.3rem 0;
-      font-size: 0.85rem;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
       color: #f8c8dc;
     }
 
@@ -175,55 +341,134 @@
       background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: #1a0b14;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
+      padding: 1rem 2rem;
+      border-radius: 50px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s ease;
       width: 100%;
+      font-size: 1rem;
     }
 
     .tier-btn:hover {
-      opacity: 0.85;
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
     }
 
     .tier-btn.secondary {
       background: transparent;
       color: #ffb6c1;
-      border: 1px solid #ffb6c1;
+      border: 2px solid #ffb6c1;
     }
 
-    .footer {
-      background-color: #0d040b;
-      padding: 2rem;
+    .tech-intimacy {
+      background: rgba(138, 43, 226, 0.05);
+      padding: 4rem 2rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
       text-align: center;
-      color: #d8a0b9;
+    }
+
+    .tech-card {
+      background: rgba(255, 182, 193, 0.08);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 182, 193, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 105, 180, 0.4);
+    }
+
+    .tech-icon {
+      font-size: 3.5rem;
+      color: #ff69b4;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .tech-card h3 {
+      color: #ffb6c1;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .tech-card p {
+      color: #fdd3e5;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .ethics-sanctuary {
+      background: rgba(255, 105, 180, 0.08);
+      border: 2px solid rgba(255, 105, 180, 0.2);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 4rem auto;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .ethics-sanctuary h3 {
+      color: #ff69b4;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .ethics-sanctuary p {
+      color: #fdd3e5;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .testimonials {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial {
+      background: rgba(255, 182, 193, 0.08);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border-left: 4px solid #ff69b4;
+      backdrop-filter: blur(10px);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: #e8e8e8;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      color: #ffb6c1;
       font-size: 0.9rem;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .heart-icon {
-      font-size: 4rem;
-      color: #ff69b4;
-      animation: heartbeat 2s ease-in-out infinite;
-      margin-bottom: 1rem;
-    }
-
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    .subscription-highlight {
-      background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1));
-      border: 2px solid #ff69b4;
-      position: relative;
+    .footer {
+      background-color: rgba(13, 4, 11, 0.8);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #d8a0b9;
+      font-size: 0.9rem;
     }
 
     .social-links {
@@ -231,7 +476,7 @@
       justify-content: center;
       gap: 1.5rem;
       flex-wrap: wrap;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
 
     .social-link {
@@ -240,7 +485,7 @@
       gap: 0.5rem;
       color: #ffb6c1;
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      padding: 0.8rem 1.5rem;
       border: 1px solid rgba(255, 182, 193, 0.3);
       border-radius: 25px;
       transition: all 0.3s ease;
@@ -254,22 +499,72 @@
     }
 
     .social-icon {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .floating-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 105, 180, 0.2);
+      font-size: 1.5rem;
+      animation: floatHeart 25s infinite linear;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
     }
 
     @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .tiers {
+        grid-template-columns: 1fr;
+      }
+      
+      .intimate-demo {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .demo-info {
+        text-align: center;
+      }
+      
       .social-links {
         gap: 1rem;
       }
       
       .social-link {
-        padding: 0.4rem 0.8rem;
+        padding: 0.6rem 1rem;
         font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Floating Background Hearts -->
+  <div class="floating-hearts">
+    <div class="heart" style="left: 10%; animation-delay: 0s;">💖</div>
+    <div class="heart" style="left: 80%; animation-delay: 8s;">💕</div>
+    <div class="heart" style="left: 60%; animation-delay: 16s;">💗</div>
+    <div class="heart" style="left: 30%; animation-delay: 24s;">💝</div>
+  </div>
+
   <header>
     HoneyBunniLexi
   </header>
@@ -284,189 +579,282 @@
       autoplay>
     </lottie-player>
     
-    <div class="heart-icon" style="display: none;">💖</div>
+    <div class="vr-badge">🥽 VR Intimate Sanctuary</div>
     
-    <h1>Welcome to My Sugar Sanctuary 🍯</h1>
-    <h2>Not a girlfriend. Not for everyone. Just your secret sugar~soft escape that actually works.</h2>
-    <p>This isn't content. It's cotton candy for your soul. 🍓<br>
-    Whispers that stay with you, letters no one else will read, and attention that feels like it's just for you~because it is.<br>
-    Think of me like honey on your lips~sweet, slow, unforgettable... and guaranteed to help you sleep better, stress less, and feel more confident.</p>
-    <div class="buttons">
-      <a href="#" class="cta-primary" onclick="trackRPVConversion('free_whisper', 0, 'hero_cta'); window.open('/free-whisper-player.html?utm_source=feminine_rpv&utm_medium=hero&utm_campaign=free_whisper', '_blank')">Start with Free Whisper 🎁</a>
-      <a href="#tiers" class="cta-secondary">See All Offerings 💌</a>
-    </div>
-  </section>
-
-  <!-- Gift & Share Section -->
-  <section style="background: rgba(255, 105, 180, 0.05); padding: 3rem 2rem;">
-    <div style="max-width: 800px; margin: auto; text-align: center;">
-      <h3 style="font-family: 'Great Vibes', cursive; color: #ff69b4; font-size: 2rem; margin-bottom: 1.5rem;">💕 Perfect for Gifting</h3>
-      <p style="color: #f8c8dc; font-size: 1.1rem; margin-bottom: 2rem;">
-        Know someone who carries the weight of the world? Your partner, friend, or family member who never stops taking care of everyone else?<br><br>
-        <strong style="color: #ffb6c1;">These whispers are the gift they'll never ask for but desperately need.</strong>
-      </p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px;">
-          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💤</div>
-          <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">For Better Sleep</h4>
-          <p style="color: #fdd3e5; font-size: 0.9rem;">Perfect for the overthinker who can't turn their mind off</p>
+    <h1>Your Sacred Space for<br>Emotional Intimacy 💕</h1>
+    <h2>Spatial audio experiences that make you feel cherished, held, and deeply connected</h2>
+    <p>This is your private sanctuary where technology meets tenderness. Through carefully crafted spatial audio and VR environments, each experience is designed to make you feel genuinely seen, emotionally held, and beautifully desired.<br><br>
+    It's not content you consume—it's <strong>intimacy you experience</strong>. Sweet, soft, and perfectly safe~designed to create that flutter in your chest that reminds you what it feels like to be truly wanted.</p>
+    
+    <!-- Intimate Audio Preview -->
+    <div class="intimate-preview">
+      <h3 class="preview-title">💗 Feel the Magic First</h3>
+      <div class="intimate-demo">
+        <div class="heart-orb" onclick="toggleIntimateDemo()">
+          💖
         </div>
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px;">
-          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💪</div>
-          <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">For Confidence</h4>
-          <p style="color: #fdd3e5; font-size: 0.9rem;">Ideal for someone facing big challenges or self-doubt</p>
-        </div>
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px;">
-          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧘‍♂️</div>
-          <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">For Stress Relief</h4>
-          <p style="color: #fdd3e5; font-size: 0.9rem;">Great for high-pressure jobs or overwhelming life moments</p>
+        <div class="demo-info">
+          <h4>Spatial Intimacy Sample</h4>
+          <p>Experience whispers that move around you like gentle caresses</p>
+          <p style="font-size: 0.85rem; color: #ffb6c1;">Best with headphones or VR headset for full immersion</p>
         </div>
       </div>
-      <p style="color: #ff69b4; font-style: italic; margin-top: 1.5rem;">
-        "I got this for my boyfriend and he listens to it every night now. Best gift I've ever given." — Sarah M.
-      </p>
+      <audio id="intimateAudio" preload="metadata">
+        <source src="/intimate-spatial-sample.mp3" type="audio/mpeg">
+        <source src="/intimate-spatial-sample.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+      <p style="color: #ffb6c1; font-size: 0.85rem; margin: 0; text-align: center;">*Full intimate experiences are 20-60 minutes of pure connection*</p>
+    </div>
+    
+    <div class="buttons">
+      <a href="#" class="cta-primary" onclick="trackRPVConversion('free_intimate_sample', 0, 'hero_cta'); window.open('/intimate-sanctuary.html?utm_source=feminine_intimate&utm_medium=hero&utm_campaign=free_sample', '_blank')">Experience Free Sample 🎁</a>
+      <a href="#tiers" class="cta-secondary">Explore All Experiences 💌</a>
     </div>
   </section>
 
-  <section id="meet-lexi">
-    <h3 class="section-title">🌸 Meet Lexi</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 900px; margin: auto;">
-      <img src="HoneyBunniLexi_00029_.png" alt="Lexi 1" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.3s; animation-fill-mode: forwards;" />
-      <img src="HoneyBunniLexi_00016_.png" alt="Lexi 2" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.6s; animation-fill-mode: forwards;" />
-      <img src="HoneyBunniLexi_00010_.png" alt="Lexi 3" style="width: 100%; border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.3); animation: fadeIn 1.2s ease-in forwards; opacity: 0; animation-delay: 0.9s; animation-fill-mode: forwards;" />
+  <!-- Experience Showcase -->
+  <section style="background: rgba(255, 105, 180, 0.05); padding: 4rem 2rem;">
+    <div style="max-width: 1200px; margin: auto;">
+      <h3 class="section-title">💫 The Intimate Experience</h3>
+      <div class="experience-showcase">
+        
+        <div class="experience-card">
+          <span class="experience-icon">🌙</span>
+          <h3>Faceless Intimacy</h3>
+          <p>Pure emotional connection through voice and spatial presence. Your imagination becomes the canvas for deeper intimacy without any visual distractions.</p>
+        </div>
+        
+        <div class="experience-card">
+          <span class="experience-icon">🎭</span>
+          <h3>Spatial Whispers</h3>
+          <p>Advanced binaural audio that places my voice and breath around your head, creating the illusion that I'm right there with you, whispering just for you.</p>
+        </div>
+        
+        <div class="experience-card">
+          <span class="experience-icon">💕</span>
+          <h3>Emotional Anchoring</h3>
+          <p>Carefully designed psychological techniques that create genuine emotional bonds—not manipulation, but authentic connection that feels sacred and safe.</p>
+        </div>
+        
+        <div class="experience-card">
+          <span class="experience-icon">🥽</span>
+          <h3>VR Sanctuary</h3>
+          <p>Fully immersive virtual environments designed for intimacy. Step into beautiful, private spaces where you can feel completely safe and emotionally held.</p>
+        </div>
+        
+      </div>
     </div>
   </section>
 
   <section id="tiers">
-    <h3 class="section-title">🍯 Choose Your Sweetness</h3>
+    <h3 class="section-title">🍯 Your Intimate Journey</h3>
     <div class="tiers">
       
-      <!-- Free Lead Magnet -->
+      <!-- Free Intimate Sample -->
       <div class="tier-card">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">🎁</div>
-        <div class="tier-title">Free Taste</div>
-        <div class="tier-price">60-90 second whisper sample</div>
-        <div class="tier-desc">A soft bedtime whisper to see if my voice is what you've been craving. Proven to help you relax and unwind. No strings attached.</div>
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎁</div>
+        <div class="tier-title">Sweet First Touch</div>
+        <div class="tier-price">5-minute sample • FREE</div>
+        <div class="tier-desc">A gentle introduction to spatial intimacy. Experience what it feels like to be held in audio space with tender whispers designed to make you feel cherished and safe.</div>
+        <div class="intimacy-journey">
+          <strong>Your Journey:</strong> Gentle welcome → Spatial positioning → Emotional safety → Tender connection → Desire for more
+        </div>
         <ul class="tier-features">
-          <li>Personal nighttime whisper for better sleep</li>
-          <li>Instant access ~ no email required</li>
-          <li>No commitment required</li>
+          <li>Introductory spatial audio intimacy</li>
+          <li>Emotional safety and comfort focus</li>
+          <li>VR headset compatible</li>
+          <li>No signup or commitment required</li>
         </ul>
-        <button class="tier-btn" onclick="trackRPVConversion('free_whisper', 0, 'tier_grid'); window.open('/free-whisper-player.html?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=free_whisper', '_blank')">Get Your Free Whisper</button>
+        <button class="tier-btn" onclick="trackRPVConversion('sweet_first_touch', 0, 'tier_grid'); window.open('/intimate-sanctuary.html?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=free_sample', '_blank')">Experience Your First Touch</button>
       </div>
 
-      <!-- Entry Point -->
+      <!-- Gentle Intimacy Experience -->
       <div class="tier-card">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">💌</div>
-        <div class="tier-title">Blush Note</div>
-        <div class="tier-price">$11.11 • 5-minute stress relief whisper</div>
-        <div class="tier-desc">A dreamy whisper from my collection that helps you unwind after long days. Perfect for bedtime, heartbreak, or when you just need to feel adored and sleep better. <em style="color: #ff69b4;">Makes a thoughtful gift for someone special.</em></div>
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌸</div>
+        <div class="tier-title">The Tender Embrace</div>
+        <div class="tier-price">$67 • 20-minute intimate experience</div>
+        <div class="tier-desc">A beautifully crafted journey of emotional intimacy designed to make you feel deeply desired and emotionally held. Perfect for when you need to feel genuinely cherished and wanted.</div>
+        <div class="intimacy-journey">
+          <strong>Emotional Flow:</strong> Gentle attention → Building trust → Intimate whispers → Emotional holding → Deep connection → Natural return desire
+        </div>
         <ul class="tier-features">
-          <li>Curated voice selection for relaxation</li>
-          <li>Soft, intimate audio quality</li>
-          <li>Proven to reduce stress and improve sleep</li>
-          <li>Instant download</li>
+          <li>Advanced spatial audio positioning around you</li>
+          <li>Emotional vulnerability and openness guidance</li>
+          <li>Tender affirmations and connection</li>
+          <li>Designed for repeat intimate experiences</li>
+          <li>VR environment included</li>
         </ul>
-        <button class="tier-btn" onclick="trackRPVConversion('blush_note', 11.11, 'tier_grid'); window.open('https://gumroad.com/l/hbl-blush-note?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=blush_note', '_blank')">Choose Your Whisper</button>
+        <button class="tier-btn" onclick="trackRPVConversion('tender_embrace', 67, 'tier_grid'); window.open('https://gumroad.com/l/hbl-tender-embrace?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=tender_embrace', '_blank')">Feel The Tender Embrace</button>
       </div>
 
-      <!-- Subscription Model - Featured -->
-      <div class="tier-card featured subscription-highlight">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">🐰</div>
-        <div class="tier-title">Bunni Club</div>
-        <div class="tier-price">$29/month • Weekly wellness whispers</div>
-        <div class="tier-desc">Your weekly dose of sweetness that actually works. New voice drops for sleep, confidence, and stress relief, plus exclusive access and first priority on everything I create.</div>
+      <!-- VR Intimate Suite - Featured -->
+      <div class="tier-card featured">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💖</div>
+        <div class="tier-title">VR Intimacy Collection</div>
+        <div class="tier-price">$197 • 4 immersive experiences + VR environments</div>
+        <div class="tier-desc">A complete collection of intimate VR experiences, each designed for different emotional needs. Step into beautiful virtual sanctuaries where you can feel completely safe, desired, and emotionally connected.</div>
+        <div class="intimacy-journey">
+          <strong>Collection Includes:</strong> Morning Affection, Emotional Healing, Confidence Whispers, Deep Night Intimacy—each with custom VR environment
+        </div>
         <ul class="tier-features">
-          <li>4 new targeted whispers per month</li>
-          <li>Sleep, stress relief & confidence content</li>
-          <li>Exclusive member-only wellness content</li>
-          <li>Priority access to limited offers</li>
-          <li>Private community access</li>
-          <li>Cancel anytime</li>
+          <li>Four distinct 25-minute intimate experiences</li>
+          <li>Custom VR environments for each journey</li>
+          <li>Full 360° spatial audio design</li>
+          <li>Progressive intimacy and trust building</li>
+          <li>Meta Quest and VR headset optimized</li>
+          <li>Lifetime access and updates</li>
         </ul>
-        <button class="tier-btn" onclick="trackRPVConversion('bunni_club', 29, 'tier_grid'); window.open('https://gumroad.com/l/hbl-bunni-club?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=bunni_club', '_blank')">Join the Club</button>
+        <button class="tier-btn" onclick="trackRPVConversion('vr_intimacy_collection', 197, 'tier_grid'); window.open('https://gumroad.com/l/hbl-vr-collection?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=vr_collection', '_blank')">Enter Your VR Sanctuary</button>
       </div>
 
-      <!-- Mid-tier Custom -->
+      <!-- Personal Intimate Design -->
       <div class="tier-card">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">💋</div>
-        <div class="tier-title">Sugar Letter</div>
-        <div class="tier-price">$77 • 8-10 minute personalized confidence boost</div>
-        <div class="tier-desc">A personalized whisper just for you that builds confidence and emotional strength. I'll use your name and create something that feels like it was made for your soul—and actually helps you feel more powerful. <em style="color: #ff69b4;">The ultimate personal gift.</em></div>
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
+        <div class="tier-title">Your Personal Sanctuary</div>
+        <div class="tier-price">$397 • Custom 35-minute intimate experience</div>
+        <div class="tier-desc">A completely personalized intimate experience created specifically for your emotional needs, desires, and comfort level. Includes private consultation to design your perfect intimate audio sanctuary.</div>
+        <div class="intimacy-journey">
+          <strong>Creation Process:</strong> Private consultation → Emotional mapping → Custom script → Professional spatial recording → Your unique sanctuary
+        </div>
         <ul class="tier-features">
-          <li>Personalized with your name</li>
-          <li>Custom confidence-building scenario</li>
-          <li>Proven emotional wellness techniques</li>
-          <li>Beautiful PDF companion letter</li>
-          <li>2-3 day delivery</li>
+          <li>Private 30-minute intimacy consultation</li>
+          <li>Completely personalized emotional journey</li>
+          <li>Your name and story woven throughout</li>
+          <li>Custom spatial audio engineering</li>
+          <li>Personalized VR environment design</li>
+          <li>10-day artisan creation process</li>
+          <li>Never shared or reused</li>
         </ul>
-        <button class="tier-btn" onclick="trackRPVConversion('sugar_letter', 77, 'tier_grid'); window.open('https://gumroad.com/l/hbl-sugar-letter?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=sugar_letter', '_blank')">Create My Letter</button>
+        <button class="tier-btn" onclick="trackRPVConversion('personal_sanctuary', 397, 'tier_grid'); window.open('https://gumroad.com/l/hbl-personal-sanctuary?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=personal_sanctuary', '_blank')">Create Your Personal Sanctuary</button>
       </div>
 
-      <!-- Premium Custom -->
-      <div class="tier-card">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">🪽</div>
-        <div class="tier-title">Velvet Ritual</div>
-        <div class="tier-price">$222 • 15+ minute deep relaxation experience</div>
-        <div class="tier-desc">Your deepest fantasy whispered into reality with proven relaxation techniques. A completely custom ritual made just for you that helps you unwind, destress, and sleep better~never reused, never shared.</div>
+      <!-- Ultimate VR Experience -->
+      <div class="tier-card vr-premium">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌌</div>
+        <div class="tier-title">The Infinite Garden</div>
+        <div class="tier-price">$697 • 60-minute transcendent journey</div>
+        <div class="tier-desc">The most advanced intimate experience available. A transcendent 60-minute journey through multiple emotional landscapes with dynamic VR environments, progressive intimacy deepening, and post-experience integration.</div>
+        <div class="intimacy-journey">
+          <strong>Advanced Journey:</strong> Multi-environment VR → Progressive emotional deepening → Peak intimate connection → Integration guidance → Lasting emotional transformation
+        </div>
         <ul class="tier-features">
-          <li>Completely custom 15+ min deep relaxation audio</li>
-          <li>Your fantasy combined with wellness techniques</li>
-          <li>Handwritten note option</li>
-          <li>5-7 day artisan creation</li>
-          <li>Lifetime personal archive</li>
+          <li>Advanced multi-room VR environments with seamless transitions</li>
+          <li>Dynamic spatial audio that evolves with your emotional state</li>
+          <li>Progressive intimacy and vulnerability guidance</li>
+          <li>Peak emotional experience management</li>
+          <li>Post-experience integration and reflection guidance</li>
+          <li>Exclusive lifetime access to creator</li>
+          <li>Never replicated or offered again</li>
         </ul>
-        <button class="tier-btn" onclick="trackRPVConversion('velvet_ritual', 222, 'tier_grid'); window.open('https://gumroad.com/l/hbl-velvet-ritual?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=velvet_ritual', '_blank')">Commission My Ritual</button>
+        <button class="tier-btn secondary" onclick="trackRPVConversion('infinite_garden', 697, 'tier_grid'); window.open('https://gumroad.com/l/hbl-infinite-garden?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=infinite_garden', '_blank')">Enter The Infinite Garden</button>
       </div>
 
-      <!-- Luxury Tier -->
+      <!-- Intimacy Archive Subscription -->
       <div class="tier-card">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">💎</div>
-        <div class="tier-title">Collector's Whisper</div>
-        <div class="tier-price">$1,111 • Lifetime wellness & custom rituals</div>
-        <div class="tier-desc">Everything I've ever created for better sleep, confidence, and stress relief, plus a monthly custom ritual. The ultimate investment in your emotional wellness. Only available to 12 collectors worldwide.</div>
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🗝️</div>
+        <div class="tier-title">Sanctuary Membership</div>
+        <div class="tier-price">$127/month • Unlimited intimate experiences</div>
+        <div class="tier-desc">Complete access to all intimate experiences plus new releases every week. Build your personal collection of emotional sanctuaries and intimate connections designed to make you feel cherished daily.</div>
+        <div class="intimacy-journey">
+          <strong>Member Benefits:</strong> All current experiences → Weekly new intimate content → VR updates → Private community → Creator access
+        </div>
         <ul class="tier-features">
-          <li>Lifetime access to complete wellness archive</li>
-          <li>Monthly custom 20+ min ritual for your goals</li>
-          <li>Physical handwritten letters</li>
-          <li>Direct messaging privileges</li>
-          <li>Exclusive collector wellness events</li>
-          <li>Limited to 12 members globally</li>
+          <li>Access to complete intimate experience library</li>
+          <li>New intimate content released weekly</li>
+          <li>Exclusive VR environment updates</li>
+          <li>Private member sanctuary community</li>
+          <li>Early access to experimental intimate content</li>
+          <li>Monthly live connection sessions</li>
+          <li>Cancel anytime with love</li>
         </ul>
-        <button class="tier-btn secondary" onclick="trackRPVConversion('collectors_whisper', 1111, 'tier_grid'); window.open('https://gumroad.com/l/hbl-collectors-whisper?utm_source=feminine_rpv&utm_medium=tier&utm_campaign=collectors_whisper', '_blank')">Apply for Collector Status</button>
+        <button class="tier-btn" onclick="trackRPVConversion('sanctuary_membership', 127, 'tier_grid'); window.open('https://gumroad.com/l/hbl-sanctuary-membership?utm_source=feminine_intimate&utm_medium=tier&utm_campaign=sanctuary_membership', '_blank')">Join the Sanctuary</button>
       </div>
 
     </div>
   </section>
 
-  <section id="teaser">
-    <h3 class="section-title">🧁 Start Sweet, Stay Soft</h3>
-    <p style="text-align: center; max-width: 600px; margin: auto; margin-bottom: 1rem;">
-      Not sure where to begin? Start with a free taste that will help you relax and unwind tonight. I'll whisper something just for you~no strings, no commitment, just proven stress relief. 💫
-    </p>
-    <p style="text-align: center; max-width: 500px; margin: auto; margin-bottom: 2rem; color: #ff69b4; font-style: italic;">
-      Try it yourself first, then share it with someone who needs it most.
-    </p>
-    <div style="text-align: center;">
-      <button class="tier-btn" style="display: inline-block; width: auto; padding: 1rem 2rem;" onclick="trackRPVConversion('free_whisper', 0, 'bottom_cta'); window.open('/free-whisper-player.html?utm_source=feminine_rpv&utm_medium=bottom&utm_campaign=free_whisper', '_blank')">Get Your Free Whisper 🎁</button>
-    </div>
-    
-    <!-- Social Sharing Encouragement -->
-    <div style="background: rgba(255, 105, 180, 0.08); border-radius: 15px; padding: 2rem; margin: 3rem auto; max-width: 600px; text-align: center;">
-      <h4 style="color: #ff69b4; margin-bottom: 1rem; font-family: 'Great Vibes', cursive; font-size: 1.8rem;">💕 Spread the Sweetness</h4>
-      <p style="color: #f8c8dc; margin-bottom: 1.5rem;">
-        Love what you experienced? Share the magic with your friends, followers, and anyone who needs more softness in their life.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="https://www.instagram.com/honeybunnilexi/" target="_blank" style="background: linear-gradient(135deg, #ff69b4, #ffb6c1); color: #1a0b14; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: 0.3s ease;">📸 Share on Instagram</a>
-        <a href="https://www.tiktok.com/@honeybunnilexi" target="_blank" style="background: transparent; border: 2px solid #ff69b4; color: #ff69b4; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: 0.3s ease;">🎵 Share on TikTok</a>
+  <!-- Technical Intimacy Section -->
+  <section class="tech-intimacy">
+    <div style="max-width: 1200px; margin: auto;">
+      <h3 class="section-title">💫 The Intimacy Technology</h3>
+      <div class="tech-grid">
+        
+        <div class="tech-card">
+          <span class="tech-icon">🎚️</span>
+          <h3>Spatial Audio Caressing</h3>
+          <p>Advanced dearVR technology places whispers and gentle sounds in 3D space around you, creating the feeling of intimate physical presence</p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">💕</span>
+          <h3>Binaural Heart Connection</h3>
+          <p>Precisely engineered frequency separation creates the illusion of emotional and physical closeness, making you feel truly held</p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">🌸</span>
+          <h3>Emotional Frequency Design</h3>
+          <p>Carefully tuned soundscapes and musical elements designed to open your heart and create feelings of safety and desire</p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">🥽</span>
+          <h3>VR Sanctuary Environments</h3>
+          <p>Beautiful, private virtual spaces designed specifically for intimate connection—gardens, cozy rooms, magical spaces where you feel completely safe</p>
+        </div>
+        
       </div>
+    </div>
+  </section>
+
+  <!-- Ethics Section -->
+  <section>
+    <div class="ethics-sanctuary">
+      <h3>💖 Sacred & Safe Intimacy</h3>
+      <p>Every intimate experience is created with deep respect, clear consent, and emotional safety at its heart. These journeys are designed to make you feel genuinely cherished and emotionally held—never exploited or manipulated.</p>
+      <p>Your emotional wellbeing is sacred to me. Each experience includes gentle boundaries, comfort guidance, and frames intimacy as a beautiful, safe space where you can feel completely yourself.</p>
+      <p style="color: #ff69b4; font-style: italic;">Intimacy should always feel like coming home to yourself. 💕</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div style="max-width: 1200px; margin: auto;">
+      <h3 class="section-title">💗 What Hearts Are Saying</h3>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <div class="testimonial-text">"This is the most beautiful thing I've ever experienced. It's not sexual—it's deeply intimate in a way that makes me feel truly seen and cherished. I've never felt so emotionally held by audio before."</div>
+          <div class="testimonial-author">— Sarah, Artist</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"The VR experience literally brought me to tears. In the best way. It felt like being wrapped in the warmest, safest embrace while someone whispered exactly what my heart needed to hear."</div>
+          <div class="testimonial-author">— Emma, Designer</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"I listen to 'The Tender Embrace' every night now. It's become my sacred time to feel loved and wanted. The spatial audio makes it feel like I'm not alone."</div>
+          <div class="testimonial-author">— Mia, Writer</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"This transcends anything I've experienced before. It's like having access to pure emotional intimacy whenever I need to feel cherished. Revolutionary and deeply healing."</div>
+          <div class="testimonial-author">— Luna, Therapist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1)); padding: 4rem 2rem; text-align: center;">
+    <div style="max-width: 800px; margin: auto;">
+      <h2 style="color: #ff69b4; margin-bottom: 1rem; font-family: 'Great Vibes', cursive; font-size: 2.5rem;">Ready to Feel Cherished? 💕</h2>
+      <p style="color: #fdd3e5; font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.7;">
+        Step into your private sanctuary where you can feel completely safe, deeply desired, and beautifully held. Start with our free sample and discover what true audio intimacy feels like.
+      </p>
+      <button class="tier-btn" style="display: inline-block; width: auto; padding: 1.5rem 3rem; font-size: 1.2rem;" onclick="trackRPVConversion('free_intimate_sample', 0, 'bottom_cta'); window.open('/intimate-sanctuary.html?utm_source=feminine_intimate&utm_medium=bottom&utm_campaign=free_sample', '_blank')">Begin Your Intimate Journey 🎁</button>
     </div>
   </section>
 
   <div class="footer">
-    <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-family: 'Great Vibes', cursive; color: #ffb6c1; margin-bottom: 1rem;">Find Me in Other Sweet Spaces 💕</h4>
+    <div style="margin-bottom: 2rem;">
+      <h4 style="font-family: 'Great Vibes', cursive; color: #ffb6c1; margin-bottom: 1.5rem; font-size: 1.8rem;">Find Me in Sweet Spaces 💕</h4>
       <div class="social-links">
         <a href="https://www.instagram.com/honeybunnilexi/" target="_blank" rel="noopener" class="social-link">
           <span class="social-icon">📸</span> Instagram
@@ -481,12 +869,12 @@
           <span class="social-icon">☕</span> Ko-fi
         </a>
       </div>
-      <p style="font-size: 0.8rem; color: #d8a0b9; margin-top: 1rem; font-style: italic;">
-        Follow for soft moments, behind-the-scenes sweetness, and first access to new whispers 🍯
+      <p style="font-size: 0.85rem; color: #d8a0b9; margin-top: 1.5rem; font-style: italic;">
+        Follow for gentle moments, intimate previews, and first access to new sanctuary experiences 🍯
       </p>
     </div>
-    Soft thoughts, sweet whispers, and a place just for you.<br>
-    &copy; 2025 HoneyBunniLexi ~ All sweetness reserved.
+    Sacred intimacy, tender technology, and a place where your heart feels safe.<br>
+    &copy; 2025 HoneyBunniLexi ~ All intimate experiences lovingly reserved.
   </div>
 
   <!-- Google tag (gtag.js) -->
@@ -502,7 +890,7 @@
     // ===== RPV-FOCUSED A/B TEST TRACKING =====
     
     // Initialize test variables
-    const TEST_VARIANT = 'feminine';
+    const TEST_VARIANT = 'feminine_intimate';
     const TEST_START_TIME = Date.now();
     let pageStartTime = Date.now();
     let totalRevenueGenerated = 0;
@@ -565,21 +953,71 @@
     }
 
     function getProductTier(productName) {
-      if (productName.includes('free')) return 'lead_magnet';
-      if (productName.includes('blush') || productName.includes('note')) return 'entry_level';
-      if (productName.includes('bunni') || productName.includes('club')) return 'subscription';
-      if (productName.includes('sugar') || productName.includes('letter')) return 'custom';
-      if (productName.includes('velvet') || productName.includes('ritual')) return 'premium';
-      if (productName.includes('collector')) return 'lifetime';
+      if (productName.includes('free') || productName.includes('sample')) return 'lead_magnet';
+      if (productName.includes('tender') || productName.includes('embrace')) return 'entry_level';
+      if (productName.includes('vr_collection') || productName.includes('collection')) return 'featured';
+      if (productName.includes('personal') || productName.includes('sanctuary')) return 'custom';
+      if (productName.includes('infinite') || productName.includes('garden')) return 'premium';
+      if (productName.includes('membership') || productName.includes('subscription')) return 'subscription';
       return 'other';
     }
 
     function getPriceTier(value) {
       if (value === 0) return 'free';
-      if (value < 30) return 'entry';
-      if (value < 100) return 'mid';
-      if (value < 300) return 'premium';
+      if (value < 100) return 'entry';
+      if (value < 250) return 'mid';
+      if (value < 500) return 'premium';
       return 'luxury';
+    }
+
+    // ===== INTIMATE AUDIO DEMO FUNCTIONALITY =====
+    let isIntimateePlaying = false;
+    let intimateAudio = null;
+    
+    function toggleIntimateDemo() {
+      const heartOrb = document.querySelector('.heart-orb');
+      intimateAudio = document.getElementById('intimateAudio');
+      
+      if (!isIntimateePlaying) {
+        intimateAudio.play().then(() => {
+          isIntimateePlaying = true;
+          heartOrb.innerHTML = '⏸️';
+          heartOrb.style.background = 'linear-gradient(135deg, #8a2be2, #9370db)';
+          
+          // Track intimate demo engagement
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'intimate_demo_play', {
+              'event_category': 'Engagement',
+              'event_label': 'intimate_audio_sample',
+              'variant': TEST_VARIANT,
+              'visitor_id': sessionStorage.getItem('abtest_visitor_id')
+            });
+          }
+        }).catch(error => {
+          console.log('Intimate audio play failed:', error);
+          window.open('/intimate-sanctuary.html?utm_source=feminine_intimate&utm_medium=demo_fallback&utm_campaign=free_sample', '_blank');
+        });
+        
+        intimateAudio.addEventListener('ended', function() {
+          isIntimateePlaying = false;
+          heartOrb.innerHTML = '💖';
+          heartOrb.style.background = 'linear-gradient(135deg, #ff69b4, #ffb6c1)';
+          
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'intimate_demo_complete', {
+              'event_category': 'Engagement',
+              'event_label': 'intimate_audio_complete',
+              'variant': TEST_VARIANT
+            });
+          }
+        });
+        
+      } else {
+        intimateAudio.pause();
+        isIntimateePlaying = false;
+        heartOrb.innerHTML = '💖';
+        heartOrb.style.background = 'linear-gradient(135deg, #ff69b4, #ffb6c1)';
+      }
     }
 
     // ===== ENGAGEMENT TRACKING =====
@@ -587,7 +1025,8 @@
       let maxScroll = 0;
       let scrollMilestones = {25: false, 50: false, 75: false, 90: false};
       let hasViewedTiers = false;
-      let hasViewedSocial = false;
+      let hasViewedTestimonials = false;
+      let hasViewedTech = false;
       
       window.addEventListener('scroll', function() {
         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
@@ -612,7 +1051,8 @@
         
         // Track when user reaches key sections
         const tiersSection = document.getElementById('tiers');
-        const socialSection = document.querySelector('.social-links');
+        const testimonialsSection = document.querySelector('.testimonials');
+        const techSection = document.querySelector('.tech-intimacy');
         
         if (!hasViewedTiers && tiersSection && scrollY >= tiersSection.offsetTop - 200) {
           hasViewedTiers = true;
@@ -626,12 +1066,23 @@
           }
         }
         
-        if (!hasViewedSocial && socialSection && scrollY >= socialSection.offsetTop - 200) {
-          hasViewedSocial = true;
+        if (!hasViewedTestimonials && testimonialsSection && scrollY >= testimonialsSection.offsetTop - 200) {
+          hasViewedTestimonials = true;
           if (typeof gtag !== 'undefined') {
             gtag('event', 'section_view', {
               'event_category': 'Engagement',
-              'event_label': 'social_section',
+              'event_label': 'testimonials_section',
+              'variant': TEST_VARIANT
+            });
+          }
+        }
+        
+        if (!hasViewedTech && techSection && scrollY >= techSection.offsetTop - 200) {
+          hasViewedTech = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'section_view', {
+              'event_category': 'Engagement',
+              'event_label': 'tech_section',
               'variant': TEST_VARIANT
             });
           }
@@ -647,7 +1098,8 @@
             'time_on_page': Math.round(timeOnPage),
             'max_scroll_depth': maxScroll,
             'viewed_tiers': hasViewedTiers,
-            'viewed_social': hasViewedSocial,
+            'viewed_testimonials': hasViewedTestimonials,
+            'viewed_tech': hasViewedTech,
             'variant': TEST_VARIANT,
             'total_session_revenue': totalRevenueGenerated,
             'visitor_id': sessionStorage.getItem('abtest_visitor_id')
@@ -670,6 +1122,7 @@
       else if (referrer.includes('tiktok.com')) trafficSource = 'tiktok';
       else if (referrer.includes('pinterest.com')) trafficSource = 'pinterest';
       else if (referrer.includes('facebook.com')) trafficSource = 'facebook';
+      else if (referrer.includes('twitter.com') || referrer.includes('x.com')) trafficSource = 'twitter';
       else if (referrer.includes('google.com')) trafficSource = 'google';
       
       return {
@@ -709,7 +1162,7 @@
         if (lottiePlayer && lottiePlayer.style.display !== 'none') {
           if (!lottiePlayer.currentFrame || lottiePlayer.currentFrame === 0) {
             lottiePlayer.style.display = 'none';
-            heartIcon.style.display = 'block';
+            if (heartIcon) heartIcon.style.display = 'block';
           }
         }
       }, 3000);
