@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience Spatial Audio Intimacy - Free Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+      color: #e8e8e8;
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .brand-adaptive {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #e8e8e8;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline-adaptive {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    .hero {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .preview-badge {
+      background: linear-gradient(135deg, #8a2be2, #ff69b4);
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(138,43,226,0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(138,43,226,0.3); }
+      50% { box-shadow: 0 6px 25px rgba(138,43,226,0.6); }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 0 20px rgba(138,43,226,0.3);
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    /* Audio Player Section */
+    .audio-experience {
+      background: rgba(138,43,226,0.1);
+      border: 2px solid rgba(138,43,226,0.3);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 600px;
+      backdrop-filter: blur(15px);
+      position: relative;
+    }
+
+    .audio-experience::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #8a2be2, #ff69b4, #8a2be2);
+      border-radius: 20px;
+      z-index: -1;
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .experience-title {
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .audio-player-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .play-orb {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8a2be2, #ff69b4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 40px rgba(138,43,226,0.6);
+      position: relative;
+    }
+
+    .play-orb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(138,43,226,0.8);
+    }
+
+    .play-orb.playing {
+      animation: playingPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes playingPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(138,43,226,0.6); }
+      50% { box-shadow: 0 0 80px rgba(138,43,226,1); }
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #8a2be2, #ff69b4);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    .time-display {
+      font-size: 0.9rem;
+      color: #b8b8ff;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .audio-description {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .audio-description h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .audio-description p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 0.5rem 0;
+    }
+
+    .headphones-notice {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .headphones-notice strong {
+      color: #ff69b4;
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      background: rgba(0,0,0,0.3);
+      border-radius: 15px;
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #8a2be2 0%, #ff69b4 100%);
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(138,43,226,0.3);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(138,43,226,0.5);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: #c9b3ff;
+      padding: 1rem 2rem;
+      border: 2px solid #8a2be2;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .cta-secondary:hover {
+      background: rgba(138,43,226,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Features Grid */
+    .features-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(138,43,226,0.5);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      opacity: 0.8;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Privacy & Safety */
+    .privacy-section {
+      background: rgba(138,43,226,0.05);
+      border: 1px solid rgba(138,43,226,0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .privacy-section h3 {
+      color: #c9b3ff;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-section p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      background: rgba(0,0,0,0.3);
+      padding: 2rem 0;
+      text-align: center;
+      color: #b8b8ff;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .loading-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(138,43,226,0.3);
+      border-top: 3px solid #8a2be2;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+
+      .audio-experience {
+        padding: 2rem;
+      }
+
+      .play-orb {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+
+      .cta-buttons {
+        gap: 0.8rem;
+      }
+
+      .cta-primary, .cta-secondary {
+        width: 100%;
+        padding: 1.2rem;
+      }
+
+      .features-preview {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Dynamic Styling Based on Source */
+    .source-masculine {
+      --primary-color: #8a2be2;
+      --secondary-color: #9370db;
+      --accent-color: #667eea;
+    }
+
+    .source-feminine {
+      --primary-color: #ff69b4;
+      --secondary-color: #ffb6c1;
+      --accent-color: #ffc0cb;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <h3>Preparing Your Intimate Experience...</h3>
+      <p>Loading spatial audio technology</p>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <h2 class="brand-adaptive">HoneyBunniLexi</h2>
+      <p class="tagline-adaptive" id="adaptiveTagline">Immersive Audio Intimacy</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="preview-badge">🎧 Free Spatial Audio Preview</div>
+      
+      <h1 id="adaptiveHeadline">Experience True Audio Intimacy</h1>
+      <p class="subtitle" id="adaptiveSubtitle">Feel what it's like to be held in sound and space</p>
+      <p class="description" id="adaptiveDescription">
+        This 15-second preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.
+      </p>
+    </div>
+  </section>
+
+  <!-- Audio Experience Section -->
+  <section>
+    <div class="container">
+      <div class="audio-experience">
+        <div class="experience-title" id="experienceTitle">🎧 Spatial Intimacy Preview</div>
+        
+        <div class="audio-player-container">
+          <div class="play-orb" id="playOrb" onclick="togglePreviewAudio()">
+            ▶️
+          </div>
+          
+          <div class="audio-description">
+            <h3 id="audioTitle">Gentle Introduction to Spatial Intimacy</h3>
+            <p id="audioDescription">Experience whispers that move around your head, creating the feeling of intimate presence</p>
+          </div>
+          
+          <div class="audio-controls">
+            <div class="time-display" id="currentTime">0:00</div>
+            <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="time-display" id="totalTime">0:15</div>
+          </div>
+        </div>
+        
+        <audio id="previewAudio" preload="metadata">
+          <source src="/intimate-preview-spatial.mp3" type="audio/mpeg">
+          <source src="/intimate-preview-spatial.wav" type="audio/wav">
+          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <div class="headphones-notice">
+          <strong>🎧 Headphones Required</strong><br>
+          This preview uses binaural spatial audio technology. The intimate effect only works with headphones or earbuds.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Preview -->
+  <section>
+    <div class="container">
+      <div class="features-preview">
+        
+        <div class="feature-card">
+          <span class="feature-icon">🌊</span>
+          <h3>3D Spatial Positioning</h3>
+          <p>Whispers and sounds move around your head in 3D space, creating realistic intimate presence</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">💫</span>
+          <h3>Emotional Anchoring</h3>
+          <p>Carefully designed psychological techniques create genuine emotional connection and comfort</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Safe & Consensual</h3>
+          <p>Every experience is designed with emotional safety, clear boundaries, and your comfort in mind</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🥽</span>
+          <h3>VR Compatible</h3>
+          <p>Optimized for VR headsets like Meta Quest for full immersive intimate environments</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section>
+    <div class="container">
+      <div class="cta-section">
+        <h2 id="ctaHeadline">Ready for the Full Experience?</h2>
+        <p id="ctaDescription">This preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection and spatial audio intimacy.</p>
+        
+        <div class="cta-buttons">
+          <a href="#" class="cta-primary" id="primaryCTA" onclick="trackConversion('full_experience_cta', 'preview_page')">Explore Full Experiences</a>
+          <a href="#" class="cta-secondary" id="secondaryCTA" onclick="trackConversion('learn_more_cta', 'preview_page')">Learn More About The Technology</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy & Safety -->
+  <section>
+    <div class="container">
+      <div class="privacy-section">
+        <h3>💖 Your Privacy & Emotional Safety</h3>
+        <p>
+          Your intimate experiences are completely private. No data is collected about your listening habits. 
+          Every audio is designed to make you feel safe, respected, and emotionally held. 
+          You can stop, pause, or step away at any time. This is your sanctuary.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      Immersive intimacy. Ethical design. Emotional connection.<br>
+      © 2025 HoneyBunniLexi — Your sanctuary is sacred.
+    </div>
+  </div>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // ===== ADAPTIVE CONTENT BASED ON SOURCE =====
+    
+    function getSourceVariant() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const referrer = document.referrer.toLowerCase();
+      
+      // Determine source variant
+      if (utmSource && utmSource.includes('feminine')) return 'feminine';
+      if (utmSource && utmSource.includes('masculine')) return 'masculine';
+      if (referrer.includes('bunni-lair')) return 'feminine';
+      if (referrer.includes('audio-drops')) return 'masculine';
+      
+      // Default to balanced approach
+      return 'balanced';
+    }
+
+    function adaptContentForSource(variant) {
+      const content = {
+        masculine: {
+          tagline: "Immersive Audio Technology",
+          headline: "Experience Spatial Audio Intimacy",
+          subtitle: "Feel what advanced binaural technology can create",
+          description: "This 3-minute preview demonstrates the spatial audio engineering behind our intimate experiences. Experience how technology can create genuine emotional connection through sound.",
+          experienceTitle: "🎧 Spatial Audio Demo",
+          audioTitle: "Advanced Binaural Positioning",
+          audioDescription: "Experience whispers engineered to move in 3D space around your head",
+          ctaHeadline: "Ready for Advanced Experiences?",
+          ctaDescription: "Our full experiences use cutting-edge spatial audio to create deep emotional connection.",
+          primaryCTA: "Explore Premium Experiences →",
+          secondaryCTA: "View Technical Specifications",
+          primaryLink: "/audio-drops.html#products",
+          secondaryLink: "/audio-drops.html#tech"
+        },
+        feminine: {
+          tagline: "Intimate Audio Sanctuary",
+          headline: "Feel Held in Sacred Space",
+          subtitle: "Experience what it feels like to be cherished through sound",
+          description: "This gentle 3-minute preview shows how spatial audio can create feelings of emotional safety and intimate connection. Let yourself feel what it's like to be truly held.",
+          experienceTitle: "💗 Intimate Sanctuary Preview",
+          audioTitle: "Gentle Spatial Embrace",
+          audioDescription: "Feel whispers that surround you like a tender, loving embrace",
+          ctaHeadline: "Ready to Feel Cherished?",
+          ctaDescription: "Our full sanctuary experiences are designed to make you feel deeply loved and emotionally safe.",
+          primaryCTA: "Enter Your Sanctuary →",
+          secondaryCTA: "Learn About Our Approach",
+          primaryLink: "/bunni-lair.html#tiers",
+          secondaryLink: "/bunni-lair.html#ethics"
+        },
+        balanced: {
+          tagline: "Immersive Audio Intimacy",
+          headline: "Experience True Audio Intimacy",
+          subtitle: "Feel what it's like to be held in sound and space",
+          description: "This 3-minute preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.",
+          experienceTitle: "🎧 Spatial Intimacy Preview",
+          audioTitle: "Gentle Introduction to Spatial Intimacy",
+          audioDescription: "Experience whispers that move around your head, creating the feeling of intimate presence",
+          ctaHeadline: "Ready for the Full Experience?",
+          ctaDescription: "This preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection.",
+          primaryCTA: "Explore Full Experiences →",
+          secondaryCTA: "Learn More About The Technology",
+          primaryLink: "#choose-experience",
+          secondaryLink: "#features"
+        }
+      };
+
+      const selectedContent = content[variant];
+      
+      // Update page content
+      document.getElementById('adaptiveTagline').textContent = selectedContent.tagline;
+      document.getElementById('adaptiveHeadline').textContent = selectedContent.headline;
+      document.getElementById('adaptiveSubtitle').textContent = selectedContent.subtitle;
+      document.getElementById('adaptiveDescription').textContent = selectedContent.description;
+      document.getElementById('experienceTitle').textContent = selectedContent.experienceTitle;
+      document.getElementById('audioTitle').textContent = selectedContent.audioTitle;
+      document.getElementById('audioDescription').textContent = selectedContent.audioDescription;
+      document.getElementById('ctaHeadline').textContent = selectedContent.ctaHeadline;
+      document.getElementById('ctaDescription').textContent = selectedContent.ctaDescription;
+      document.getElementById('primaryCTA').textContent = selectedContent.primaryCTA;
+      document.getElementById('secondaryCTA').textContent = selectedContent.secondaryCTA;
+      
+      // Update links
+      document.getElementById('primaryCTA').href = selectedContent.primaryLink;
+      document.getElementById('secondaryCTA').href = selectedContent.secondaryLink;
+      
+      // Add variant class to body for styling
+      document.body.classList.add('source-' + variant);
+    }
+
+    // ===== AUDIO PLAYER FUNCTIONALITY =====
+    
+    let isPlaying = false;
+    let audio = null;
+    let progressInterval = null;
+
+    function togglePreviewAudio() {
+      const playOrb = document.getElementById('playOrb');
+      audio = document.getElementById('previewAudio');
+      
+      if (!isPlaying) {
+        // Show loading
+        showLoading();
+        
+        audio.play().then(() => {
+          hideLoading();
+          isPlaying = true;
+          playOrb.innerHTML = '⏸️';
+          playOrb.classList.add('playing');
+          
+          // Start progress tracking
+          startProgressTracking();
+          
+          // Track audio play
+          trackAudioEvent('preview_audio_play');
+          
+        }).catch(error => {
+          hideLoading();
+          console.log('Audio play failed:', error);
+          
+          // Fallback to simulated experience
+          simulateAudioExperience();
+        });
+        
+        // Auto-stop when audio ends
+        audio.addEventListener('ended', function() {
+          stopAudio();
+          trackAudioEvent('preview_audio_complete');
+        });
+        
+      } else {
+        stopAudio();
+      }
+    }
+
+    function stopAudio() {
+      if (audio) audio.pause();
+      isPlaying = false;
+      document.getElementById('playOrb').innerHTML = '▶️';
+      document.getElementById('playOrb').classList.remove('playing');
+      stopProgressTracking();
+    }
+
+    function simulateAudioExperience() {
+      // Fallback experience when audio fails to load
+      isPlaying = true;
+      document.getElementById('playOrb').innerHTML = '⏸️';
+      document.getElementById('playOrb').classList.add('playing');
+      
+      // Simulate 3-minute audio with progress
+      let currentTime = 0;
+      const totalTime = 180; // 3 minutes
+      
+      progressInterval = setInterval(() => {
+        currentTime += 1;
+        updateProgress(currentTime, totalTime);
+        
+        if (currentTime >= totalTime) {
+          stopAudio();
+          trackAudioEvent('simulated_audio_complete');
+        }
+      }, 1000);
+      
+      trackAudioEvent('simulated_audio_play');
+    }
+
+    function startProgressTracking() {
+      progressInterval = setInterval(() => {
+        if (audio && !audio.paused) {
+          updateProgress(audio.currentTime, audio.duration);
+        }
+      }, 100);
+    }
+
+    function stopProgressTracking() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+      }
+    }
+
+    function updateProgress(current, total) {
+      const progressPercent = (current / total) * 100;
+      document.getElementById('progressFill').style.width = progressPercent + '%';
+      document.getElementById('currentTime').textContent = formatTime(current);
+      document.getElementById('totalTime').textContent = formatTime(total);
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    function seekAudio(event) {
+      if (!audio) return;
+      
+      const progressBar = document.getElementById('progressBar');
+      const rect = progressBar.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const width = rect.width;
+      const percentage = clickX / width;
+      
+      audio.currentTime = percentage * audio.duration;
+    }
+
+    function showLoading() {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+    }
+
+    function hideLoading() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+
+    // ===== TRACKING FUNCTIONS =====
+    
+    function trackAudioEvent(eventName) {
+      const variant = getSourceVariant();
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+          'event_category': 'Audio_Engagement',
+          'variant': variant,
+          'page': 'intimate_preview',
+          'visitor_id': sessionStorage.getItem('abtest_visitor_id')
+        });
+      }
+    }
+
+    function trackConversion(actionType, location) {
+      const variant = getSourceVariant();
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'preview_conversion', {
+          'event_category': 'Preview_Conversion',
+          'event_label': actionType,
+          'variant': variant,
+          'location': location,
+          'visitor_id': sessionStorage.getItem('abtest_visitor_id')
+        });
+      }
+      
+      console.log(`Preview Conversion: ${actionType} from ${variant} variant`);
+    }
+
+    // ===== INITIALIZATION =====
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const variant = getSourceVariant();
+      adaptContentForSource(variant);
+      
+      // Track page load
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'preview_page_load', {
+          'event_category': 'Preview_Engagement',
+          'variant': variant,
+          'referrer': document.referrer || 'direct',
+          'visitor_id': sessionStorage.getItem('abtest_visitor_id') || 'new'
+        });
+      }
+      
+      // Add choice experience section for balanced variant
+      if (variant === 'balanced') {
+        addChoiceExperienceSection();
+      }
+      
+      console.log(`Intimate
