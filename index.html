@@ -199,11 +199,11 @@
         });
       }
       
-    // Auto-route based on referrer after 3 seconds if no selection
+    // Auto-route based on referrer after 8 seconds if no selection (longer delay)
     setTimeout(() => {
       if (!sessionStorage.getItem('manual_selection_made')) {
         const referrer = document.referrer.toLowerCase();
-        let autoRoute = '/intimate-preview.html?utm_source=auto_route&utm_medium=index&utm_campaign=referrer_based';
+        let autoRoute = '/free-whisper-player.html?utm_source=auto_route&utm_medium=index&utm_campaign=referrer_based';
         
         if (referrer.includes('reddit') || referrer.includes('technical') || referrer.includes('engineer')) {
           autoRoute = '/audio_drops_vr_optimized.html?utm_source=auto_route&utm_medium=index&utm_campaign=technical_referrer';
@@ -212,12 +212,13 @@
         }
         
         document.getElementById('loadingText').classList.add('show');
+        document.getElementById('loadingText').textContent = 'Redirecting to your personalized experience...';
         
         setTimeout(() => {
           window.location.href = autoRoute;
-        }, 1000);
+        }, 2000);
       }
-    }, 3000);
+    }, 8000); // Increased from 3 to 8 seconds
     });
   </script>
 </body>
