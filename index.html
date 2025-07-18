@@ -3,340 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoneyBunniLexi – Immersive VR Audio Intimacy</title>
-  <meta name="description" content="Immersive VR audio intimacy experiences. Spatial audio technology for deep emotional connection. Automatically optimized for your journey.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <title>HoneyBunniLexi - VR Intimacy & Spatial Audio Experiences</title>
+  <meta name="description" content="Experience the future of intimate connection through VR spatial audio technology. Immersive, ethical, and emotionally designed for genuine intimacy.">
   <style>
-    :root {
-      --primary-purple: #8a2be2;
-      --secondary-purple: #9370db;
-      --accent-pink: #ff69b4;
-      --light-pink: #ffb6c1;
-      --dark-bg: #0a0a0a;
-      --mid-bg: #1a1a2e;
-      --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--gradient-bg);
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: #e8e8e8;
       min-height: 100vh;
-      overflow: hidden;
-      line-height: 1.6;
-    }
-
-    /* Smart Loading Screen */
-    .smart-loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-bg);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 10000;
-      transition: opacity 0.8s ease;
-    }
-
-    .smart-loading.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loading-content {
-      text-align: center;
-      max-width: 600px;
       padding: 2rem;
     }
 
-    .loading-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: var(--accent-pink);
+    .entry-container {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .brand-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #ffffff;
       margin-bottom: 1rem;
-      text-shadow: 0 0 20px rgba(255,105,180,0.5);
-      animation: titleGlow 3s ease-in-out infinite;
+      text-shadow: 0 0 20px rgba(138,43,226,0.3);
     }
 
-    @keyframes titleGlow {
-      0%, 100% { text-shadow: 0 0 20px rgba(255,105,180,0.5); }
-      50% { text-shadow: 0 0 30px rgba(255,105,180,0.9); }
-    }
-
-    .loading-subtitle {
+    .tagline {
+      font-size: 1.2rem;
       color: #c9b3ff;
       margin-bottom: 2rem;
-      font-size: 1.2rem;
       font-weight: 300;
     }
 
-    .detection-status {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin: 2rem 0;
-      font-size: 0.95rem;
-    }
-
-    .detection-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0.8rem 0;
-      color: #b8b8ff;
-    }
-
-    .detection-result {
-      color: var(--accent-pink);
-      font-weight: 600;
-    }
-
-    .smart-spinner {
-      width: 80px;
-      height: 80px;
-      border: 4px solid rgba(138,43,226,0.2);
-      border-top: 4px solid var(--primary-purple);
-      border-right: 4px solid var(--accent-pink);
-      border-radius: 50%;
-      margin: 2rem auto;
-      animation: smartSpin 2s linear infinite;
-    }
-
-    @keyframes smartSpin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .routing-message {
-      font-size: 1.1rem;
-      color: #ffffff;
-      margin-top: 2rem;
-      font-weight: 500;
-    }
-
-    /* VR Indicator */
-    .vr-status {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(138,43,226,0.9);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      z-index: 1001;
-      transition: all 0.3s ease;
-      opacity: 0;
-    }
-
-    .vr-status.detected {
-      background: linear-gradient(135deg, #00ff00, #32cd32);
-      animation: vrGlow 2s ease-in-out infinite;
-      opacity: 1;
-    }
-
-    .vr-status.show {
-      opacity: 1;
-    }
-
-    @keyframes vrGlow {
-      0%, 100% { box-shadow: 0 0 10px rgba(0,255,0,0.5); }
-      50% { box-shadow: 0 0 20px rgba(0,255,0,0.9); }
-    }
-
-    /* Routing Decision Display */
-    .route-preview {
-      background: rgba(255,105,180,0.1);
-      border: 2px solid rgba(255,105,180,0.3);
-      border-radius: 20px;
-      padding: 2rem;
-      margin: 2rem 0;
-      text-align: left;
-      backdrop-filter: blur(15px);
-      max-width: 500px;
-    }
-
-    .route-preview.technical {
-      background: rgba(138,43,226,0.1);
-      border-color: rgba(138,43,226,0.3);
-    }
-
-    .route-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .route-description {
-      color: #c9b3ff;
-      margin-bottom: 1rem;
+    .entry-description {
+      font-size: 1rem;
+      color: #b8c6db;
+      margin-bottom: 3rem;
       line-height: 1.6;
     }
 
-    .detection-factors {
-      font-size: 0.85rem;
-      color: #b8b8ff;
-      opacity: 0.8;
+    .experience-options {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .countdown {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
+    .experience-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .experience-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #667eea;
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
       color: #ffffff;
     }
 
-    .countdown-timer {
-      background: var(--accent-pink);
-      color: #1a0b14;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-weight: 600;
-      min-width: 2rem;
-      text-align: center;
+    .card-description {
+      font-size: 0.95rem;
+      color: #b8c6db;
+      margin: 0;
     }
 
-    .manual-override {
-      margin-top: 1.5rem;
-      text-align: center;
+    .loading-text {
+      color: #9bb5d6;
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .override-btn {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #c9b3ff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 0 0.5rem;
+    .loading-text.show {
+      opacity: 1;
     }
 
-    .override-btn:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--accent-pink);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .loading-title {
-        font-size: 2.2rem;
+    @media (max-width: 600px) {
+      .brand-title {
+        font-size: 2rem;
       }
       
-      .loading-content {
+      .entry-container {
         padding: 1rem;
       }
-      
-      .route-preview {
+
+      .experience-card {
         padding: 1.5rem;
-      }
-      
-      .override-btn {
-        display: block;
-        width: 100%;
-        margin: 0.5rem 0;
-      }
-    }
-
-    /* High contrast mode */
-    @media (prefers-contrast: high) {
-      .route-preview {
-        border-width: 3px;
-        background: rgba(255,255,255,0.1);
-      }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .smart-spinner,
-      .loading-title,
-      .vr-status {
-        animation: none;
       }
     }
   </style>
 </head>
 <body>
-  <!-- VR Status Indicator -->
-  <div class="vr-status" id="vrStatus">
-    🥽 Detecting VR...
-  </div>
-
-  <!-- Smart Loading and Routing Screen -->
-  <div class="smart-loading" id="smartLoading">
-    <div class="loading-content">
-      <div class="loading-title">HoneyBunniLexi</div>
-      <div class="loading-subtitle" id="loadingSubtitle">Analyzing your perfect intimate experience...</div>
+  <div class="entry-container">
+    <h1 class="brand-title">HoneyBunniLexi</h1>
+    <p class="tagline">VR Intimacy & Spatial Audio Experiences</p>
+    <p class="entry-description">
+      Welcome to the future of intimate connection. Choose your experience to begin your journey into spatial audio intimacy.
+    </p>
+    
+    <div class="experience-options">
       
-      <div class="detection-status">
-        <div class="detection-item">
-          <span>Device Type:</span>
-          <span class="detection-result" id="deviceResult">Detecting...</span>
-        </div>
-        <div class="detection-item">
-          <span>VR Capabilities:</span>
-          <span class="detection-result" id="vrResult">Checking...</span>
-        </div>
-        <div class="detection-item">
-          <span>Traffic Source:</span>
-          <span class="detection-result" id="trafficResult">Analyzing...</span>
-        </div>
-        <div class="detection-item">
-          <span>User Preferences:</span>
-          <span class="detection-result" id="preferencesResult">Learning...</span>
-        </div>
-      </div>
-
-      <div class="smart-spinner"></div>
-
-      <!-- Route Decision Display -->
-      <div class="route-preview" id="routePreview" style="display: none;">
-        <div class="route-title" id="routeTitle">
-          <span id="routeIcon">💕</span>
-          <span id="routeTitleText">The Intimate Sanctuary</span>
-        </div>
-        <div class="route-description" id="routeDesc">
-          Perfect match detected! Taking you to a tender, nurturing space designed to make you feel cherished and emotionally held.
-        </div>
-        <div class="detection-factors" id="detectionFactors">
-          Based on: Feminine-leaning traffic source, mobile device, intimate audio preference
-        </div>
-        
-        <div class="countdown">
-          <span>Redirecting in:</span>
-          <div class="countdown-timer" id="countdownTimer">3</div>
-          <span>seconds</span>
-        </div>
-        
-        <div class="manual-override">
-          <button class="override-btn" onclick="manualRoute('intimate-sanctuary')">Continue to Sanctuary</button>
-          <button class="override-btn" onclick="manualRoute('audio-technology')">Go to Tech Experience</button>
-        </div>
-      </div>
-
-      <div class="routing-message" id="routingMessage" style="display: none;">
-        Taking you to your personalized experience...
-      </div>
+      <a href="/intimate-preview.html?utm_source=direct&utm_medium=index&utm_campaign=spatial_preview" class="experience-card" onclick="trackSelection('spatial_preview')">
+        <span class="card-icon">🎧</span>
+        <h3 class="card-title">Spatial Audio Preview</h3>
+        <p class="card-description">90-second immersive spatial audio demonstration that moves around your head</p>
+      </a>
+      
+      <a href="/free-whisper-player.html?utm_source=direct&utm_medium=index&utm_campaign=whisper_experience" class="experience-card" onclick="trackSelection('whisper_experience')">
+        <span class="card-icon">🌙</span>
+        <h3 class="card-title">Audio Reset Experience</h3>
+        <p class="card-description">90-second relaxation and stress relief with gentle spatial positioning</p>
+      </a>
+      
+      <a href="/audio_drops_vr_optimized.html?utm_source=direct&utm_medium=index&utm_campaign=vr_tech" class="experience-card" onclick="trackSelection('vr_tech_landing')">
+        <span class="card-icon">🚀</span>
+        <h3 class="card-title">VR Pioneer Experience</h3>
+        <p class="card-description">For those who understand that intimacy can be engineered</p>
+      </a>
+      
+      <a href="/bunni_lair_vr_optimized.html?utm_source=direct&utm_medium=index&utm_campaign=intimate_sanctuary" class="experience-card" onclick="trackSelection('intimate_sanctuary')">
+        <span class="card-icon">💖</span>
+        <h3 class="card-title">Intimate Sanctuary</h3>
+        <p class="card-description">Sacred space for emotional intimacy and connection</p>
+      </a>
+      
     </div>
+    
+    <p class="loading-text" id="loadingText">Preparing your personalized experience...</p>
   </div>
 
   <!-- Google tag (gtag.js) -->
@@ -349,419 +164,60 @@
   </script>
 
   <script>
-    // ===== SMART ROUTING ALGORITHM =====
-    
-    let routingData = {
-      device: 'unknown',
-      vrCapable: false,
-      trafficSource: 'direct',
-      userAgent: navigator.userAgent,
-      referrer: document.referrer,
-      screenSize: { width: window.innerWidth, height: window.innerHeight },
-      language: navigator.language,
-      timestamp: Date.now()
-    };
-
-    let routingDecision = {
-      destination: 'intimate-sanctuary', // Default to feminine
-      confidence: 0,
-      factors: [],
-      reasoning: ''
-    };
-
-    // ===== DETECTION FUNCTIONS =====
-    
-    async function detectDevice() {
-      const width = window.innerWidth;
-      const userAgent = navigator.userAgent.toLowerCase();
-      
-      if (width < 768) {
-        routingData.device = 'mobile';
-      } else if (width < 1024) {
-        routingData.device = 'tablet';
-      } else if (userAgent.includes('vr') || userAgent.includes('oculus') || userAgent.includes('quest')) {
-        routingData.device = 'vr';
-      } else {
-        routingData.device = 'desktop';
-      }
-      
-      document.getElementById('deviceResult').textContent = routingData.device;
-      return routingData.device;
+    // Generate unique visitor ID for session tracking
+    if (!sessionStorage.getItem('vr_intimacy_visitor_id')) {
+      const visitorId = 'vr_visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('vr_intimacy_visitor_id', visitorId);
+      sessionStorage.setItem('vr_intimacy_start_time', Date.now());
     }
 
-    async function detectVRCapabilities() {
-      const vrStatus = document.getElementById('vrStatus');
+    function trackSelection(experienceType) {
+      sessionStorage.setItem('manual_selection_made', 'true');
+      const loadingText = document.getElementById('loadingText');
+      loadingText.classList.add('show');
       
-      try {
-        // Check for WebXR support
-        if ('xr' in navigator) {
-          const isSupported = await navigator.xr.isSessionSupported('immersive-vr');
-          if (isSupported) {
-            routingData.vrCapable = true;
-            vrStatus.textContent = '🥽 VR Ready';
-            vrStatus.classList.add('detected');
-            document.getElementById('vrResult').textContent = 'VR Ready';
-            return true;
-          }
-        }
-        
-        // Check for WebVR support (legacy)
-        if ('getVRDisplays' in navigator) {
-          const displays = await navigator.getVRDisplays();
-          if (displays.length > 0) {
-            routingData.vrCapable = true;
-            vrStatus.textContent = '🥽 VR Detected';
-            vrStatus.classList.add('detected');
-            document.getElementById('vrResult').textContent = 'VR Detected';
-            return true;
-          }
-        }
-        
-        // Check user agent for VR keywords
-        const userAgent = navigator.userAgent.toLowerCase();
-        const vrKeywords = ['oculus', 'quest', 'vive', 'pico', 'valve index', 'wmr'];
-        const hasVRKeyword = vrKeywords.some(keyword => userAgent.includes(keyword));
-        
-        if (hasVRKeyword) {
-          routingData.vrCapable = true;
-          vrStatus.textContent = '🥽 VR Likely';
-          vrStatus.classList.add('detected');
-          document.getElementById('vrResult').textContent = 'VR Likely';
-          return true;
-        }
-        
-        // No VR detected
-        vrStatus.textContent = '🎧 Audio Mode';
-        vrStatus.classList.add('show');
-        document.getElementById('vrResult').textContent = 'Audio Mode';
-        return false;
-        
-      } catch (error) {
-        console.log('VR detection error:', error);
-        vrStatus.textContent = '🎧 Audio Mode';
-        vrStatus.classList.add('show');
-        document.getElementById('vrResult').textContent = 'Audio Mode';
-        return false;
-      }
-    }
-
-    function analyzeTrafficSource() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const utmSource = urlParams.get('utm_source');
-      const utmMedium = urlParams.get('utm_medium');
-      const referrer = document.referrer.toLowerCase();
-      
-      let source = 'direct';
-      let sourceType = 'neutral';
-      
-      // Analyze UTM parameters
-      if (utmSource) {
-        source = utmSource;
-        if (utmSource.includes('feminine') || utmSource.includes('intimate') || utmSource.includes('sanctuary')) {
-          sourceType = 'feminine';
-        } else if (utmSource.includes('technical') || utmSource.includes('audio') || utmSource.includes('engineering')) {
-          sourceType = 'technical';
-        }
-      }
-      
-      // Analyze referrer
-      else if (referrer) {
-        if (referrer.includes('instagram.com') || referrer.includes('pinterest.com') || referrer.includes('tiktok.com')) {
-          source = 'social_feminine';
-          sourceType = 'feminine';
-        } else if (referrer.includes('reddit.com') || referrer.includes('hacker') || referrer.includes('github.com')) {
-          source = 'social_technical';
-          sourceType = 'technical';
-        } else if (referrer.includes('twitter.com') || referrer.includes('x.com')) {
-          source = 'twitter';
-          sourceType = 'neutral';
-        } else {
-          source = new URL(referrer).hostname;
-          sourceType = 'neutral';
-        }
-      }
-      
-      routingData.trafficSource = source;
-      routingData.sourceType = sourceType;
-      
-      document.getElementById('trafficResult').textContent = source;
-      return { source, sourceType };
-    }
-
-    function detectUserPreferences() {
-      const factors = [];
-      let preference = 'intimate'; // Default lean
-      
-      // Device-based preferences
-      if (routingData.device === 'mobile') {
-        factors.push('Mobile user (tends toward intimate)');
-        preference = 'intimate';
-      } else if (routingData.device === 'desktop') {
-        factors.push('Desktop user (mixed preference)');
-      } else if (routingData.device === 'vr') {
-        factors.push('VR user (tech-forward)');
-        preference = 'technical';
-      }
-      
-      // Traffic source preferences
-      if (routingData.sourceType === 'feminine') {
-        factors.push('Feminine-leaning traffic source');
-        preference = 'intimate';
-      } else if (routingData.sourceType === 'technical') {
-        factors.push('Technical traffic source');
-        preference = 'technical';
-      }
-      
-      // Time-based preferences (intimate audio tends to peak evenings)
-      const hour = new Date().getHours();
-      if (hour >= 18 || hour <= 6) {
-        factors.push('Evening/night time (intimate peak)');
-        if (preference === 'intimate') preference = 'intimate';
-      } else {
-        factors.push('Daytime browsing');
-      }
-      
-      // Language/locale preferences
-      const lang = navigator.language.toLowerCase();
-      if (lang.startsWith('en')) {
-        factors.push('English speaker');
-      }
-      
-      routingData.preferenceFactors = factors;
-      routingData.detectedPreference = preference;
-      
-      document.getElementById('preferencesResult').textContent = preference + ' content';
-      return { preference, factors };
-    }
-
-    // ===== ROUTING DECISION ALGORITHM =====
-    
-    function makeRoutingDecision() {
-      let score = 0;
-      const factors = [];
-      
-      // Base score: Lean toward intimate (your primary audience)
-      score += 60;
-      factors.push('Base intimate audience preference');
-      
-      // Device scoring
-      if (routingData.device === 'mobile') {
-        score += 20;
-        factors.push('Mobile device (+20 intimate)');
-      } else if (routingData.device === 'vr') {
-        score -= 30;
-        factors.push('VR device (-30 toward technical)');
-      } else if (routingData.device === 'desktop') {
-        score -= 10;
-        factors.push('Desktop device (-10 toward technical)');
-      }
-      
-      // Traffic source scoring
-      if (routingData.sourceType === 'feminine') {
-        score += 25;
-        factors.push('Feminine traffic source (+25 intimate)');
-      } else if (routingData.sourceType === 'technical') {
-        score -= 40;
-        factors.push('Technical traffic source (-40 toward technical)');
-      }
-      
-      // VR capability scoring
-      if (routingData.vrCapable) {
-        score -= 15;
-        factors.push('VR capable (-15 toward technical)');
-      }
-      
-      // Time-based scoring
-      const hour = new Date().getHours();
-      if (hour >= 18 || hour <= 6) {
-        score += 10;
-        factors.push('Evening/night time (+10 intimate)');
-      }
-      
-      // Screen size scoring
-      if (window.innerWidth < 768) {
-        score += 10;
-        factors.push('Small screen (+10 intimate)');
-      } else if (window.innerWidth > 1440) {
-        score -= 10;
-        factors.push('Large screen (-10 toward technical)');
-      }
-      
-      // Determine destination
-      let destination, confidence;
-      if (score >= 50) {
-        destination = 'intimate-sanctuary';
-        confidence = Math.min(Math.round((score - 50) / 50 * 100), 100);
-      } else {
-        destination = 'audio-technology';
-        confidence = Math.min(Math.round((50 - score) / 50 * 100), 100);
-      }
-      
-      routingDecision = {
-        destination,
-        confidence,
-        factors,
-        score,
-        reasoning: generateReasoning(destination, factors)
-      };
-      
-      return routingDecision;
-    }
-
-    function generateReasoning(destination, factors) {
-      if (destination === 'intimate-sanctuary') {
-        return `Perfect match for intimate sanctuary based on ${factors.length} factors indicating preference for emotional, nurturing experiences.`;
-      } else {
-        return `Routing to technical audio experience based on ${factors.length} factors indicating interest in innovation and engineering.`;
-      }
-    }
-
-    // ===== UI UPDATES =====
-    
-    function updateRouteDisplay(decision) {
-      const preview = document.getElementById('routePreview');
-      const icon = document.getElementById('routeIcon');
-      const title = document.getElementById('routeTitleText');
-      const desc = document.getElementById('routeDesc');
-      const factors = document.getElementById('detectionFactors');
-      
-      if (decision.destination === 'intimate-sanctuary') {
-        preview.className = 'route-preview';
-        icon.textContent = '💕';
-        title.textContent = 'The Intimate Sanctuary';
-        desc.textContent = 'Perfect match detected! Taking you to a tender, nurturing space designed to make you feel cherished and emotionally held.';
-      } else {
-        preview.className = 'route-preview technical';
-        icon.textContent = '🎚️';
-        title.textContent = 'Advanced Audio Intimacy';
-        desc.textContent = 'Excellent fit! Directing you to precision-engineered spatial audio experiences focused on technical innovation and immersive connection.';
-      }
-      
-      factors.textContent = `Based on: ${decision.factors.slice(0, 3).join(', ').toLowerCase()}`;
-      preview.style.display = 'block';
-    }
-
-    function startCountdown(callback) {
-      let count = 3;
-      const timer = document.getElementById('countdownTimer');
-      
-      const interval = setInterval(() => {
-        count--;
-        timer.textContent = count;
-        
-        if (count <= 0) {
-          clearInterval(interval);
-          callback();
-        }
-      }, 1000);
-    }
-
-    // ===== ROUTING EXECUTION =====
-    
-    function executeRouting(destination) {
-      document.getElementById('routingMessage').style.display = 'block';
-      document.getElementById('loadingSubtitle').textContent = 'Taking you to your perfect experience...';
-      
-      // Track routing decision
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'smart_routing_decision', {
-          'event_category': 'Smart_Routing',
-          'destination': destination,
-          'confidence': routingDecision.confidence,
-          'device_type': routingData.device,
-          'vr_capable': routingData.vrCapable,
-          'traffic_source': routingData.trafficSource,
-          'routing_score': routingDecision.score,
-          'factors_count': routingDecision.factors.length
+        gtag('event', 'index_experience_selection', {
+          'event_category': 'VR_Intimacy_Navigation',
+          'event_label': experienceType,
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id'),
+          'selection_time': Date.now()
         });
       }
       
-      // Route to destination
-      setTimeout(() => {
-        if (destination === 'intimate-sanctuary') {
-          window.location.href = '/bunni-lair.html?utm_source=smart_router&utm_medium=auto_routing&utm_campaign=intimate_sanctuary&confidence=' + routingDecision.confidence;
-        } else {
-          window.location.href = '/audio-drops.html?utm_source=smart_router&utm_medium=auto_routing&utm_campaign=audio_technology&confidence=' + routingDecision.confidence;
-        }
-      }, 1500);
+      console.log(`Index: User selected ${experienceType} experience`);
     }
 
-    function manualRoute(destination) {
-      // Track manual override
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'routing_manual_override', {
-          'event_category': 'Smart_Routing',
-          'original_destination': routingDecision.destination,
-          'chosen_destination': destination,
-          'override_reason': 'user_choice'
-        });
-      }
-      
-      executeRouting(destination);
-    }
-
-    // ===== INITIALIZATION =====
-    
-    async function initSmartRouting() {
-      try {
-        // Sequential detection with UI updates
-        await detectDevice();
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        await detectVRCapabilities();
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        analyzeTrafficSource();
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        detectUserPreferences();
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        // Make routing decision
-        const decision = makeRoutingDecision();
-        updateRouteDisplay(decision);
-        
-        console.log('Smart Routing Decision:', decision);
-        console.log('Routing Data:', routingData);
-        
-        // Start countdown and execute
-        startCountdown(() => {
-          executeRouting(decision.destination);
-        });
-        
-      } catch (error) {
-        console.error('Smart routing error:', error);
-        // Fallback to intimate sanctuary
-        setTimeout(() => {
-          executeRouting('intimate-sanctuary');
-        }, 3000);
-      }
-    }
-
-    // Start the smart routing process
+    // Track page load
     document.addEventListener('DOMContentLoaded', function() {
-      // Track router initialization
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'smart_router_load', {
-          'event_category': 'Smart_Routing',
-          'user_agent': navigator.userAgent,
-          'screen_size': window.innerWidth + 'x' + window.innerHeight,
-          'language': navigator.language,
-          'referrer': document.referrer || 'direct'
+        gtag('event', 'index_page_load', {
+          'event_category': 'VR_Intimacy_Navigation',
+          'referrer': document.referrer || 'direct',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id'),
+          'load_time': Date.now()
         });
       }
       
-      // Initialize routing after brief delay for UX
-      setTimeout(initSmartRouting, 1000);
-    });
-
-    // Handle errors gracefully
-    window.addEventListener('error', function(e) {
-      console.error('Router error:', e.error);
-      // Fallback to intimate sanctuary on any error
-      setTimeout(() => {
-        window.location.href = '/bunni-lair.html?utm_source=router_fallback&utm_medium=error_recovery&utm_campaign=intimate_sanctuary';
-      }, 2000);
+    // Auto-route based on referrer after 3 seconds if no selection
+    setTimeout(() => {
+      if (!sessionStorage.getItem('manual_selection_made')) {
+        const referrer = document.referrer.toLowerCase();
+        let autoRoute = '/intimate-preview.html?utm_source=auto_route&utm_medium=index&utm_campaign=referrer_based';
+        
+        if (referrer.includes('reddit') || referrer.includes('technical') || referrer.includes('engineer')) {
+          autoRoute = '/audio_drops_vr_optimized.html?utm_source=auto_route&utm_medium=index&utm_campaign=technical_referrer';
+        } else if (referrer.includes('instagram') || referrer.includes('tiktok') || referrer.includes('feminine')) {
+          autoRoute = '/bunni_lair_vr_optimized.html?utm_source=auto_route&utm_medium=index&utm_campaign=feminine_referrer';
+        }
+        
+        document.getElementById('loadingText').classList.add('show');
+        
+        setTimeout(() => {
+          window.location.href = autoRoute;
+        }, 1000);
+      }
+    }, 3000);
     });
   </script>
 </body>

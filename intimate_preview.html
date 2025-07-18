@@ -6,10 +6,26 @@
   <title>Experience Spatial Audio Intimacy - Free Preview</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
+    /* CSS Variables for Dynamic Theming */
+    :root {
+      --primary-color: #8a2be2;
+      --secondary-color: #9370db;
+      --accent-color: #667eea;
+      --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+    }
+
+    /* Feminine Theme Override */
+    .theme-feminine {
+      --primary-color: #ff69b4;
+      --secondary-color: #ffb6c1;
+      --accent-color: #ffc0cb;
+      --gradient-bg: linear-gradient(135deg, #1a0b14 0%, #2d1b3d 30%, #4a1a4a 70%, #2d1b3d 100%);
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+      background: var(--gradient-bg);
       color: #e8e8e8;
       overflow-x: hidden;
       line-height: 1.6;
@@ -47,7 +63,7 @@
     }
 
     .preview-badge {
-      background: linear-gradient(135deg, #8a2be2, #ff69b4);
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       color: white;
       padding: 0.6rem 1.8rem;
       border-radius: 30px;
@@ -108,7 +124,7 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(45deg, #8a2be2, #ff69b4, #8a2be2);
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
       border-radius: 20px;
       z-index: -1;
       animation: borderGlow 3s ease-in-out infinite;
@@ -138,7 +154,7 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #8a2be2, #ff69b4);
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -161,37 +177,6 @@
     @keyframes playingPulse {
       0%, 100% { box-shadow: 0 0 40px rgba(138,43,226,0.6); }
       50% { box-shadow: 0 0 80px rgba(138,43,226,1); }
-    }
-
-    .audio-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .progress-bar {
-      flex: 1;
-      height: 6px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 3px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #8a2be2, #ff69b4);
-      border-radius: 3px;
-      width: 0%;
-      transition: width 0.1s ease;
-    }
-
-    .time-display {
-      font-size: 0.9rem;
-      color: #b8b8ff;
-      min-width: 80px;
-      text-align: center;
     }
 
     .audio-description {
@@ -221,7 +206,7 @@
     }
 
     .headphones-notice strong {
-      color: #ff69b4;
+      color: var(--accent-color);
     }
 
     /* Call to Action Section */
@@ -255,7 +240,7 @@
     }
 
     .cta-primary {
-      background: linear-gradient(135deg, #8a2be2 0%, #ff69b4 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
       color: white;
       padding: 1.2rem 2.5rem;
       border-radius: 50px;
@@ -278,7 +263,7 @@
       background: transparent;
       color: #c9b3ff;
       padding: 1rem 2rem;
-      border: 2px solid #8a2be2;
+      border: 2px solid var(--primary-color);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
@@ -292,66 +277,6 @@
       transform: translateY(-2px);
     }
 
-    /* Features Grid */
-    .features-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-
-    .feature-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(138,43,226,0.5);
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .feature-card p {
-      opacity: 0.8;
-      font-size: 0.9rem;
-      margin: 0;
-    }
-
-    /* Privacy & Safety */
-    .privacy-section {
-      background: rgba(138,43,226,0.05);
-      border: 1px solid rgba(138,43,226,0.2);
-      border-radius: 15px;
-      padding: 2rem;
-      margin: 3rem 0;
-      text-align: center;
-    }
-
-    .privacy-section h3 {
-      color: #c9b3ff;
-      margin-bottom: 1rem;
-    }
-
-    .privacy-section p {
-      opacity: 0.9;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
     .footer {
       background: rgba(0,0,0,0.3);
       padding: 2rem 0;
@@ -359,40 +284,6 @@
       color: #b8b8ff;
       font-size: 0.9rem;
       margin-top: 3rem;
-    }
-
-    /* Loading Animation */
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .loading-content {
-      text-align: center;
-      color: white;
-    }
-
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 3px solid rgba(138,43,226,0.3);
-      border-top: 3px solid #8a2be2;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
 
     /* Responsive Design */
@@ -423,37 +314,10 @@
         width: 100%;
         padding: 1.2rem;
       }
-
-      .features-preview {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    /* Dynamic Styling Based on Source */
-    .source-masculine {
-      --primary-color: #8a2be2;
-      --secondary-color: #9370db;
-      --accent-color: #667eea;
-    }
-
-    .source-feminine {
-      --primary-color: #ff69b4;
-      --secondary-color: #ffb6c1;
-      --accent-color: #ffc0cb;
     }
   </style>
 </head>
 <body>
-  <!-- Loading Overlay -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-content">
-      <div class="loading-spinner"></div>
-      <h3>Preparing Your Intimate Experience...</h3>
-      <p>Loading spatial audio technology</p>
-    </div>
-  </div>
-
   <header>
     <div class="container">
       <h2 class="brand-adaptive">HoneyBunniLexi</h2>
@@ -463,12 +327,12 @@
 
   <section class="hero">
     <div class="container">
-      <div class="preview-badge">🎧 Free Spatial Audio Preview</div>
+      <div class="preview-badge">🎧 Free 90-Second Spatial Audio Preview</div>
       
       <h1 id="adaptiveHeadline">Experience True Audio Intimacy</h1>
       <p class="subtitle" id="adaptiveSubtitle">Feel what it's like to be held in sound and space</p>
       <p class="description" id="adaptiveDescription">
-        This 15-second preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.
+        This 90-second preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.
       </p>
     </div>
   </section>
@@ -488,21 +352,13 @@
             <h3 id="audioTitle">Gentle Introduction to Spatial Intimacy</h3>
             <p id="audioDescription">Experience whispers that move around your head, creating the feeling of intimate presence</p>
           </div>
-          
-          <div class="audio-controls">
-            <div class="time-display" id="currentTime">0:00</div>
-            <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="time-display" id="totalTime">0:15</div>
-          </div>
         </div>
         
         <audio id="previewAudio" preload="metadata">
-          <source src="/intimate-preview-spatial.mp3" type="audio/mpeg">
-          <source src="/intimate-preview-spatial.wav" type="audio/wav">
-          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-          Your browser does not support the audio element.
+          <source src="/audio/intimate-preview-spatial-90s.mp3" type="audio/mpeg">
+          <source src="/audio/intimate-preview-spatial-90s.wav" type="audio/wav">
+          <!-- Fallback placeholder - silent 90-second audio -->
+          <source src="data:audio/wav;base64,UklGRvIDAABXQVZFZm10IBAAAAABAAEAESsAABEsBAABAAgAZGF0YQoBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav">
         </audio>
         
         <div class="headphones-notice">
@@ -513,64 +369,17 @@
     </div>
   </section>
 
-  <!-- Features Preview -->
-  <section>
-    <div class="container">
-      <div class="features-preview">
-        
-        <div class="feature-card">
-          <span class="feature-icon">🌊</span>
-          <h3>3D Spatial Positioning</h3>
-          <p>Whispers and sounds move around your head in 3D space, creating realistic intimate presence</p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">💫</span>
-          <h3>Emotional Anchoring</h3>
-          <p>Carefully designed psychological techniques create genuine emotional connection and comfort</p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">🔒</span>
-          <h3>Safe & Consensual</h3>
-          <p>Every experience is designed with emotional safety, clear boundaries, and your comfort in mind</p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">🥽</span>
-          <h3>VR Compatible</h3>
-          <p>Optimized for VR headsets like Meta Quest for full immersive intimate environments</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
   <!-- Call to Action -->
   <section>
     <div class="container">
       <div class="cta-section">
         <h2 id="ctaHeadline">Ready for the Full Experience?</h2>
-        <p id="ctaDescription">This preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection and spatial audio intimacy.</p>
+        <p id="ctaDescription">This 90-second preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection and spatial audio intimacy.</p>
         
         <div class="cta-buttons">
           <a href="#" class="cta-primary" id="primaryCTA" onclick="trackConversion('full_experience_cta', 'preview_page')">Explore Full Experiences</a>
           <a href="#" class="cta-secondary" id="secondaryCTA" onclick="trackConversion('learn_more_cta', 'preview_page')">Learn More About The Technology</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Privacy & Safety -->
-  <section>
-    <div class="container">
-      <div class="privacy-section">
-        <h3>💖 Your Privacy & Emotional Safety</h3>
-        <p>
-          Your intimate experiences are completely private. No data is collected about your listening habits. 
-          Every audio is designed to make you feel safe, respected, and emotionally held. 
-          You can stop, pause, or step away at any time. This is your sanctuary.
-        </p>
       </div>
     </div>
   </section>
@@ -592,7 +401,7 @@
   </script>
 
   <script>
-    // ===== ADAPTIVE CONTENT BASED ON SOURCE =====
+    // ===== UNIFIED ADAPTIVE CONTENT SYSTEM =====
     
     function getSourceVariant() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -602,8 +411,9 @@
       // Determine source variant
       if (utmSource && utmSource.includes('feminine')) return 'feminine';
       if (utmSource && utmSource.includes('masculine')) return 'masculine';
-      if (referrer.includes('bunni-lair')) return 'feminine';
-      if (referrer.includes('audio-drops')) return 'masculine';
+      if (utmSource && utmSource.includes('technical')) return 'masculine';
+      if (referrer.includes('bunni') || referrer.includes('sanctuary')) return 'feminine';
+      if (referrer.includes('audio-drops') || referrer.includes('technical')) return 'masculine';
       
       // Default to balanced approach
       return 'balanced';
@@ -612,47 +422,47 @@
     function adaptContentForSource(variant) {
       const content = {
         masculine: {
-          tagline: "Immersive Audio Technology",
-          headline: "Experience Spatial Audio Intimacy",
-          subtitle: "Feel what advanced binaural technology can create",
-          description: "This 3-minute preview demonstrates the spatial audio engineering behind our intimate experiences. Experience how technology can create genuine emotional connection through sound.",
-          experienceTitle: "🎧 Spatial Audio Demo",
-          audioTitle: "Advanced Binaural Positioning",
-          audioDescription: "Experience whispers engineered to move in 3D space around your head",
-          ctaHeadline: "Ready for Advanced Experiences?",
-          ctaDescription: "Our full experiences use cutting-edge spatial audio to create deep emotional connection.",
-          primaryCTA: "Explore Premium Experiences →",
+          tagline: "VR Intimacy Engineering",
+          headline: "You're Not Just an Early Adopter—You're a Pioneer",
+          subtitle: "For those who understand that intimacy can be engineered",
+          description: "When someone sees 'VR Spatial Audio Intimacy' in your history, they immediately understand your sophistication level. This 90-second demo reveals what's possible when technology meets desire.",
+          experienceTitle: "🎧 Intimacy Technology Demo",
+          audioTitle: "Precision-Engineered Connection",
+          audioDescription: "Experience what most people don't even know exists yet",
+          ctaHeadline: "Ready to Position Yourself at the Forefront?",
+          ctaDescription: "The men who understand binaural emotional engineering... understand.",
+          primaryCTA: "Access Pioneer-Level Experiences →",
           secondaryCTA: "View Technical Specifications",
-          primaryLink: "/audio-drops.html#products",
-          secondaryLink: "/audio-drops.html#tech"
+          primaryLink: "/audio_drops_vr_optimized.html#products",
+          secondaryLink: "/audio_drops_vr_optimized.html#tech"
         },
         feminine: {
-          tagline: "Intimate Audio Sanctuary",
-          headline: "Feel Held in Sacred Space",
-          subtitle: "Experience what it feels like to be cherished through sound",
-          description: "This gentle 3-minute preview shows how spatial audio can create feelings of emotional safety and intimate connection. Let yourself feel what it's like to be truly held.",
-          experienceTitle: "💗 Intimate Sanctuary Preview",
-          audioTitle: "Gentle Spatial Embrace",
-          audioDescription: "Feel whispers that surround you like a tender, loving embrace",
-          ctaHeadline: "Ready to Feel Cherished?",
-          ctaDescription: "Our full sanctuary experiences are designed to make you feel deeply loved and emotionally safe.",
-          primaryCTA: "Enter Your Sanctuary →",
-          secondaryCTA: "Learn About Our Approach",
-          primaryLink: "/bunni-lair.html#tiers",
-          secondaryLink: "/bunni-lair.html#ethics"
+          tagline: "Sacred Intimacy Technology",
+          headline: "Are You Ready for Spatial Intimacy?",
+          subtitle: "For women who understand that intimacy deserves to be engineered",
+          description: "When you invest in spatial intimacy, you're not just buying audio—you're declaring that your emotional needs are sacred. This 90-second gateway will show you what engineered tenderness feels like.",
+          experienceTitle: "💗 Sacred Intimacy Gateway",
+          audioTitle: "Engineered Emotional Embrace",
+          audioDescription: "Feel what happens when intimacy meets intentional design",
+          ctaHeadline: "Ready to Declare Your Worth?",
+          ctaDescription: "Other women are investing in spatial intimacy. The question is: are you ready to join them?",
+          primaryCTA: "Claim Your Sacred Technology →",
+          secondaryCTA: "Learn How Intimacy is Engineered",
+          primaryLink: "/bunni_lair_vr_optimized.html#tiers",
+          secondaryLink: "/bunni_lair_vr_optimized.html#ethics"
         },
         balanced: {
-          tagline: "Immersive Audio Intimacy",
-          headline: "Experience True Audio Intimacy",
-          subtitle: "Feel what it's like to be held in sound and space",
-          description: "This 3-minute preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.",
-          experienceTitle: "🎧 Spatial Intimacy Preview",
-          audioTitle: "Gentle Introduction to Spatial Intimacy",
-          audioDescription: "Experience whispers that move around your head, creating the feeling of intimate presence",
-          ctaHeadline: "Ready for the Full Experience?",
-          ctaDescription: "This preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection.",
-          primaryCTA: "Explore Full Experiences →",
-          secondaryCTA: "Learn More About The Technology",
+          tagline: "Intimacy Technology",
+          headline: "Are You Ready for What Most People Don't Know Exists?",
+          subtitle: "This isn't for everyone. But for those who get it...",
+          description: "You're about to experience something that will immediately separate you from people who are still using regular audio for intimate connection. This 90-second gateway reveals what's possible.",
+          experienceTitle: "🎧 Intimacy Technology Gateway",
+          audioTitle: "What Sophistication Sounds Like",
+          audioDescription: "Experience the difference between content and connection",
+          ctaHeadline: "Ready to Understand What You've Been Missing?",
+          ctaDescription: "This 90-second preview is your invitation. The question is: are you ready to accept it?",
+          primaryCTA: "Enter the Next Level →",
+          secondaryCTA: "Learn What Makes This Different",
           primaryLink: "#choose-experience",
           secondaryLink: "#features"
         }
@@ -677,38 +487,31 @@
       document.getElementById('primaryCTA').href = selectedContent.primaryLink;
       document.getElementById('secondaryCTA').href = selectedContent.secondaryLink;
       
-      // Add variant class to body for styling
-      document.body.classList.add('source-' + variant);
+      // Apply theme styling
+      if (variant === 'feminine') {
+        document.body.classList.add('theme-feminine');
+      }
     }
 
     // ===== AUDIO PLAYER FUNCTIONALITY =====
     
     let isPlaying = false;
     let audio = null;
-    let progressInterval = null;
 
     function togglePreviewAudio() {
       const playOrb = document.getElementById('playOrb');
       audio = document.getElementById('previewAudio');
       
       if (!isPlaying) {
-        // Show loading
-        showLoading();
-        
         audio.play().then(() => {
-          hideLoading();
           isPlaying = true;
           playOrb.innerHTML = '⏸️';
           playOrb.classList.add('playing');
           
-          // Start progress tracking
-          startProgressTracking();
-          
           // Track audio play
-          trackAudioEvent('preview_audio_play');
+          trackAudioEvent('preview_audio_play_90s');
           
         }).catch(error => {
-          hideLoading();
           console.log('Audio play failed:', error);
           
           // Fallback to simulated experience
@@ -718,7 +521,7 @@
         // Auto-stop when audio ends
         audio.addEventListener('ended', function() {
           stopAudio();
-          trackAudioEvent('preview_audio_complete');
+          trackAudioEvent('preview_audio_complete_90s');
         });
         
       } else {
@@ -731,7 +534,6 @@
       isPlaying = false;
       document.getElementById('playOrb').innerHTML = '▶️';
       document.getElementById('playOrb').classList.remove('playing');
-      stopProgressTracking();
     }
 
     function simulateAudioExperience() {
@@ -740,82 +542,27 @@
       document.getElementById('playOrb').innerHTML = '⏸️';
       document.getElementById('playOrb').classList.add('playing');
       
-      // Simulate 3-minute audio with progress
-      let currentTime = 0;
-      const totalTime = 180; // 3 minutes
+      // Simulate 90-second audio
+      setTimeout(() => {
+        stopAudio();
+        trackAudioEvent('simulated_audio_complete_90s');
+      }, 90000);
       
-      progressInterval = setInterval(() => {
-        currentTime += 1;
-        updateProgress(currentTime, totalTime);
-        
-        if (currentTime >= totalTime) {
-          stopAudio();
-          trackAudioEvent('simulated_audio_complete');
-        }
-      }, 1000);
-      
-      trackAudioEvent('simulated_audio_play');
+      trackAudioEvent('simulated_audio_play_90s');
     }
 
-    function startProgressTracking() {
-      progressInterval = setInterval(() => {
-        if (audio && !audio.paused) {
-          updateProgress(audio.currentTime, audio.duration);
-        }
-      }, 100);
-    }
-
-    function stopProgressTracking() {
-      if (progressInterval) {
-        clearInterval(progressInterval);
-        progressInterval = null;
-      }
-    }
-
-    function updateProgress(current, total) {
-      const progressPercent = (current / total) * 100;
-      document.getElementById('progressFill').style.width = progressPercent + '%';
-      document.getElementById('currentTime').textContent = formatTime(current);
-      document.getElementById('totalTime').textContent = formatTime(total);
-    }
-
-    function formatTime(seconds) {
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
-      return mins + ':' + (secs < 10 ? '0' : '') + secs;
-    }
-
-    function seekAudio(event) {
-      if (!audio) return;
-      
-      const progressBar = document.getElementById('progressBar');
-      const rect = progressBar.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const width = rect.width;
-      const percentage = clickX / width;
-      
-      audio.currentTime = percentage * audio.duration;
-    }
-
-    function showLoading() {
-      document.getElementById('loadingOverlay').style.display = 'flex';
-    }
-
-    function hideLoading() {
-      document.getElementById('loadingOverlay').style.display = 'none';
-    }
-
-    // ===== TRACKING FUNCTIONS =====
+    // ===== UNIFIED TRACKING FUNCTIONS =====
     
     function trackAudioEvent(eventName) {
       const variant = getSourceVariant();
       
       if (typeof gtag !== 'undefined') {
         gtag('event', eventName, {
-          'event_category': 'Audio_Engagement',
+          'event_category': 'VR_Intimacy_Preview',
           'variant': variant,
-          'page': 'intimate_preview',
-          'visitor_id': sessionStorage.getItem('abtest_visitor_id')
+          'page': 'unified_preview',
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
         });
       }
     }
@@ -825,11 +572,12 @@
       
       if (typeof gtag !== 'undefined') {
         gtag('event', 'preview_conversion', {
-          'event_category': 'Preview_Conversion',
+          'event_category': 'VR_Intimacy_Conversion',
           'event_label': actionType,
           'variant': variant,
           'location': location,
-          'visitor_id': sessionStorage.getItem('abtest_visitor_id')
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
         });
       }
       
@@ -844,17 +592,17 @@
       
       // Track page load
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'preview_page_load', {
-          'event_category': 'Preview_Engagement',
+        gtag('event', 'vr_intimacy_preview_load', {
+          'event_category': 'VR_Intimacy_Preview',
           'variant': variant,
           'referrer': document.referrer || 'direct',
-          'visitor_id': sessionStorage.getItem('abtest_visitor_id') || 'new'
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id') || 'new'
         });
       }
       
-      // Add choice experience section for balanced variant
-      if (variant === 'balanced') {
-        addChoiceExperienceSection();
-      }
-      
-      console.log(`Intimate
+      console.log(`Unified Preview Initialized: ${variant} variant with 90-second audio`);
+    });
+  </script>
+</body>
+</html>
