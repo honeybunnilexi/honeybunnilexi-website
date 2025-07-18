@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR Intimacy Engineering - For Pioneers Only</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #2d1b69 100%);
+      color: #e8e8e8;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.3);
+    }
+
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(ellipse at center, rgba(138,43,226,0.1) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      text-shadow: 0 0 20px rgba(138,43,226,0.3);
+    }
+
+    .hero .subtitle {
+      font-size: 1.4rem;
+      color: #c9b3ff;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: #b8b8ff;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .pioneer-badge {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(255,107,107,0.3); }
+      50% { box-shadow: 0 6px 25px rgba(255,107,107,0.6); }
+    }
+
+    .immersion-preview {
+      background: rgba(138,43,226,0.1);
+      border: 1px solid rgba(138,43,226,0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      backdrop-filter: blur(10px);
+    }
+
+    .preview-title {
+      color: #c9b3ff;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .spatial-audio-demo {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .audio-orb {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8a2be2, #9370db);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(138,43,226,0.5);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .audio-orb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(138,43,226,0.8);
+    }
+
+    .demo-info {
+      text-align: left;
+    }
+
+    .demo-info h4 {
+      color: #ffffff;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .demo-info p {
+      margin: 0;
+      color: #c9b3ff;
+      font-size: 0.9rem;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+      color: white;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(138,43,226,0.3);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(138,43,226,0.5);
+    }
+
+    .identity-badge {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(138,43,226,0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: #c9b3ff;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+
+      .cta-primary {
+        width: 100%;
+        padding: 1.4rem;
+        font-size: 1.1rem;
+      }
+
+      .spatial-audio-demo {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .demo-info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h2 style="margin: 0; font-weight: 300; color: #e8e8e8;">HoneyBunniLexi</h2>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #c9b3ff;">VR Intimacy Engineering</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="pioneer-badge">🚀 For Pioneers Only</div>
+      
+      <h1>You're Not Just an Early Adopter.<br>You're a <em>Pioneer</em>.</h1>
+      <p class="subtitle">For those who understand that intimacy can be engineered</p>
+      <p class="description">
+        When someone sees "VR Spatial Audio Intimacy" in your history, they immediately understand your sophistication level.<br><br>
+        This isn't for people still using regular audio for intimate connection. This is <strong>precision-engineered emotional technology</strong> for those who recognize that the future of intimacy is spatial, immersive, and completely revolutionary.
+      </p>
+      
+      <!-- Spatial Audio Demo -->
+      <div class="immersion-preview">
+        <h3 class="preview-title">🎧 Pioneer Access Demo</h3>
+        <div class="spatial-audio-demo">
+          <div class="audio-orb" onclick="toggleSpatialDemo()">
+            🔊
+          </div>
+          <div class="demo-info">
+            <h4>What Sophistication Sounds Like</h4>
+            <p>Experience what most people don't even know exists yet</p>
+            <p style="font-size: 0.8rem; color: #9999ff;">VR headset recommended for full pioneer experience</p>
+          </div>
+        </div>
+        <audio id="spatialAudio" preload="metadata">
+          <source src="/audio/spatial-demo-sample.mp3" type="audio/mpeg">
+          <source src="/audio/spatial-demo-sample.wav" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+        <div class="identity-badge">
+          <strong>Identity Signal:</strong> "He understands binaural emotional engineering. He's positioning himself at the forefront of how intimacy and technology will evolve."
+        </div>
+      </div>
+      
+      <button class="cta-primary" onclick="trackRPVConversion('pioneer_preview', 0, 'hero_cta'); window.open('/free_whisper_player.html?utm_source=masculine_technical&utm_medium=hero&utm_campaign=pioneer_preview', '_blank')">Access Pioneer-Level Experience →</button>
+    </div>
+  </section>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // ===== UNIFIED RPV TRACKING SYSTEM =====
+    
+    const TEST_VARIANT = 'masculine_technical';
+    const TEST_START_TIME = Date.now();
+    let pageStartTime = Date.now();
+    let totalRevenueGenerated = 0;
+    let conversionCount = 0;
+    let visitorId = generateUnifiedVisitorId();
+    
+    if (!sessionStorage.getItem('vr_intimacy_visitor_id')) {
+      sessionStorage.setItem('vr_intimacy_visitor_id', visitorId);
+      sessionStorage.setItem('vr_intimacy_variant', TEST_VARIANT);
+      sessionStorage.setItem('vr_intimacy_start_time', TEST_START_TIME);
+    }
+
+    function generateUnifiedVisitorId() {
+      return 'vr_visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function trackRPVConversion(productName, value, location) {
+      totalRevenueGenerated += value;
+      if (value > 0) conversionCount++;
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'vr_intimacy_conversion', {
+          'event_category': 'VR_Intimacy_Test',
+          'event_label': productName,
+          'value': value,
+          'currency': 'USD',
+          'variant': TEST_VARIANT,
+          'location': location,
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id'),
+          'test_session_time': Math.round((Date.now() - pageStartTime) / 1000),
+          'cumulative_revenue': totalRevenueGenerated,
+          'conversion_number': conversionCount
+        });
+        
+        gtag('event', 'vr_intimacy_rpv', {
+          'event_category': 'VR_Intimacy_Analysis',
+          'revenue_this_session': totalRevenueGenerated,
+          'conversions_this_session': conversionCount,
+          'variant': TEST_VARIANT,
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
+        });
+      }
+      
+      console.log(`VR Intimacy Conversion: ${productName} - $${value} (${TEST_VARIANT} variant) - Total Session Revenue: $${totalRevenueGenerated}`);
+    }
+
+    // ===== SPATIAL AUDIO DEMO FUNCTIONALITY =====
+    let isSpatialPlaying = false;
+    let spatialAudio = null;
+    
+    function toggleSpatialDemo() {
+      const audioOrb = document.querySelector('.audio-orb');
+      spatialAudio = document.getElementById('spatialAudio');
+      
+      if (!isSpatialPlaying) {
+        spatialAudio.play().then(() => {
+          isSpatialPlaying = true;
+          audioOrb.innerHTML = '⏸️';
+          audioOrb.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a24)';
+          
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'spatial_demo_complete', {
+              'event_category': 'VR_Intimacy_Engagement',
+              'event_label': 'spatial_audio_complete',
+              'variant': TEST_VARIANT
+            });
+          }
+        });
+        
+      } else {
+        spatialAudio.pause();
+        isSpatialPlaying = false;
+        audioOrb.innerHTML = '🔊';
+        audioOrb.style.background = 'linear-gradient(135deg, #8a2be2, #9370db)';
+      }
+    }
+
+    // ===== INITIALIZATION =====
+    document.addEventListener('DOMContentLoaded', function() {
+      const isMobile = window.innerWidth <= 768;
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'vr_intimacy_page_load', {
+          'event_category': 'VR_Intimacy_Test',
+          'variant': TEST_VARIANT,
+          'device_type': isMobile ? 'mobile' : 'desktop',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id'),
+          'page_load_time': Date.now()
+        });
+      }
+      
+      console.log(`VR Intimacy Test Initialized: ${TEST_VARIANT} variant for visitor ${sessionStorage.getItem('vr_intimacy_visitor_id')}`);
+    });
+  </script>
+</body>
+</html> gtag !== 'undefined') {
+            gtag('event', 'spatial_demo_play', {
+              'event_category': 'VR_Intimacy_Engagement',
+              'event_label': 'spatial_audio_sample',
+              'variant': TEST_VARIANT,
+              'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
+            });
+          }
+        }).catch(error => {
+          console.log('Spatial audio play failed:', error);
+          window.open('/free_whisper_player.html?utm_source=masculine_technical&utm_medium=demo_fallback&utm_campaign=pioneer_preview', '_blank');
+        });
+        
+        spatialAudio.addEventListener('ended', function() {
+          isSpatialPlaying = false;
+          audioOrb.innerHTML = '🔊';
+          audioOrb.style.background = 'linear-gradient(135deg, #8a2be2, #9370db)';
+          
+          if (typeof

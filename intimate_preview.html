@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience Spatial Audio Intimacy - Free Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for Dynamic Theming */
+    :root {
+      --primary-color: #8a2be2;
+      --secondary-color: #9370db;
+      --accent-color: #667eea;
+      --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #2d1b3d 70%, #1a0b14 100%);
+    }
+
+    /* Feminine Theme Override */
+    .theme-feminine {
+      --primary-color: #ff69b4;
+      --secondary-color: #ffb6c1;
+      --accent-color: #ffc0cb;
+      --gradient-bg: linear-gradient(135deg, #1a0b14 0%, #2d1b3d 30%, #4a1a4a 70%, #2d1b3d 100%);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--gradient-bg);
+      color: #e8e8e8;
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .brand-adaptive {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #e8e8e8;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline-adaptive {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    .hero {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .preview-badge {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(138,43,226,0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(138,43,226,0.3); }
+      50% { box-shadow: 0 6px 25px rgba(138,43,226,0.6); }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 0 20px rgba(138,43,226,0.3);
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    /* Audio Player Section */
+    .audio-experience {
+      background: rgba(138,43,226,0.1);
+      border: 2px solid rgba(138,43,226,0.3);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 600px;
+      backdrop-filter: blur(15px);
+      position: relative;
+    }
+
+    .audio-experience::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+      border-radius: 20px;
+      z-index: -1;
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .experience-title {
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .audio-player-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .play-orb {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 40px rgba(138,43,226,0.6);
+      position: relative;
+    }
+
+    .play-orb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(138,43,226,0.8);
+    }
+
+    .play-orb.playing {
+      animation: playingPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes playingPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(138,43,226,0.6); }
+      50% { box-shadow: 0 0 80px rgba(138,43,226,1); }
+    }
+
+    .audio-description {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .audio-description h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .audio-description p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 0.5rem 0;
+    }
+
+    .headphones-notice {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .headphones-notice strong {
+      color: var(--accent-color);
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      background: rgba(0,0,0,0.3);
+      border-radius: 15px;
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(138,43,226,0.3);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(138,43,226,0.5);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: #c9b3ff;
+      padding: 1rem 2rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .cta-secondary:hover {
+      background: rgba(138,43,226,0.1);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background: rgba(0,0,0,0.3);
+      padding: 2rem 0;
+      text-align: center;
+      color: #b8b8ff;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+
+      .audio-experience {
+        padding: 2rem;
+      }
+
+      .play-orb {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+
+      .cta-buttons {
+        gap: 0.8rem;
+      }
+
+      .cta-primary, .cta-secondary {
+        width: 100%;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h2 class="brand-adaptive">HoneyBunniLexi</h2>
+      <p class="tagline-adaptive" id="adaptiveTagline">Immersive Audio Intimacy</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="preview-badge">🎧 Free 90-Second Spatial Audio Preview</div>
+      
+      <h1 id="adaptiveHeadline">Experience True Audio Intimacy</h1>
+      <p class="subtitle" id="adaptiveSubtitle">Feel what it's like to be held in sound and space</p>
+      <p class="description" id="adaptiveDescription">
+        This 90-second preview demonstrates the spatial audio technology and emotional design behind our intimate experiences. Put on headphones and discover what genuine audio intimacy feels like.
+      </p>
+    </div>
+  </section>
+
+  <!-- Audio Experience Section -->
+  <section>
+    <div class="container">
+      <div class="audio-experience">
+        <div class="experience-title" id="experienceTitle">🎧 Spatial Intimacy Preview</div>
+        
+        <div class="audio-player-container">
+          <div class="play-orb" id="playOrb" onclick="togglePreviewAudio()">
+            ▶️
+          </div>
+          
+          <div class="audio-description">
+            <h3 id="audioTitle">Gentle Introduction to Spatial Intimacy</h3>
+            <p id="audioDescription">Experience whispers that move around your head, creating the feeling of intimate presence</p>
+          </div>
+        </div>
+        
+        <audio id="previewAudio" preload="metadata">
+          <source src="/audio/intimate-preview-spatial-90s.mp3" type="audio/mpeg">
+          <source src="/audio/intimate-preview-spatial-90s.wav" type="audio/wav">
+          <!-- Fallback placeholder - silent 90-second audio -->
+          <source src="data:audio/wav;base64,UklGRvIDAABXQVZFZm10IBAAAAABAAEAESsAABEsBAABAAgAZGF0YQoBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav">
+        </audio>
+        
+        <div class="headphones-notice">
+          <strong>🎧 Headphones Required</strong><br>
+          This preview uses binaural spatial audio technology. The intimate effect only works with headphones or earbuds.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section>
+    <div class="container">
+      <div class="cta-section">
+        <h2 id="ctaHeadline">Ready for the Full Experience?</h2>
+        <p id="ctaDescription">This 90-second preview is just the beginning. Our full intimate experiences are 15-60 minutes of deep emotional connection and spatial audio intimacy.</p>
+        
+        <div class="cta-buttons">
+          <a href="/free_whisper_player.html?utm_source=intimate_preview&utm_medium=cta&utm_campaign=full_experience" class="cta-primary" id="primaryCTA" onclick="trackConversion('full_experience_cta', 'preview_page')">Explore Full Experiences</a>
+          <a href="/audio_drops_vr_optimized.html?utm_source=intimate_preview&utm_medium=cta&utm_campaign=learn_more" class="cta-secondary" id="secondaryCTA" onclick="trackConversion('learn_more_cta', 'preview_page')">Learn More About The Technology</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      Immersive intimacy. Ethical design. Emotional connection.<br>
+      © 2025 HoneyBunniLexi — Your sanctuary is sacred.
+    </div>
+  </div>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4WDJJLFNP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W4WDJJLFNP');
+  </script>
+
+  <script>
+    // ===== UNIFIED ADAPTIVE CONTENT SYSTEM =====
+    
+    function getSourceVariant() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const referrer = document.referrer.toLowerCase();
+      
+      // Determine source variant
+      if (utmSource && utmSource.includes('feminine')) return 'feminine';
+      if (utmSource && utmSource.includes('masculine')) return 'masculine';
+      if (utmSource && utmSource.includes('technical')) return 'masculine';
+      if (referrer.includes('bunni') || referrer.includes('sanctuary')) return 'feminine';
+      if (referrer.includes('audio-drops') || referrer.includes('technical')) return 'masculine';
+      
+      // Default to balanced approach
+      return 'balanced';
+    }
+
+    function adaptContentForSource(variant) {
+      const content = {
+        masculine: {
+          tagline: "VR Intimacy Engineering",
+          headline: "You're Not Just an Early Adopter—You're a Pioneer",
+          subtitle: "For those who understand that intimacy can be engineered",
+          description: "When someone sees 'VR Spatial Audio Intimacy' in your history, they immediately understand your sophistication level. This 90-second demo reveals what's possible when technology meets desire.",
+          experienceTitle: "🎧 Intimacy Technology Demo",
+          audioTitle: "Precision-Engineered Connection",
+          audioDescription: "Experience what most people don't even know exists yet",
+          ctaHeadline: "Ready to Position Yourself at the Forefront?",
+          ctaDescription: "The men who understand binaural emotional engineering... understand.",
+          primaryCTA: "Access Pioneer-Level Experiences →",
+          secondaryCTA: "View Technical Specifications",
+          primaryLink: "/audio_drops_vr_optimized.html#products",
+          secondaryLink: "/audio_drops_vr_optimized.html#tech"
+        },
+        feminine: {
+          tagline: "Sacred Intimacy Technology",
+          headline: "Are You Ready for Spatial Intimacy?",
+          subtitle: "For women who understand that intimacy deserves to be engineered",
+          description: "When you invest in spatial intimacy, you're not just buying audio—you're declaring that your emotional needs are sacred. This 90-second gateway will show you what engineered tenderness feels like.",
+          experienceTitle: "💗 Sacred Intimacy Gateway",
+          audioTitle: "Engineered Emotional Embrace",
+          audioDescription: "Feel what happens when intimacy meets intentional design",
+          ctaHeadline: "Ready to Declare Your Worth?",
+          ctaDescription: "Other women are investing in spatial intimacy. The question is: are you ready to join them?",
+          primaryCTA: "Claim Your Sacred Technology →",
+          secondaryCTA: "Learn How Intimacy is Engineered",
+          primaryLink: "/bunni_lair_vr_optimized.html#tiers",
+          secondaryLink: "/bunni_lair_vr_optimized.html#ethics"
+        },
+        balanced: {
+          tagline: "Intimacy Technology",
+          headline: "Are You Ready for What Most People Don't Know Exists?",
+          subtitle: "This isn't for everyone. But for those who get it...",
+          description: "You're about to experience something that will immediately separate you from people who are still using regular audio for intimate connection. This 90-second gateway reveals what's possible.",
+          experienceTitle: "🎧 Intimacy Technology Gateway",
+          audioTitle: "What Sophistication Sounds Like",
+          audioDescription: "Experience the difference between content and connection",
+          ctaHeadline: "Ready to Understand What You've Been Missing?",
+          ctaDescription: "This 90-second preview is your invitation. The question is: are you ready to accept it?",
+          primaryCTA: "Enter the Next Level →",
+          secondaryCTA: "Learn What Makes This Different",
+          primaryLink: "/free_whisper_player.html",
+          secondaryLink: "/audio_drops_vr_optimized.html"
+        }
+      };
+
+      const selectedContent = content[variant];
+      
+      // Update page content
+      document.getElementById('adaptiveTagline').textContent = selectedContent.tagline;
+      document.getElementById('adaptiveHeadline').textContent = selectedContent.headline;
+      document.getElementById('adaptiveSubtitle').textContent = selectedContent.subtitle;
+      document.getElementById('adaptiveDescription').textContent = selectedContent.description;
+      document.getElementById('experienceTitle').textContent = selectedContent.experienceTitle;
+      document.getElementById('audioTitle').textContent = selectedContent.audioTitle;
+      document.getElementById('audioDescription').textContent = selectedContent.audioDescription;
+      document.getElementById('ctaHeadline').textContent = selectedContent.ctaHeadline;
+      document.getElementById('ctaDescription').textContent = selectedContent.ctaDescription;
+      document.getElementById('primaryCTA').textContent = selectedContent.primaryCTA;
+      document.getElementById('secondaryCTA').textContent = selectedContent.secondaryCTA;
+      
+      // Update links
+      document.getElementById('primaryCTA').href = selectedContent.primaryLink;
+      document.getElementById('secondaryCTA').href = selectedContent.secondaryLink;
+      
+      // Apply theme styling
+      if (variant === 'feminine') {
+        document.body.classList.add('theme-feminine');
+      }
+    }
+
+    // ===== AUDIO PLAYER FUNCTIONALITY =====
+    
+    let isPlaying = false;
+    let audio = null;
+
+    function togglePreviewAudio() {
+      const playOrb = document.getElementById('playOrb');
+      audio = document.getElementById('previewAudio');
+      
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          playOrb.innerHTML = '⏸️';
+          playOrb.classList.add('playing');
+          
+          // Track audio play
+          trackAudioEvent('preview_audio_play_90s');
+          
+        }).catch(error => {
+          console.log('Audio play failed:', error);
+          
+          // Fallback to simulated experience
+          simulateAudioExperience();
+        });
+        
+        // Auto-stop when audio ends
+        audio.addEventListener('ended', function() {
+          stopAudio();
+          trackAudioEvent('preview_audio_complete_90s');
+        });
+        
+      } else {
+        stopAudio();
+      }
+    }
+
+    function stopAudio() {
+      if (audio) audio.pause();
+      isPlaying = false;
+      document.getElementById('playOrb').innerHTML = '▶️';
+      document.getElementById('playOrb').classList.remove('playing');
+    }
+
+    function simulateAudioExperience() {
+      // Fallback experience when audio fails to load
+      isPlaying = true;
+      document.getElementById('playOrb').innerHTML = '⏸️';
+      document.getElementById('playOrb').classList.add('playing');
+      
+      // Simulate 90-second audio
+      setTimeout(() => {
+        stopAudio();
+        trackAudioEvent('simulated_audio_complete_90s');
+      }, 90000);
+      
+      trackAudioEvent('simulated_audio_play_90s');
+    }
+
+    // ===== UNIFIED TRACKING FUNCTIONS =====
+    
+    function trackAudioEvent(eventName) {
+      const variant = getSourceVariant();
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+          'event_category': 'VR_Intimacy_Preview',
+          'variant': variant,
+          'page': 'unified_preview',
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
+        });
+      }
+    }
+
+    function trackConversion(actionType, location) {
+      const variant = getSourceVariant();
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'preview_conversion', {
+          'event_category': 'VR_Intimacy_Conversion',
+          'event_label': actionType,
+          'variant': variant,
+          'location': location,
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id')
+        });
+      }
+      
+      console.log(`Preview Conversion: ${actionType} from ${variant} variant`);
+    }
+
+    // ===== INITIALIZATION =====
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const variant = getSourceVariant();
+      adaptContentForSource(variant);
+      
+      // Track page load
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'vr_intimacy_preview_load', {
+          'event_category': 'VR_Intimacy_Preview',
+          'variant': variant,
+          'referrer': document.referrer || 'direct',
+          'audio_duration': '90_seconds',
+          'visitor_id': sessionStorage.getItem('vr_intimacy_visitor_id') || 'new'
+        });
+      }
+      
+      console.log(`Unified Preview Initialized: ${variant} variant with 90-second audio`);
+    });
+  </script>
+</body>
+</html>
