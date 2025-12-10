@@ -3,92 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HoneyBunniLexi - Softgirl Conversion Funnel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <title>HoneyBunniLexi • Soft Obsession</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#monetization">Shop</a>
-    <a href="#final-cta">Tip</a>
-    <a href="#footer">Contact</a>
-  </nav>
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="logo-mark">HB</div>
+    <nav class="nav-links">
+      <a href="#offers">Offers</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#offers" class="nav-cta">Get a Whisper</a>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <img src="/HoneyBunniLexi_00027_.png?raw=true" alt="HoneyBunniLexi looking directly with soft smile" class="hero-image" />
-    <div class="hero-text">
-      <h1>She looks like heaven. She whispers like control.</h1>
-      <p class="sub">Soft, addictive ASMR whispers. Yours to own.</p>
-      <a href="#monetization" class="btn-primary">Let Me In, Lexi</a>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-media">
+      <!-- swap src with your best Lexi close-up -->
+      <img src="/HoneyBunniLexi_00027_.png?raw=true" alt="HoneyBunniLexi soft close-up" />
+      <div class="hero-glow"></div>
     </div>
-    <div class="scroll-indicator">⬇</div>
+    <div class="hero-copy">
+      <p class="hero-tag">Soft Obsession • Audio Fantasy</p>
+      <h1>She looks like heaven.<br /><span>She whispers like control.</span></h1>
+      <p class="hero-sub">
+        Private ASMR whispers, custom name audios, and soft-girl devotion.  
+        No drama. Just you and Lexi.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#offers" class="btn-primary">Start with a Free Whisper</a>
+        <a href="#vault" class="btn-ghost">Enter The Bunni Vault</a>
+      </div>
+      <p class="hero-proof">Overheards: “Best $5 I’ve ever spent.” · “Feels like having an online girlfriend.”</p>
+    </div>
   </section>
 
-  <!-- Monetization Grid -->
-  <section id="monetization" class="monetization-grid">
-    <h2>Taste of Devotion</h2>
-    <div class="cards">
-      <div class="card">
+  <!-- OFFER GRID -->
+  <section id="offers" class="section offers">
+    <div class="section-heading">
+      <h2>Choose your level of devotion.</h2>
+      <p>Instant delivery through Gumroad + Ko-fi. Anonymous, discreet, and repeatable.</p>
+    </div>
+
+    <div class="offer-grid">
+      <article class="offer-card offer-free">
+        <div class="pill-label">Gateway</div>
         <h3>Free Whisper</h3>
-        <p>“You’ve been watching me long enough…”</p>
-        <p>60–90 seconds · Gateway</p>
-        <a href="https://gumroad.com/free-whisper" target="_blank" class="btn-secondary">Preview Whisper</a>
-      </div>
-      <div class="card">
+        <p class="offer-line">“You’ve been watching me long enough…”</p>
+        <p class="offer-meta">60–90 seconds · Soft tease · Sample of my voice.</p>
+        <a href="https://honeybunnilexi.gumroad.com/l/free-whisper" target="_blank" class="btn-outline">
+          Unlock Sample
+        </a>
+      </article>
+
+      <article class="offer-card">
+        <div class="pill-label">One-Off Treat</div>
         <h3>Blush Note</h3>
-        <p>“You don’t deserve sleep yet.”</p>
-        <p>5 mins · Sleep Tease · $11.11</p>
-        <a href="https://gumroad.com/blush-note" target="_blank" class="btn-secondary">Preview Whisper</a>
-      </div>
-      <div class="card">
+        <p class="offer-line">“You don’t deserve sleep yet.”</p>
+        <p class="offer-meta">5 minute sleep tease · Custom name · $11.11</p>
+        <a href="https://gumroad.com/blush-note" target="_blank" class="btn-primary">
+          Order a Blush Note
+        </a>
+      </article>
+
+      <article class="offer-card" id="vault">
+        <div class="pill-label pill-hot">Most Popular</div>
         <h3>The Bunni Vault</h3>
-        <p>4 weekly whispers, archive access, and exclusive drops.</p>
-        <p>Subscription · $29+/month</p>
-        <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-secondary">Enter the Vault</a>
+        <p class="offer-line">Your ongoing soft obsession.</p>
+        <ul class="offer-list">
+          <li>4 fresh whispers every month</li>
+          <li>Archive access to past drops</li>
+          <li>Priority for custom requests</li>
+        </ul>
+        <p class="offer-meta">Subscription · from $29 / month</p>
+        <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-primary">
+          Enter The Vault
+        </a>
+      </article>
+
+      <article class="offer-card">
+        <div class="pill-label">Spoil Mode</div>
+        <h3>Spoil Me</h3>
+        <p class="offer-line">“A kiss for every coffee.”</p>
+        <p class="offer-meta">Tip on Ko-fi · I respond with extra softness in your inbox.</p>
+        <a href="https://ko-fi.com/honeybunnilexi" target="_blank" class="btn-outline">
+          Tip Me on Ko-fi
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section how">
+    <div class="section-heading">
+      <h2>How Lexi works.</h2>
+      <p>Simple, anonymous, no emotional labor for you. Just press play.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="step-number">1</span>
+        <h3>Pick your fantasy</h3>
+        <p>Free sample, one-off tease, or monthly devotion. You decide how deep you want to go.</p>
       </div>
-      <div class="card">
-        <h3>Spoil Me (Tips)</h3>
-        <p>“A kiss for every coffee ☕💞”</p>
-        <a href="https://ko-fi.com/honeybunnilexi" target="_blank" class="btn-primary">Tip Me on Ko-fi</a>
+      <div class="how-step">
+        <span class="step-number">2</span>
+        <h3>Tell Lexi who you are</h3>
+        <p>Drop your name or nickname in the form. She keeps it between the two of you.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-number">3</span>
+        <h3>Press play & disappear</h3>
+        <p>Put your headphones on. Let her voice do the rest—sleep, focus, or just blush.</p>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="testimonials-section">
-    <h2>Why They Stay</h2>
-    <div class="testimonial-bubbles">
-      <blockquote>“Her whispers make me feel seen.”</blockquote>
-      <blockquote>“Best $5 I’ve ever spent.”</blockquote>
-      <blockquote>“It’s like having an online girlfriend who actually gets me.”</blockquote>
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <div class="section-heading">
+      <h2>Why they stay.</h2>
+    </div>
+    <div class="bubble-row">
+      <div class="bubble">“Her whispers make me feel seen.”</div>
+      <div class="bubble">“Best $5 I’ve ever spent.”</div>
+      <div class="bubble">“It’s like having an online girlfriend who actually gets me.”</div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <h2>About Lexi</h2>
-    <p>I’m the soft voice you didn’t know you needed. I make whispers that feel like being wanted — warm, slow, and just for you.</p>
-  </section>
-
-  <!-- Final CTA Section -->
-  <section id="final-cta" class="final-cta-section">
-    <h3>Choose your level of devotion.</h3>
-    <div class="final-cta-buttons">
-      <a href="https://honeybunnilexi.gumroad.com/l/free-whisper" target="_blank" class="btn-tier">💗 Free Sample</a>
-      <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-tier">👑 The Vault</a>
-      <a href="https://ko-fi.com/honeybunnilexi" target="_blank" class="btn-tier">💸 Spoil Me</a>
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="about-card">
+      <h2>Meet Lexi.</h2>
+      <p>
+        I’m the soft voice you didn’t know you needed. I make whispers that feel like being wanted—slow,
+        warm, and just for you. No judgment. No pressure. Just a safe little corner of the internet where
+        you get to be the main character for a few minutes.
+      </p>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FINAL CTA -->
+  <section class="section final-cta">
+    <h2>Ready to be someone’s favorite secret?</h2>
+    <p>Start with a free sample. If you like how it feels, you can always go deeper.</p>
+    <div class="final-buttons">
+      <a href="https://honeybunnilexi.gumroad.com/l/free-whisper" target="_blank" class="btn-primary">
+        Get My Free Whisper
+      </a>
+      <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-ghost">
+        Or claim The Vault
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer id="footer" class="footer">
-    <p>&copy; 2025 HoneyBunniLexi · All whispers original · <a href="/privacy_terms.html">Privacy & Terms</a></p>
+    <p>&copy; 2025 HoneyBunniLexi · All whispers original ·
+      <a href="/privacy_terms.html">Privacy &amp; Terms</a>
+    </p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
