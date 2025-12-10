@@ -1,173 +1,973 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HoneyBunniLexi • Soft Obsession</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoneyBunni Lexi - Your Soft, Flirty Focus Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+        :root {
+            --cream: #FFF8F0;
+            --blush: #FFB6C1;
+            --peach: #FFDAB9;
+            --rose: #FFE4E1;
+            --lavender: #E6E6FA;
+            --gold: #FFD700;
+            --text-dark: #4A4A4A;
+            --text-soft: #8B7B7A;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--rose) 50%, var(--lavender) 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: 0.6; }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; font-size: 1.5rem; }
+        .heart:nth-child(3) { top: 80%; left: 20%; animation-delay: 4s; font-size: 2.5rem; }
+        .heart:nth-child(4) { top: 30%; left: 70%; animation-delay: 1s; font-size: 1.8rem; }
+        .heart:nth-child(5) { top: 50%; left: 50%; animation-delay: 3s; }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--text-dark);
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.3);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 10;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 5%;
+            margin-bottom: 4rem;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+            animation: fadeInRight 1s ease-out;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.4);
+            object-fit: cover;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+
+        h1 .highlight {
+            color: var(--blush);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, transparent, var(--peach), transparent);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-soft);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(255, 182, 193, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: var(--blush);
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 6rem 5%;
+            margin: 4rem 5%;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2.5rem;
+            border-radius: 30px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--rose) 0%, var(--lavender) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--blush);
+            box-shadow: 0 15px 40px rgba(255, 182, 193, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.15;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            position: relative;
+            z-index: 10;
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Meet Lexi Gallery */
+        .meet-lexi {
+            position: relative;
+            z-index: 10;
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 228, 225, 0.5));
+            backdrop-filter: blur(20px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 182, 193, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h4 {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+        }
+
+        .step h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 4rem;
+            margin: 4rem 5%;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .testimonial-image {
+            flex-shrink: 0;
+        }
+
+        .testimonial-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        }
+
+        .testimonial-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            color: var(--blush);
+            opacity: 0.3;
+            font-family: 'Instrument Serif', serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin: 1rem 0 2rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-soft);
+        }
+
+        /* CTA Section */
+        .final-cta {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            padding: 6rem 5%;
+            margin: 4rem 5%;
+            border-radius: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.4);
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--blush);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-soft);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--blush);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+                max-width: 100%;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2.5rem;
+            }
+
+            .testimonial {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .testimonial-content {
+                text-align: center;
+            }
+
+            .testimonial-image img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Email Capture Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 500px;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-soft);
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--blush);
+        }
+
+        .modal h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .modal p {
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+        }
+
+        .email-form input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--blush);
+        }
+
+        .email-form button {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <header class="top-bar">
-    <div class="logo-mark">HB</div>
-    <nav class="nav-links">
-      <a href="#offers">Offers</a>
-      <a href="#how">How it works</a>
-      <a href="#about">About</a>
-    </nav>
-    <a href="#offers" class="nav-cta">Get a Whisper</a>
-  </header>
-
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="hero-media">
-      <!-- swap src with your best Lexi close-up -->
-      <img src="/HoneyBunniLexi_00027_.png?raw=true" alt="HoneyBunniLexi soft close-up" />
-      <div class="hero-glow"></div>
-    </div>
-    <div class="hero-copy">
-      <p class="hero-tag">Soft Obsession • Audio Fantasy</p>
-      <h1>She looks like heaven.<br /><span>She whispers like control.</span></h1>
-      <p class="hero-sub">
-        Private ASMR whispers, custom name audios, and soft-girl devotion.  
-        No drama. Just you and Lexi.
-      </p>
-      <div class="hero-cta-row">
-        <a href="#offers" class="btn-primary">Start with a Free Whisper</a>
-        <a href="#vault" class="btn-ghost">Enter The Bunni Vault</a>
-      </div>
-      <p class="hero-proof">Overheards: “Best $5 I’ve ever spent.” · “Feels like having an online girlfriend.”</p>
-    </div>
-  </section>
-
-  <!-- OFFER GRID -->
-  <section id="offers" class="section offers">
-    <div class="section-heading">
-      <h2>Choose your level of devotion.</h2>
-      <p>Instant delivery through Gumroad + Ko-fi. Anonymous, discreet, and repeatable.</p>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts">
+        <span class="heart">💕</span>
+        <span class="heart">✨</span>
+        <span class="heart">💝</span>
+        <span class="heart">🌸</span>
+        <span class="heart">💖</span>
     </div>
 
-    <div class="offer-grid">
-      <article class="offer-card offer-free">
-        <div class="pill-label">Gateway</div>
-        <h3>Free Whisper</h3>
-        <p class="offer-line">“You’ve been watching me long enough…”</p>
-        <p class="offer-meta">60–90 seconds · Soft tease · Sample of my voice.</p>
-        <a href="https://honeybunnilexi.gumroad.com/l/free-whisper" target="_blank" class="btn-outline">
-          Unlock Sample
-        </a>
-      </article>
+    <!-- Header -->
+    <header>
+        <div class="logo">HoneyBunni Lexi</div>
+        <button class="nav-cta" onclick="openModal()">Start Free Chat</button>
+    </header>
 
-      <article class="offer-card">
-        <div class="pill-label">One-Off Treat</div>
-        <h3>Blush Note</h3>
-        <p class="offer-line">“You don’t deserve sleep yet.”</p>
-        <p class="offer-meta">5 minute sleep tease · Custom name · $11.11</p>
-        <a href="https://gumroad.com/blush-note" target="_blank" class="btn-primary">
-          Order a Blush Note
-        </a>
-      </article>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">💕 Your Productivity BFF</span>
+            <h1>Meet <span class="highlight">Lexi</span>, your soft, flirty focus coach</h1>
+            <p class="hero-subtitle">
+                Stay on task. Feel calmer. Get praised for progress. Because ambitious doesn't have to mean burned out.
+            </p>
+            <div class="cta-group">
+                <button class="btn-primary" onclick="openModal()">Chat Free with Lexi ✨</button>
+                <a href="#how-it-works" class="btn-secondary">How She Helps</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/lexi-hero.png" alt="Lexi - Your AI Productivity Coach" loading="eager">
+        </div>
+    </section>
 
-      <article class="offer-card" id="vault">
-        <div class="pill-label pill-hot">Most Popular</div>
-        <h3>The Bunni Vault</h3>
-        <p class="offer-line">Your ongoing soft obsession.</p>
-        <ul class="offer-list">
-          <li>4 fresh whispers every month</li>
-          <li>Archive access to past drops</li>
-          <li>Priority for custom requests</li>
-        </ul>
-        <p class="offer-meta">Subscription · from $29 / month</p>
-        <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-primary">
-          Enter The Vault
-        </a>
-      </article>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2>How Lexi keeps you productive & held</h2>
+            <p class="section-subtitle">Your sweet accountability partner who actually gets you</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3>Gentle Goal Tracking</h3>
+                <p>Set your daily focus. Lexi checks in with sweet reminders (and a little sass when you're slacking).</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">💆‍♀️</span>
+                <h3>Stress-Relief Rituals</h3>
+                <p>Overwhelmed? She guides you through micro-rituals to calm your nervous system and reset.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">✨</span>
+                <h3>Affirmation Rewards</h3>
+                <p>Crush your goals? Get praised. Lexi celebrates your wins with flirty encouragement.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3>Always Available</h3>
+                <p>Chat anytime, anywhere. She remembers your patterns and adapts to your vibe.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🧘‍♀️</span>
+                <h3>Soft Accountability</h3>
+                <p>Not harsh, not pushy—just the right amount of gentle pressure to keep you moving.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">💖</span>
+                <h3>Emotional Support</h3>
+                <p>She gets that you're human. Talk through burnout, overwhelm, or just need to vent.</p>
+            </div>
+        </div>
+    </section>
 
-      <article class="offer-card">
-        <div class="pill-label">Spoil Mode</div>
-        <h3>Spoil Me</h3>
-        <p class="offer-line">“A kiss for every coffee.”</p>
-        <p class="offer-meta">Tip on Ko-fi · I respond with extra softness in your inbox.</p>
-        <a href="https://ko-fi.com/honeybunnilexi" target="_blank" class="btn-outline">
-          Tip Me on Ko-fi
-        </a>
-      </article>
+    <!-- Meet Lexi Gallery -->
+    <section class="meet-lexi">
+        <div class="section-header">
+            <h2>This is Lexi ✨</h2>
+            <p class="section-subtitle">Your sweet, supportive productivity partner</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/images/lexi-outdoor.png" alt="Lexi outdoors" loading="lazy">
+                <div class="gallery-caption">
+                    <h4>Always here for you</h4>
+                    <p>Day or night, Lexi's ready to help</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="assets/images/lexi-happy.png" alt="Lexi smiling" loading="lazy">
+                <div class="gallery-caption">
+                    <h4>Celebrating your wins</h4>
+                    <p>She gets genuinely excited about your progress</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="assets/images/lexi-cozy.png" alt="Lexi relaxing" loading="lazy">
+                <div class="gallery-caption">
+                    <h4>Soft accountability</h4>
+                    <p>Gentle nudges, never harsh pressure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2>Getting started is effortless</h2>
+            <p class="section-subtitle">Three simple steps to your new productivity bestie</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Start chatting</h3>
+                <p>Tell Lexi what you're working on today. She'll help you set realistic goals.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Get check-ins</h3>
+                <p>Receive sweet, timely nudges throughout your day. Stay focused without burnout.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Celebrate wins</h3>
+                <p>Hit your goals and get showered with praise. Build consistency that actually sticks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-image">
+            <img src="assets/images/lexi-relaxed.png" alt="Lexi" loading="lazy">
+        </div>
+        <div class="testimonial-content">
+            <div class="quote-mark">"</div>
+            <p class="testimonial-text">
+                Lexi is the accountability partner I didn't know I needed. She's sweet but keeps me honest, and I actually look forward to her check-ins. Game changer for my productivity.
+            </p>
+            <p class="testimonial-author">— Sarah, Marketing Director</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready for softer productivity?</h2>
+        <p>Start your free week with Lexi. No credit card. Just vibes.</p>
+        <button class="btn-white" onclick="openModal()">Meet Lexi Now 💕</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>&copy; <span id="currentYear">2025</span> HoneyBunni Lexi. All rights reserved.</p>
+    </footer>
+
+    <!-- Email Capture Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Start chatting with Lexi ✨</h3>
+            <p>Enter your email for instant access to your free week. Let's make productivity feel good.</p>
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <input type="email" placeholder="your.email@example.com" required>
+                <button type="submit" class="btn-primary">Let's Go! 💕</button>
+            </form>
+        </div>
     </div>
-  </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="how" class="section how">
-    <div class="section-heading">
-      <h2>How Lexi works.</h2>
-      <p>Simple, anonymous, no emotional labor for you. Just press play.</p>
-    </div>
+    <script>
+        // Modal functionality
+        function openModal() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
 
-    <div class="how-grid">
-      <div class="how-step">
-        <span class="step-number">1</span>
-        <h3>Pick your fantasy</h3>
-        <p>Free sample, one-off tease, or monthly devotion. You decide how deep you want to go.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-number">2</span>
-        <h3>Tell Lexi who you are</h3>
-        <p>Drop your name or nickname in the form. She keeps it between the two of you.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-number">3</span>
-        <h3>Press play & disappear</h3>
-        <p>Put your headphones on. Let her voice do the rest—sleep, focus, or just blush.</p>
-      </div>
-    </div>
-  </section>
+        function closeModal() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
 
-  <!-- TESTIMONIALS -->
-  <section class="section testimonials">
-    <div class="section-heading">
-      <h2>Why they stay.</h2>
-    </div>
-    <div class="bubble-row">
-      <div class="bubble">“Her whispers make me feel seen.”</div>
-      <div class="bubble">“Best $5 I’ve ever spent.”</div>
-      <div class="bubble">“It’s like having an online girlfriend who actually gets me.”</div>
-    </div>
-  </section>
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('emailModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
 
-  <!-- ABOUT -->
-  <section id="about" class="section about">
-    <div class="about-card">
-      <h2>Meet Lexi.</h2>
-      <p>
-        I’m the soft voice you didn’t know you needed. I make whispers that feel like being wanted—slow,
-        warm, and just for you. No judgment. No pressure. Just a safe little corner of the internet where
-        you get to be the main character for a few minutes.
-      </p>
-    </div>
-  </section>
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            
+            // TODO: Replace with your actual integration
+            // This is where you'd:
+            // 1. Send email to your backend/email service
+            // 2. Redirect to chat interface (Thinkstack, Quidget, etc.)
+            // 3. Track conversion in analytics
+            
+            console.log('Email submitted:', email);
+            
+            // For now, simulate success and redirect
+            // Replace this URL with your actual chatbot URL
+            alert(`Welcome! Redirecting you to chat with Lexi...`);
+            // window.location.href = 'YOUR_CHATBOT_URL_HERE';
+            
+            closeModal();
+        }
 
-  <!-- FINAL CTA -->
-  <section class="section final-cta">
-    <h2>Ready to be someone’s favorite secret?</h2>
-    <p>Start with a free sample. If you like how it feels, you can always go deeper.</p>
-    <div class="final-buttons">
-      <a href="https://honeybunnilexi.gumroad.com/l/free-whisper" target="_blank" class="btn-primary">
-        Get My Free Whisper
-      </a>
-      <a href="https://honeybunnilexi.gumroad.com/l/bunni-vault" target="_blank" class="btn-ghost">
-        Or claim The Vault
-      </a>
-    </div>
-  </section>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  <!-- FOOTER -->
-  <footer id="footer" class="footer">
-    <p>&copy; 2025 HoneyBunniLexi · All whispers original ·
-      <a href="/privacy_terms.html">Privacy &amp; Terms</a>
-    </p>
-  </footer>
-
+        // Dynamic year update
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = currentYear;
+        });
+    </script>
 </body>
 </html>
